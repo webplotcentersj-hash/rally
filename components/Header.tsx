@@ -15,9 +15,13 @@ export default function Header() {
             <div className="relative">
               {/* Forma verde decorativa */}
               <div className="absolute -left-4 top-0 bottom-0 w-16 bg-[#65b330] rounded-r-full opacity-80" />
-              {/* Logo circular */}
-              <div className="relative w-14 h-14 bg-black border-2 border-white rounded-full flex items-center justify-center">
-                <span className="text-[#65b330] font-bold text-xl">S</span>
+              {/* Logo de la app */}
+              <div className="relative z-10">
+                <img
+                  src="/logo.png"
+                  alt="Safari Tras las Sierras"
+                  className="h-12 w-auto object-contain"
+                />
               </div>
             </div>
             
