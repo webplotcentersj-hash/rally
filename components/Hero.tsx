@@ -31,12 +31,12 @@ export default function Hero() {
       {/* Overlay sutil */}
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* Contenido minimalista */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-        <div className="max-w-4xl mx-auto space-y-12">
+      {/* Contenido posicionado abajo */}
+      <div className="relative z-10 flex flex-col items-center justify-end h-full text-center text-white px-4 pb-32">
+        <div className="max-w-4xl mx-auto space-y-8 w-full">
           {/* Subtítulo elegante */}
           <div className="animate-fade-in-up">
-            <p className="text-lg md:text-xl font-light tracking-widest uppercase text-white/90 mb-8">
+            <p className="text-lg md:text-xl font-light tracking-widest uppercase text-white/90 mb-4">
               Rally en Valle Fértil - San Juan
             </p>
           </div>
