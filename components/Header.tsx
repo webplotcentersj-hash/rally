@@ -10,20 +10,14 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-l border-[#65b330]">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo y forma verde */}
+          {/* Logo y título */}
           <div className="flex items-center gap-4">
-            <div className="relative">
-              {/* Forma verde decorativa */}
-              <div className="absolute -left-4 top-0 bottom-0 w-16 bg-[#65b330] rounded-r-full opacity-80" />
-              {/* Logo de la app */}
-              <div className="relative z-10">
-                <img
-                  src="/logo.png"
-                  alt="Safari Tras las Sierras"
-                  className="h-12 w-auto object-contain"
-                />
-              </div>
-            </div>
+            {/* Logo de la app */}
+            <img
+              src="/logo.png"
+              alt="Safari Tras las Sierras"
+              className="h-12 w-auto object-contain"
+            />
             
             {/* Título */}
             <div className="text-white">
