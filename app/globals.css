@@ -94,3 +94,9 @@ button, a {
 ::-webkit-scrollbar-thumb:hover {
   background: #5aa02a;
 }
+
+/* Header fijo */
+header {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}

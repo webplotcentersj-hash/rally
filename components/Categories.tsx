@@ -29,7 +29,7 @@ export default function Categories() {
   ];
 
   return (
-    <section className="py-32 bg-gray-50">
+    <section id="categorias" className="py-32 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-6 tracking-tight">
