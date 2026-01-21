@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import Countdown from '@/components/Countdown';
 import About from '@/components/About';
 import Categories from '@/components/Categories';
 import RegistrationInfo from '@/components/RegistrationInfo';
@@ -13,6 +14,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <Hero />
+      <Countdown />
       <About />
       <Categories />
       <RegistrationInfo />
