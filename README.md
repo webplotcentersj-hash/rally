@@ -12,7 +12,7 @@ Landing page oficial del Safari Tras las Sierras, una competencia de safari en V
 ## 📁 Estructura
 
 ```
-rally-landing/
+safari-landing/
 ├── app/
 │   ├── layout.tsx      # Layout principal con metadata
 │   ├── page.tsx        # Página principal
