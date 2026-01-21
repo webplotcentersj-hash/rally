@@ -1,6 +1,6 @@
 # Safari Tras las Sierras - Landing Page
 
-Landing page oficial del Safari Tras las Sierras, una competencia de rally en Valle Fértil, San Juan.
+Landing page oficial del Safari Tras las Sierras, una competencia de safari en Valle Fértil, San Juan.
 
 ## 🚀 Tecnologías
 

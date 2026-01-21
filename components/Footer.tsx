@@ -8,7 +8,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-medium mb-4">Safari Tras las Sierras</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Una competencia de rally única en Valle Fértil, San Juan.
+              Una competencia única de safari en Valle Fértil, San Juan.
             </p>
           </div>
 

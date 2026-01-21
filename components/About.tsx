@@ -16,7 +16,7 @@ export default function About() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#65b330] to-transparent mx-auto mb-8" />
             <p className="text-xl md:text-2xl text-gray-600 font-light max-w-3xl mx-auto">
-              Una competencia de rally única en el corazón de{' '}
+              Una competencia única de safari en el corazón de{' '}
               <span className="text-[#65b330] font-semibold">Valle Fértil, San Juan</span>
             </p>
           </div>

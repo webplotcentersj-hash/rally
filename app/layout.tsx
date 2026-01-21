@@ -5,12 +5,13 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Safari Tras las Sierras - Rally en Valle Fértil, San Juan',
-  description: 'Participá del Safari Tras las Sierras, una competencia de rally única en Valle Fértil, San Juan. Inscribite ahora y sé parte de esta aventura.',
-  keywords: 'rally, safari, valle fértil, san juan, competencia, autos, motos',
+  title: 'Safari Tras las Sierras - Safari en Valle Fértil, San Juan',
+  description:
+    'Participá del Safari Tras las Sierras, una competencia única de safari en Valle Fértil, San Juan. Inscribite ahora y sé parte de esta aventura.',
+  keywords: 'safari, valle fértil, san juan, competencia, autos, motos',
   openGraph: {
     title: 'Safari Tras las Sierras',
-    description: 'Rally en Valle Fértil - San Juan',
+    description: 'Safari en Valle Fértil - San Juan',
     type: 'website',
   },
 };

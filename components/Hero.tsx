@@ -37,7 +37,7 @@ export default function Hero() {
           {/* Subtítulo elegante */}
           <div className="animate-fade-in-up">
             <p className="text-lg md:text-xl font-light tracking-widest uppercase text-white/90 mb-4">
-              Rally en Valle Fértil - San Juan
+              Safari en Valle Fértil - San Juan
             </p>
           </div>
 

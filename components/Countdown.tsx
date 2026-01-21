@@ -63,7 +63,7 @@ export default function Countdown() {
           {/* Título */}
           <div className="mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              El Rally Comienza En
+              El Safari Comienza En
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#65b330] to-transparent mx-auto" />
           </div>
