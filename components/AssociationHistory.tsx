@@ -1,15 +1,19 @@
 'use client';
 
 export default function AssociationHistory() {
-  // Imágenes de la galería
+  // Imágenes de la galería - usando encodeURIComponent para manejar espacios y caracteres especiales
+  const getImageUrl = (filename: string) => {
+    return '/' + filename.split('/').map(part => encodeURIComponent(part)).join('/');
+  };
+
   const galleryImages = [
-    { id: 1, src: '/insumos%20para%20figma-01.jpg%20(1).jpeg', alt: 'Historia del Safari 1' },
-    { id: 2, src: '/insumos%20para%20figma-06.jpg.jpeg', alt: 'Historia del Safari 2' },
-    { id: 3, src: '/insumos%20para%20figma-07.jpg.jpeg', alt: 'Historia del Safari 3' },
-    { id: 4, src: '/insumos%20para%20figma-08.jpg%20(1).jpeg', alt: 'Historia del Safari 4' },
+    { id: 1, src: getImageUrl('insumos para figma-01.jpg (1).jpeg'), alt: 'Historia del Safari 1' },
+    { id: 2, src: getImageUrl('insumos para figma-06.jpg.jpeg'), alt: 'Historia del Safari 2' },
+    { id: 3, src: getImageUrl('insumos para figma-07.jpg.jpeg'), alt: 'Historia del Safari 3' },
+    { id: 4, src: getImageUrl('insumos para figma-08.jpg (1).jpeg'), alt: 'Historia del Safari 4' },
   ];
 
-  const backgroundImage = '/Recurso%201%20(4).png';
+  const backgroundImage = getImageUrl('Recurso 1 (4).png');
 
   return (
     <section 
