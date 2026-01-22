@@ -9,7 +9,7 @@ export default function AssociationHistory() {
     { id: 4, src: '/insumos%20para%20figma-08.jpg%20(1).jpeg', alt: 'Historia del Safari 4' },
   ];
 
-  const backgroundImageUrl = '/Recurso%201%20(4).png';
+  const backgroundImageUrl = 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Recurso-1-3.png';
 
   return (
     <section className="py-16 md:py-24 relative overflow-hidden min-h-[600px] bg-gray-900">
