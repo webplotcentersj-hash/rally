@@ -51,7 +51,19 @@ export default function Countdown() {
   ];
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+    <section 
+      className="py-20 md:py-32 relative overflow-hidden"
+      style={{
+        backgroundImage: `url('/Fondo de contador de dias.jpeg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#111827', // Fallback si no hay imagen
+      }}
+    >
+      {/* Overlay sutil para mejorar legibilidad del texto sin ocultar la imagen */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-gray-800/30 to-gray-900/40"></div>
+      
       {/* Elementos decorativos */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#65b330] rounded-full blur-3xl"></div>
