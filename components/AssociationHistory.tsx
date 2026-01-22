@@ -1,32 +1,23 @@
 'use client';
 
 export default function AssociationHistory() {
-  // Imágenes de la galería - codificando URLs para manejar espacios
-  const encodeUrl = (path: string) => {
-    // Separar el path en partes y codificar solo el nombre del archivo
-    const parts = path.split('/');
-    return parts.map((part, index) => {
-      if (index === 0 || part === '') return part;
-      return encodeURIComponent(part);
-    }).join('/');
-  };
-
+  // Imágenes de la galería - usando rutas directas con espacios codificados manualmente
   const galleryImages = [
-    { id: 1, src: encodeUrl('/insumos para figma-01.jpg (1).jpeg'), alt: 'Historia del Safari 1' },
-    { id: 2, src: encodeUrl('/insumos para figma-06.jpg.jpeg'), alt: 'Historia del Safari 2' },
-    { id: 3, src: encodeUrl('/insumos para figma-07.jpg.jpeg'), alt: 'Historia del Safari 3' },
-    { id: 4, src: encodeUrl('/insumos para figma-08.jpg (1).jpeg'), alt: 'Historia del Safari 4' },
+    { id: 1, src: '/insumos%20para%20figma-01.jpg%20(1).jpeg', alt: 'Historia del Safari 1' },
+    { id: 2, src: '/insumos%20para%20figma-06.jpg.jpeg', alt: 'Historia del Safari 2' },
+    { id: 3, src: '/insumos%20para%20figma-07.jpg.jpeg', alt: 'Historia del Safari 3' },
+    { id: 4, src: '/insumos%20para%20figma-08.jpg%20(1).jpeg', alt: 'Historia del Safari 4' },
   ];
 
-  const backgroundImageUrl = encodeUrl('/Recurso 1 (4).png');
+  const backgroundImageUrl = '/Recurso%201%20(4).png';
 
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden min-h-[600px]">
+    <section className="py-16 md:py-24 relative overflow-hidden min-h-[600px] bg-gray-900">
       {/* Fondo con imagen */}
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url('${backgroundImageUrl}')`,
+          backgroundImage: `url("${backgroundImageUrl}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -67,12 +58,20 @@ export default function AssociationHistory() {
               {galleryImages.map((image) => (
                 <div
                   key={image.id}
-                  className="relative aspect-square rounded-lg overflow-hidden group cursor-pointer shadow-2xl hover:shadow-[#65b330]/50 transition-all duration-300 hover:scale-105"
+                  className="relative aspect-square rounded-lg overflow-hidden group cursor-pointer shadow-2xl hover:shadow-[#65b330]/50 transition-all duration-300 hover:scale-105 bg-gray-800"
                 >
                   <img
                     src={image.src}
                     alt={image.alt}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    onError={(e) => {
+                      console.error('Error cargando:', image.src);
+                      const target = e.target as HTMLImageElement;
+                      target.style.backgroundColor = '#333';
+                    }}
+                    onLoad={() => {
+                      console.log('Imagen cargada:', image.src);
+                    }}
                   />
                   <div className="absolute inset-0 bg-[#65b330]/0 group-hover:bg-[#65b330]/20 transition-colors duration-300" />
                 </div>
