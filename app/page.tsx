@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Countdown from '@/components/Countdown';
+import AssociationHistory from '@/components/AssociationHistory';
 
 // Lazy load componentes no críticos
 const About = dynamic(() => import('@/components/About'));
@@ -18,6 +19,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Countdown />
+      <AssociationHistory />
       <About />
       <Categories />
       <RegistrationInfo />
