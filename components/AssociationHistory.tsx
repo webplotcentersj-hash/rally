@@ -3,13 +3,12 @@
 import Image from 'next/image';
 
 export default function AssociationHistory() {
-  // Placeholder para las imágenes de la galería
-  // Reemplazar con las imágenes reales cuando estén disponibles
+  // Imágenes de la galería
   const galleryImages = [
-    { id: 1, src: '/gallery/historia-1.jpg', alt: 'Historia del Safari 1' },
-    { id: 2, src: '/gallery/historia-2.jpg', alt: 'Historia del Safari 2' },
-    { id: 3, src: '/gallery/historia-3.jpg', alt: 'Historia del Safari 3' },
-    { id: 4, src: '/gallery/historia-4.jpg', alt: 'Historia del Safari 4' },
+    { id: 1, src: '/insumos para figma-01.jpg (1).jpeg', alt: 'Historia del Safari 1' },
+    { id: 2, src: '/insumos para figma-06.jpg.jpeg', alt: 'Historia del Safari 2' },
+    { id: 3, src: '/insumos para figma-07.jpg.jpeg', alt: 'Historia del Safari 3' },
+    { id: 4, src: '/insumos para figma-08.jpg (1).jpeg', alt: 'Historia del Safari 4' },
   ];
 
   return (
