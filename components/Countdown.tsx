@@ -106,52 +106,40 @@ export default function Countdown() {
           {/* Información adicional */}
           <div className="mt-12 md:mt-16 space-y-5">
             <div className="flex items-center justify-center gap-4">
-              {/* Icono de Moto - Diseño profesional */}
+              {/* Icono de Moto - Diseño simple y elegante */}
               <svg 
-                className="w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0 drop-shadow-lg" 
+                className="w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
                 strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                {/* Manubrio */}
-                <path d="M3 10h2M19 10h2" strokeLinecap="round" />
-                {/* Chasis principal */}
-                <path d="M5 10l2-3h10l2 3M5 10v4M19 10v4" strokeLinecap="round" strokeLinejoin="round" />
-                {/* Asiento */}
-                <path d="M7 10h10" strokeLinecap="round" />
-                {/* Rueda delantera */}
-                <circle cx="6" cy="17" r="3.5" strokeWidth={2} />
-                <circle cx="6" cy="17" r="1.5" fill="currentColor" />
-                {/* Rueda trasera */}
-                <circle cx="18" cy="17" r="3.5" strokeWidth={2} />
-                <circle cx="18" cy="17" r="1.5" fill="currentColor" />
+                <path d="M5 12h14M7 8l-2 4h2l2-4M17 8l2 4h-2l-2-4" />
+                <circle cx="7" cy="16" r="3" />
+                <circle cx="17" cy="16" r="3" />
+                <path d="M5 12l-2-2M5 12l-2 2" />
               </svg>
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
                 Motos: 6, 7, 8 de Febrero
               </p>
             </div>
             <div className="flex items-center justify-center gap-4">
-              {/* Icono de Auto - Diseño profesional */}
+              {/* Icono de Auto - Diseño simple y elegante */}
               <svg 
-                className="w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0 drop-shadow-lg" 
+                className="w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
                 strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                {/* Carrocería superior */}
-                <path d="M3 9h18M3 9l-1-2h2l1 2M21 9l1-2h-2l-1 2" strokeLinecap="round" strokeLinejoin="round" />
-                {/* Carrocería inferior */}
-                <path d="M3 9v5h18V9" strokeLinecap="round" strokeLinejoin="round" />
-                {/* Ventanas */}
-                <path d="M6 7h12M6 7v2M18 7v2" strokeLinecap="round" />
-                {/* Rueda delantera */}
-                <circle cx="7" cy="17" r="3.5" strokeWidth={2} />
-                <circle cx="7" cy="17" r="1.5" fill="currentColor" />
-                {/* Rueda trasera */}
-                <circle cx="17" cy="17" r="3.5" strokeWidth={2} />
-                <circle cx="17" cy="17" r="1.5" fill="currentColor" />
+                <path d="M3 9h18M3 9l-1-2h2l1 2M21 9l1-2h-2l-1 2M3 9v5h18V9" />
+                <path d="M6 7h12M6 7v2M18 7v2" />
+                <circle cx="7" cy="17" r="3" />
+                <circle cx="17" cy="17" r="3" />
               </svg>
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
                 Autos: 13, 14, 15 de Febrero
