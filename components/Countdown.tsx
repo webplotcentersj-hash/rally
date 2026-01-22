@@ -115,15 +115,11 @@ export default function Countdown() {
             <div className="flex items-center justify-center gap-4">
               {/* Bandera de carrera */}
               <svg 
-                className="w-12 h-12 md:w-16 md:h-16 flex-shrink-0" 
+                className="w-6 h-6 md:w-8 md:h-8 flex-shrink-0" 
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <rect x="2" y="2" width="20" height="20" fill="white"/>
-                <rect x="2" y="2" width="10" height="10" fill="black"/>
-                <rect x="12" y="12" width="10" height="10" fill="black"/>
-                <rect x="2" y="12" width="10" height="10" fill="black"/>
-                <rect x="12" y="2" width="10" height="10" fill="black"/>
                 <path d="M2 2v20l2-2V4l2-2H2z" stroke="white" strokeWidth="1" fill="none"/>
               </svg>
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
@@ -133,15 +129,11 @@ export default function Countdown() {
             <div className="flex items-center justify-center gap-4">
               {/* Bandera de carrera */}
               <svg 
-                className="w-12 h-12 md:w-16 md:h-16 flex-shrink-0" 
+                className="w-6 h-6 md:w-8 md:h-8 flex-shrink-0" 
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <rect x="2" y="2" width="20" height="20" fill="white"/>
-                <rect x="2" y="2" width="10" height="10" fill="black"/>
-                <rect x="12" y="12" width="10" height="10" fill="black"/>
-                <rect x="2" y="12" width="10" height="10" fill="black"/>
-                <rect x="12" y="2" width="10" height="10" fill="black"/>
                 <path d="M2 2v20l2-2V4l2-2H2z" stroke="white" strokeWidth="1" fill="none"/>
               </svg>
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
