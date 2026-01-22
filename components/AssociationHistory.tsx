@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 export default function AssociationHistory() {
   // Imágenes de la galería
   const galleryImages = [
@@ -12,12 +10,23 @@ export default function AssociationHistory() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4">
+    <section 
+      className="py-16 md:py-24 relative overflow-hidden"
+      style={{
+        backgroundImage: `url('/Recurso 1 (4).png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Overlay sutil para mejorar legibilidad */}
+      <div className="absolute inset-0 bg-black/30"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Título */}
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
               UNA ASOCIACIÓN CON HISTORIA
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#65b330] to-transparent mx-auto" />
@@ -26,7 +35,7 @@ export default function AssociationHistory() {
           {/* Contenido: Texto y Galería */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
             {/* Texto */}
-            <div className="space-y-6 text-gray-700 text-base md:text-lg leading-relaxed">
+            <div className="space-y-6 text-white text-base md:text-lg leading-relaxed drop-shadow-md">
               <p>
                 En APIVA recordamos que el Safari tras las Sierras nació en 1992 como un simple desafío entre amigos de Valle Fértil, apasionados por los autos y las gincanas. Aquella primera carrera, organizada casi de manera improvisada y con un asado como premio, nos mostró que había algo especial que merecía crecer.
               </p>
@@ -46,12 +55,10 @@ export default function AssociationHistory() {
                   className="relative aspect-square rounded-lg overflow-hidden group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <Image
+                  <img
                     src={image.src}
                     alt={image.alt}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     loading="lazy"
                     onError={(e) => {
                       // Fallback si la imagen no existe
