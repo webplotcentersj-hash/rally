@@ -119,7 +119,7 @@ export default function Countdown() {
                 alt="Moto"
                 width={48}
                 height={48}
-                className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0"
+                className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 object-contain"
                 loading="lazy"
               />
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
