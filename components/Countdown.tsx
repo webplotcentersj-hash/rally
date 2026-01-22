@@ -104,13 +104,59 @@ export default function Countdown() {
           </div>
 
           {/* Información adicional */}
-          <div className="mt-12 md:mt-16">
-            <p className="text-gray-400 text-lg md:text-xl mb-4">
-              🏍️ Motos: 6, 7, 8 de Febrero
-            </p>
-            <p className="text-gray-400 text-lg md:text-xl">
-              🚗 Autos: 13, 14, 15 de Febrero
-            </p>
+          <div className="mt-12 md:mt-16 space-y-5">
+            <div className="flex items-center justify-center gap-4">
+              {/* Icono de Moto - Diseño profesional */}
+              <svg 
+                className="w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0 drop-shadow-lg" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+              >
+                {/* Manubrio */}
+                <path d="M3 10h2M19 10h2" strokeLinecap="round" />
+                {/* Chasis principal */}
+                <path d="M5 10l2-3h10l2 3M5 10v4M19 10v4" strokeLinecap="round" strokeLinejoin="round" />
+                {/* Asiento */}
+                <path d="M7 10h10" strokeLinecap="round" />
+                {/* Rueda delantera */}
+                <circle cx="6" cy="17" r="3.5" strokeWidth={2} />
+                <circle cx="6" cy="17" r="1.5" fill="currentColor" />
+                {/* Rueda trasera */}
+                <circle cx="18" cy="17" r="3.5" strokeWidth={2} />
+                <circle cx="18" cy="17" r="1.5" fill="currentColor" />
+              </svg>
+              <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
+                Motos: 6, 7, 8 de Febrero
+              </p>
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              {/* Icono de Auto - Diseño profesional */}
+              <svg 
+                className="w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0 drop-shadow-lg" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+              >
+                {/* Carrocería superior */}
+                <path d="M3 9h18M3 9l-1-2h2l1 2M21 9l1-2h-2l-1 2" strokeLinecap="round" strokeLinejoin="round" />
+                {/* Carrocería inferior */}
+                <path d="M3 9v5h18V9" strokeLinecap="round" strokeLinejoin="round" />
+                {/* Ventanas */}
+                <path d="M6 7h12M6 7v2M18 7v2" strokeLinecap="round" />
+                {/* Rueda delantera */}
+                <circle cx="7" cy="17" r="3.5" strokeWidth={2} />
+                <circle cx="7" cy="17" r="1.5" fill="currentColor" />
+                {/* Rueda trasera */}
+                <circle cx="17" cy="17" r="3.5" strokeWidth={2} />
+                <circle cx="17" cy="17" r="1.5" fill="currentColor" />
+              </svg>
+              <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
+                Autos: 13, 14, 15 de Febrero
+              </p>
+            </div>
           </div>
         </div>
       </div>
