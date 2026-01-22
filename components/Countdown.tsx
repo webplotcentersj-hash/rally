@@ -114,14 +114,14 @@ export default function Countdown() {
           <div className="mt-12 md:mt-16 space-y-5">
             <div className="flex items-center justify-center gap-4">
               {/* Icono de Moto */}
-              <Image
-                src="/deporte.png"
-                alt="Moto"
-                width={48}
-                height={48}
-                className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 object-contain"
-                loading="lazy"
-              />
+              <svg 
+                className="w-12 h-12 md:w-16 md:h-16 text-white flex-shrink-0" 
+                fill="currentColor" 
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M19.44 9.03L15.41 5C15.15 4.74 14.79 4.59 14.41 4.59H9.59C9.21 4.59 8.85 4.74 8.59 5L4.56 9.03C4.21 9.38 4 9.85 4 10.34V19C4 19.55 4.45 20 5 20H6C6.55 20 7 19.55 7 19V18H17V19C17 19.55 17.45 20 18 20H19C19.55 20 20 19.55 20 19V10.34C20 9.85 19.79 9.38 19.44 9.03ZM9 6H15L18.31 9.31C18.45 9.45 18.5 9.65 18.5 9.85V11H5.5V9.85C5.5 9.65 5.55 9.45 5.69 9.31L9 6ZM7.5 15C6.67 15 6 14.33 6 13.5S6.67 12 7.5 12 9 12.67 9 13.5 8.33 15 7.5 15ZM16.5 15C15.67 15 15 14.33 15 13.5S15.67 12 16.5 12 18 12.67 18 13.5 17.33 15 16.5 15Z"/>
+              </svg>
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
                 Motos: 6, 7, 8 de Febrero
               </p>
