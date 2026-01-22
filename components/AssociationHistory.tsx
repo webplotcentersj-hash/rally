@@ -67,8 +67,9 @@ export default function AssociationHistory() {
                     alt={image.alt}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     loading="lazy"
+                    decoding="async"
                     onError={(e) => {
-                      // Fallback si la imagen no existe
+                      console.error('Error cargando imagen:', image.src);
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
                       const parent = target.parentElement;
@@ -81,6 +82,9 @@ export default function AssociationHistory() {
                           </div>
                         `;
                       }
+                    }}
+                    onLoad={() => {
+                      console.log('Imagen cargada correctamente:', image.src);
                     }}
                   />
                   {/* Overlay en hover */}
