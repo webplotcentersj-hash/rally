@@ -12,14 +12,14 @@ export default function AssociationHistory() {
   const backgroundImageUrl = 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Recurso-1-3.png';
 
   return (
-    <section className="py-16 md:py-24 relative overflow-visible min-h-[600px] bg-gray-900 -mt-20 md:-mt-32">
+    <section className="py-16 md:py-24 relative overflow-visible min-h-[600px] -mt-20 md:-mt-32">
       {/* Fondo con imagen - extendido hacia arriba */}
       <div 
-        className="absolute inset-0 z-0 -top-20 md:-top-32"
+        className="absolute inset-0 z-0 -top-24 md:-top-40"
         style={{
           backgroundImage: `url("${backgroundImageUrl}")`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center -10%',
+          backgroundPosition: 'center -15%',
           backgroundRepeat: 'no-repeat',
         }}
       />
