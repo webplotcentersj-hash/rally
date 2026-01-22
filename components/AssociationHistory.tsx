@@ -3,20 +3,23 @@
 export default function AssociationHistory() {
   // Imágenes de la galería
   const galleryImages = [
-    { id: 1, src: '/insumos para figma-01.jpg (1).jpeg', alt: 'Historia del Safari 1' },
-    { id: 2, src: '/insumos para figma-06.jpg.jpeg', alt: 'Historia del Safari 2' },
-    { id: 3, src: '/insumos para figma-07.jpg.jpeg', alt: 'Historia del Safari 3' },
-    { id: 4, src: '/insumos para figma-08.jpg (1).jpeg', alt: 'Historia del Safari 4' },
+    { id: 1, src: '/insumos%20para%20figma-01.jpg%20(1).jpeg', alt: 'Historia del Safari 1' },
+    { id: 2, src: '/insumos%20para%20figma-06.jpg.jpeg', alt: 'Historia del Safari 2' },
+    { id: 3, src: '/insumos%20para%20figma-07.jpg.jpeg', alt: 'Historia del Safari 3' },
+    { id: 4, src: '/insumos%20para%20figma-08.jpg%20(1).jpeg', alt: 'Historia del Safari 4' },
   ];
+
+  const backgroundImage = '/Recurso%201%20(4).png';
 
   return (
     <section 
       className="py-16 md:py-24 relative overflow-hidden"
       style={{
-        backgroundImage: `url('/Recurso 1 (4).png')`,
+        backgroundImage: `url('${backgroundImage}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+        backgroundColor: '#1a1a1a', // Fallback
       }}
     >
       {/* Overlay sutil para mejorar legibilidad */}
