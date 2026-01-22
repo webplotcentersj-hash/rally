@@ -112,30 +112,12 @@ export default function Countdown() {
 
           {/* Información adicional */}
           <div className="mt-12 md:mt-16 space-y-5">
-            <div className="flex items-center justify-center gap-4">
-              {/* Bandera de carrera */}
-              <svg 
-                className="w-6 h-6 md:w-8 md:h-8 flex-shrink-0" 
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect x="2" y="2" width="20" height="20" fill="white"/>
-                <path d="M2 2v20l2-2V4l2-2H2z" stroke="white" strokeWidth="1" fill="none"/>
-              </svg>
+            <div className="flex items-center justify-center">
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
                 Motos: 6, 7, 8 de Febrero
               </p>
             </div>
-            <div className="flex items-center justify-center gap-4">
-              {/* Bandera de carrera */}
-              <svg 
-                className="w-6 h-6 md:w-8 md:h-8 flex-shrink-0" 
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect x="2" y="2" width="20" height="20" fill="white"/>
-                <path d="M2 2v20l2-2V4l2-2H2z" stroke="white" strokeWidth="1" fill="none"/>
-              </svg>
+            <div className="flex items-center justify-center">
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
                 Autos: 13, 14, 15 de Febrero
               </p>
