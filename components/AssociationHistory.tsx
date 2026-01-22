@@ -1,13 +1,24 @@
 'use client';
 
 export default function AssociationHistory() {
-  // Imágenes de la galería
+  // Imágenes de la galería - codificando URLs para manejar espacios
+  const encodeUrl = (path: string) => {
+    // Separar el path en partes y codificar solo el nombre del archivo
+    const parts = path.split('/');
+    return parts.map((part, index) => {
+      if (index === 0 || part === '') return part;
+      return encodeURIComponent(part);
+    }).join('/');
+  };
+
   const galleryImages = [
-    { id: 1, src: '/insumos para figma-01.jpg (1).jpeg', alt: 'Historia del Safari 1' },
-    { id: 2, src: '/insumos para figma-06.jpg.jpeg', alt: 'Historia del Safari 2' },
-    { id: 3, src: '/insumos para figma-07.jpg.jpeg', alt: 'Historia del Safari 3' },
-    { id: 4, src: '/insumos para figma-08.jpg (1).jpeg', alt: 'Historia del Safari 4' },
+    { id: 1, src: encodeUrl('/insumos para figma-01.jpg (1).jpeg'), alt: 'Historia del Safari 1' },
+    { id: 2, src: encodeUrl('/insumos para figma-06.jpg.jpeg'), alt: 'Historia del Safari 2' },
+    { id: 3, src: encodeUrl('/insumos para figma-07.jpg.jpeg'), alt: 'Historia del Safari 3' },
+    { id: 4, src: encodeUrl('/insumos para figma-08.jpg (1).jpeg'), alt: 'Historia del Safari 4' },
   ];
+
+  const backgroundImageUrl = encodeUrl('/Recurso 1 (4).png');
 
   return (
     <section className="py-16 md:py-24 relative overflow-hidden min-h-[600px]">
@@ -15,7 +26,7 @@ export default function AssociationHistory() {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/Recurso 1 (4).png')",
+          backgroundImage: `url('${backgroundImageUrl}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
