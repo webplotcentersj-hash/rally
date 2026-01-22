@@ -12,8 +12,8 @@ export default function AssociationHistory() {
   const backgroundImageUrl = 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Recurso-1-3.png';
 
   return (
-    <section className="py-16 md:py-24 relative overflow-visible min-h-[600px] -mt-20 md:-mt-32">
-      {/* Fondo con imagen - extendido hacia arriba */}
+    <section className="py-16 md:py-24 relative overflow-visible min-h-[600px]">
+      {/* Fondo con imagen - extendido hacia arriba para superponerse */}
       <div 
         className="absolute inset-0 z-0 -top-24 md:-top-40"
         style={{
@@ -27,8 +27,8 @@ export default function AssociationHistory() {
       {/* Overlay para legibilidad */}
       <div className="absolute inset-0 bg-black/40 z-[1]"></div>
       
-      {/* Contenido */}
-      <div className="container mx-auto px-4 relative z-[2]">
+      {/* Contenido - en posición normal */}
+      <div className="container mx-auto px-4 relative z-[2] pt-8 md:pt-12">
         <div className="max-w-7xl mx-auto">
           {/* Título */}
           <div className="text-center mb-12 md:mb-16">
