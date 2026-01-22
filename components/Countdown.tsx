@@ -113,37 +113,36 @@ export default function Countdown() {
           {/* Información adicional */}
           <div className="mt-12 md:mt-16 space-y-5">
             <div className="flex items-center justify-center gap-4">
-              {/* Icono de Moto */}
+              {/* Bandera de carrera */}
               <svg 
-                className="w-12 h-12 md:w-16 md:h-16 text-white flex-shrink-0" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                className="w-12 h-12 md:w-16 md:h-16 flex-shrink-0" 
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle cx="6" cy="17" r="3"/>
-                <circle cx="18" cy="17" r="3"/>
-                <path d="M6 17V9a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v8"/>
-                <path d="M10 5V3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2"/>
-                <path d="M12 5h2"/>
-                <path d="M6 9h12"/>
-                <path d="M6 13h12"/>
+                <rect x="2" y="2" width="20" height="20" fill="white"/>
+                <rect x="2" y="2" width="10" height="10" fill="black"/>
+                <rect x="12" y="12" width="10" height="10" fill="black"/>
+                <rect x="2" y="12" width="10" height="10" fill="black"/>
+                <rect x="12" y="2" width="10" height="10" fill="black"/>
+                <path d="M2 2v20l2-2V4l2-2H2z" stroke="white" strokeWidth="1" fill="none"/>
               </svg>
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
                 Motos: 6, 7, 8 de Febrero
               </p>
             </div>
             <div className="flex items-center justify-center gap-4">
-              {/* Icono de Auto - Estilo moderno */}
+              {/* Bandera de carrera */}
               <svg 
-                className="w-10 h-10 md:w-12 md:h-12 text-white flex-shrink-0" 
-                fill="currentColor" 
+                className="w-12 h-12 md:w-16 md:h-16 flex-shrink-0" 
                 viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                <rect x="2" y="2" width="20" height="20" fill="white"/>
+                <rect x="2" y="2" width="10" height="10" fill="black"/>
+                <rect x="12" y="12" width="10" height="10" fill="black"/>
+                <rect x="2" y="12" width="10" height="10" fill="black"/>
+                <rect x="12" y="2" width="10" height="10" fill="black"/>
+                <path d="M2 2v20l2-2V4l2-2H2z" stroke="white" strokeWidth="1" fill="none"/>
               </svg>
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
                 Autos: 13, 14, 15 de Febrero
