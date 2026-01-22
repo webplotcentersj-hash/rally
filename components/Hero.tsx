@@ -7,11 +7,16 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.log('Error al reproducir video:', error);
-      });
-    }
+    // Delay la reproducción del video para no bloquear el renderizado inicial
+    const timer = setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.play().catch((error) => {
+          console.log('Error al reproducir video:', error);
+        });
+      }
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -23,7 +28,9 @@ export default function Hero() {
         loop
         muted
         playsInline
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover"
+        style={{ willChange: 'auto' }}
       >
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>

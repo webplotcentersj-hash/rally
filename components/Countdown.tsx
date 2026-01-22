@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Countdown() {
   const [timeLeft, setTimeLeft] = useState({
@@ -52,17 +53,23 @@ export default function Countdown() {
 
   return (
     <section 
-      className="py-20 md:py-32 relative overflow-hidden"
-      style={{
-        backgroundImage: `url('/Fondo de contador de dias.jpeg')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: '#111827', // Fallback si no hay imagen
-      }}
+      className="py-20 md:py-32 relative overflow-hidden bg-gray-900"
     >
+      {/* Imagen de fondo optimizada */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/Fondo de contador de dias.jpeg"
+          alt="Fondo"
+          fill
+          priority={false}
+          quality={75}
+          sizes="100vw"
+          className="object-cover"
+          loading="lazy"
+        />
+      </div>
       {/* Overlay sutil para mejorar legibilidad del texto sin ocultar la imagen */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-gray-800/30 to-gray-900/40"></div>
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/40 via-gray-800/30 to-gray-900/40"></div>
       
       {/* Elementos decorativos */}
       <div className="absolute inset-0 opacity-10">
@@ -70,7 +77,7 @@ export default function Countdown() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#65b330] rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-[2]">
         <div className="max-w-5xl mx-auto text-center">
           {/* Título */}
           <div className="mb-12 md:mb-16">
@@ -106,40 +113,26 @@ export default function Countdown() {
           {/* Información adicional */}
           <div className="mt-12 md:mt-16 space-y-5">
             <div className="flex items-center justify-center gap-4">
-              {/* Icono de Moto - Diseño simple y elegante */}
+              {/* Icono de Moto - Estilo moderno */}
               <svg 
-                className="w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0" 
-                fill="none" 
-                stroke="currentColor" 
+                className="w-10 h-10 md:w-12 md:h-12 text-white flex-shrink-0" 
+                fill="currentColor" 
                 viewBox="0 0 24 24"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
               >
-                <path d="M5 12h14M7 8l-2 4h2l2-4M17 8l2 4h-2l-2-4" />
-                <circle cx="7" cy="16" r="3" />
-                <circle cx="17" cy="16" r="3" />
-                <path d="M5 12l-2-2M5 12l-2 2" />
+                <path d="M19.44 9.03L15.41 5C15.15 4.74 14.79 4.59 14.41 4.59H9.59C9.21 4.59 8.85 4.74 8.59 5L4.56 9.03C4.21 9.38 4 9.85 4 10.34V19C4 19.55 4.45 20 5 20H6C6.55 20 7 19.55 7 19V18H17V19C17 19.55 17.45 20 18 20H19C19.55 20 20 19.55 20 19V10.34C20 9.85 19.79 9.38 19.44 9.03ZM9 6H15L18.31 9.31C18.45 9.45 18.5 9.65 18.5 9.85V11H5.5V9.85C5.5 9.65 5.55 9.45 5.69 9.31L9 6ZM7.5 15C6.67 15 6 14.33 6 13.5S6.67 12 7.5 12 9 12.67 9 13.5 8.33 15 7.5 15ZM16.5 15C15.67 15 15 14.33 15 13.5S15.67 12 16.5 12 18 12.67 18 13.5 17.33 15 16.5 15Z"/>
               </svg>
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
                 Motos: 6, 7, 8 de Febrero
               </p>
             </div>
             <div className="flex items-center justify-center gap-4">
-              {/* Icono de Auto - Diseño simple y elegante */}
+              {/* Icono de Auto - Estilo moderno */}
               <svg 
-                className="w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0" 
-                fill="none" 
-                stroke="currentColor" 
+                className="w-10 h-10 md:w-12 md:h-12 text-white flex-shrink-0" 
+                fill="currentColor" 
                 viewBox="0 0 24 24"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
               >
-                <path d="M3 9h18M3 9l-1-2h2l1 2M21 9l1-2h-2l-1 2M3 9v5h18V9" />
-                <path d="M6 7h12M6 7v2M18 7v2" />
-                <circle cx="7" cy="17" r="3" />
-                <circle cx="17" cy="17" r="3" />
+                <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
               </svg>
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
                 Autos: 13, 14, 15 de Febrero
