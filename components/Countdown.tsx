@@ -116,15 +116,21 @@ export default function Countdown() {
               {/* Icono de Moto */}
               <svg 
                 className="w-12 h-12 md:w-16 md:h-16 text-white flex-shrink-0" 
-                fill="currentColor" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M5 17a2 2 0 1 0 4 2 2 2 0 0 0-4 0zm14 0a2 2 0 1 0 4 2 2 2 0 0 0-4 0z"/>
-                <path d="M12 19V9a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v10m12 0h4a3 3 0 0 0 3-3V9a3 3 0 0 0-3-3h-1M5 17V9a3 3 0 0 1 3-3h4m0 0V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/>
-                <circle cx="7" cy="18" r="2"/>
-                <circle cx="19" cy="18" r="2"/>
-                <path d="M7 18V9a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v9"/>
+                <circle cx="6" cy="17" r="3"/>
+                <circle cx="18" cy="17" r="3"/>
+                <path d="M6 17V9a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v8"/>
+                <path d="M10 5V3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2"/>
+                <path d="M12 5h2"/>
+                <path d="M6 9h12"/>
+                <path d="M6 13h12"/>
               </svg>
               <p className="text-white text-lg md:text-xl font-bold tracking-wide drop-shadow-md">
                 Motos: 6, 7, 8 de Febrero
