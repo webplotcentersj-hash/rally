@@ -19,7 +19,7 @@ export default function AssociationHistory() {
         style={{
           backgroundImage: `url("${backgroundImageUrl}")`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',
         }}
       />
