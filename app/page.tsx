@@ -5,6 +5,7 @@ import Countdown from '@/components/Countdown';
 
 // Lazy load componentes no críticos
 const About = dynamic(() => import('@/components/About'));
+const Features = dynamic(() => import('@/components/Features'));
 const Footer = dynamic(() => import('@/components/Footer'));
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <Countdown />
       <About />
+      <Features />
       <Footer />
     </main>
   );
