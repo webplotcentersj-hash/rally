@@ -202,32 +202,25 @@ export default function Features() {
               onMouseEnter={() => setHoveredCard(2)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              {/* Patrón de bandera a cuadros */}
-              <div className="h-16 bg-[#65b330] relative overflow-hidden">
-                <div className="absolute inset-0" style={{
-                  backgroundImage: `
-                    linear-gradient(45deg, transparent 25%, rgba(0,0,0,0.1) 25%),
-                    linear-gradient(-45deg, transparent 25%, rgba(0,0,0,0.1) 25%),
-                    linear-gradient(45deg, rgba(0,0,0,0.1) 75%, transparent 75%),
-                    linear-gradient(-45deg, rgba(0,0,0,0.1) 75%, transparent 75%)
-                  `,
-                  backgroundSize: '20px 20px',
-                  backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
-                }} />
+              {/* Ícono de categorías */}
+              <div className="flex justify-center pt-6 pb-2">
+                <svg className="w-12 h-12 text-[#65b330]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
               </div>
               
-              {/* Botón Categorías */}
-              <div className="bg-[#65b330] mx-4 -mt-8 rounded-lg px-4 py-2 mb-4 text-center">
+              {/* Título Categorías */}
+              <div className="bg-[#65b330] mx-4 rounded-lg px-4 py-2 mb-4 text-center">
                 <h3 className="text-xl font-bold text-white">Categorías</h3>
               </div>
               
               {/* Secciones Autos y Motos */}
               <div className="px-4 pb-4 space-y-3">
-                <div className="bg-gray-200 rounded-lg p-4 text-center">
-                  <p className="text-xl font-bold text-black">Autos</p>
+                <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg p-4 text-center border-2 border-gray-300 hover:border-[#65b330] transition-colors duration-300">
+                  <p className="text-xl font-bold text-black">🚗 Autos</p>
                 </div>
-                <div className="bg-gray-200 rounded-lg p-4 text-center">
-                  <p className="text-xl font-bold text-black">Motos</p>
+                <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg p-4 text-center border-2 border-gray-300 hover:border-[#65b330] transition-colors duration-300">
+                  <p className="text-xl font-bold text-black">🏍️ Motos</p>
                 </div>
               </div>
             </div>
