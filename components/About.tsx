@@ -77,18 +77,6 @@ export default function About() {
 
       {/* Contenido principal */}
       <div className="container mx-auto px-4 py-8 relative z-10">
-        {/* Header verde con título */}
-        <div className={`bg-[#65b330] py-6 md:py-8 mb-6 relative hover-scale scroll-animate ${isVisible ? 'animate' : ''}`}>
-          <div className="absolute top-0 left-0 right-0 h-4 overflow-hidden">
-            <svg className="w-full h-full" viewBox="0 0 1200 40" preserveAspectRatio="none">
-              <path d="M0,20 Q200,5 400,15 T800,10 T1200,20 L1200,40 L0,40 Z" fill="#4a8a26" opacity="0.6" />
-            </svg>
-          </div>
-          <h2 className="title-section font-bold text-white text-center uppercase tracking-wide">
-            UNA ASOCIACIÓN CON HISTORIA
-          </h2>
-        </div>
-
         {/* Grid: Galería izquierda y texto derecho */}
         <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start">
           {/* Carrusel de galería a la izquierda */}
