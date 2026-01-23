@@ -1,6 +1,38 @@
+'use client';
+
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
+
+const images = [
+  'http://plotcenter.com.ar/wp-content/uploads/2026/01/insumos-para-figma-01.jpg-scaled.jpeg',
+  'http://plotcenter.com.ar/wp-content/uploads/2026/01/insumos-para-figma-08.jpg-scaled.jpeg',
+  'http://plotcenter.com.ar/wp-content/uploads/2026/01/insumos-para-figma-06.jpg-scaled.jpeg',
+  'http://plotcenter.com.ar/wp-content/uploads/2026/01/insumos-para-figma-07.jpg-scaled.jpeg'
+];
 
 export default function About() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000); // Cambia cada 4 segundos
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
   return (
     <section 
       id="sobre" 
@@ -15,65 +47,6 @@ export default function About() {
         paddingTop: '80px'
       }}
     >
-      {/* Efecto de huellas de autos que se superponen a la sección anterior */}
-      <div className="absolute -top-24 left-0 right-0 h-48 z-30 overflow-visible pointer-events-none">
-        {/* Huellas de neumáticos - Patrón SVG */}
-        <svg 
-          className="w-full h-full opacity-30"
-          viewBox="0 0 1200 200" 
-          preserveAspectRatio="none"
-          style={{ transform: 'translateY(-20px)' }}
-        >
-          {/* Huella izquierda */}
-          <g transform="translate(100, 50)">
-            {/* Rueda delantera */}
-            <ellipse cx="0" cy="0" rx="35" ry="20" fill="#333" opacity="0.4" />
-            <ellipse cx="0" cy="0" rx="25" ry="15" fill="#555" opacity="0.3" />
-            {/* Patrón de neumático */}
-            <path d="M -30 -10 Q -20 -15 -10 -10 T 10 -10 Q 20 -15 30 -10" stroke="#222" strokeWidth="2" fill="none" opacity="0.5" />
-            <path d="M -30 10 Q -20 15 -10 10 T 10 10 Q 20 15 30 10" stroke="#222" strokeWidth="2" fill="none" opacity="0.5" />
-            
-            {/* Rueda trasera */}
-            <ellipse cx="120" cy="0" rx="35" ry="20" fill="#333" opacity="0.4" />
-            <ellipse cx="120" cy="0" rx="25" ry="15" fill="#555" opacity="0.3" />
-            <path d="M 90 -10 Q 100 -15 110 -10 T 130 -10 Q 140 -15 150 -10" stroke="#222" strokeWidth="2" fill="none" opacity="0.5" />
-            <path d="M 90 10 Q 100 15 110 10 T 130 10 Q 140 15 150 10" stroke="#222" strokeWidth="2" fill="none" opacity="0.5" />
-            
-            {/* Línea de conexión */}
-            <line x1="35" y1="0" x2="85" y2="0" stroke="#333" strokeWidth="3" opacity="0.3" />
-          </g>
-          
-          {/* Huella central */}
-          <g transform="translate(500, 80)">
-            <ellipse cx="0" cy="0" rx="40" ry="22" fill="#333" opacity="0.4" />
-            <ellipse cx="0" cy="0" rx="28" ry="16" fill="#555" opacity="0.3" />
-            <path d="M -35 -12 Q -25 -18 -15 -12 T 15 -12 Q 25 -18 35 -12" stroke="#222" strokeWidth="2.5" fill="none" opacity="0.5" />
-            <path d="M -35 12 Q -25 18 -15 12 T 15 12 Q 25 18 35 12" stroke="#222" strokeWidth="2.5" fill="none" opacity="0.5" />
-            
-            <ellipse cx="130" cy="0" rx="40" ry="22" fill="#333" opacity="0.4" />
-            <ellipse cx="130" cy="0" rx="28" ry="16" fill="#555" opacity="0.3" />
-            <path d="M 95 -12 Q 105 -18 115 -12 T 145 -12 Q 155 -18 165 -12" stroke="#222" strokeWidth="2.5" fill="none" opacity="0.5" />
-            <path d="M 95 12 Q 105 18 115 12 T 145 12 Q 155 18 165 12" stroke="#222" strokeWidth="2.5" fill="none" opacity="0.5" />
-            
-            <line x1="40" y1="0" x2="90" y2="0" stroke="#333" strokeWidth="4" opacity="0.3" />
-          </g>
-          
-          {/* Huella derecha */}
-          <g transform="translate(900, 30)">
-            <ellipse cx="0" cy="0" rx="38" ry="21" fill="#333" opacity="0.4" />
-            <ellipse cx="0" cy="0" rx="27" ry="15" fill="#555" opacity="0.3" />
-            <path d="M -33 -11 Q -23 -16 -13 -11 T 13 -11 Q 23 -16 33 -11" stroke="#222" strokeWidth="2" fill="none" opacity="0.5" />
-            <path d="M -33 11 Q -23 16 -13 11 T 13 11 Q 23 16 33 11" stroke="#222" strokeWidth="2" fill="none" opacity="0.5" />
-            
-            <ellipse cx="125" cy="0" rx="38" ry="21" fill="#333" opacity="0.4" />
-            <ellipse cx="125" cy="0" rx="27" ry="15" fill="#555" opacity="0.3" />
-            <path d="M 92 -11 Q 102 -16 112 -11 T 138 -11 Q 148 -16 158 -11" stroke="#222" strokeWidth="2" fill="none" opacity="0.5" />
-            <path d="M 92 11 Q 102 16 112 11 T 138 11 Q 148 16 158 11" stroke="#222" strokeWidth="2" fill="none" opacity="0.5" />
-            
-            <line x1="38" y1="0" x2="87" y2="0" stroke="#333" strokeWidth="3" opacity="0.3" />
-          </g>
-        </svg>
-      </div>
 
       {/* Contenido principal */}
       <div className="container mx-auto px-4 py-20 relative z-10">
@@ -91,25 +64,60 @@ export default function About() {
 
         {/* Grid: Galería izquierda y texto derecho */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-          {/* Galería a la izquierda */}
-          <div className="space-y-6">
+          {/* Carrusel de galería a la izquierda */}
+          <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
-              <Image 
-                src="/insumos para figma-06.jpeg" 
-                alt="Motos en el Safari"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+              {images.map((img, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    index === currentIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <Image 
+                    src={img}
+                    alt={`Imagen ${index + 1} del Safari`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    unoptimized
+                  />
+                </div>
+              ))}
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
-              <Image 
-                src="/insumos para figma-07.jpeg" 
-                alt="Auto en el Safari"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+            
+            {/* Botones de navegación */}
+            <button
+              onClick={goToPrevious}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all z-10"
+              aria-label="Imagen anterior"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={goToNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all z-10"
+              aria-label="Siguiente imagen"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Indicadores */}
+            <div className="flex justify-center gap-2 mt-4">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`h-2 rounded-full transition-all ${
+                    index === currentIndex ? 'w-8 bg-[#65b330]' : 'w-2 bg-gray-300'
+                  }`}
+                  aria-label={`Ir a imagen ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
 
@@ -117,7 +125,7 @@ export default function About() {
           <div className="bg-[#65b330] p-8 md:p-12 rounded-lg shadow-xl">
             <div className="text-white space-y-6 text-justify">
               <p className="text-lg md:text-xl leading-relaxed">
-                El <strong className="text-[#4a8a26]">Safari tras las Sierras</strong> nació en 1990 como un desafío entre amigos, 
+                El <span className="bg-yellow-400 text-gray-900 font-bold px-2 py-1 rounded shadow-lg border-2 border-yellow-500">Safari tras las Sierras</span> nació en 1990 como un desafío entre amigos, 
                 una aventura que con el tiempo se transformó en un clásico del automovilismo sanjuanino.
               </p>
               <p className="text-lg md:text-xl leading-relaxed">
@@ -125,9 +133,9 @@ export default function About() {
                 que cada febrero convierte a Valle Fértil en el epicentro de la pasión por el off-road.
               </p>
               <p className="text-lg md:text-xl leading-relaxed">
-                Después de más de treinta años, el <strong className="text-[#4a8a26]">Safari tras las Sierras</strong> mantiene 
+                Después de más de treinta años, el <span className="bg-yellow-400 text-gray-900 font-bold px-2 py-1 rounded shadow-lg border-2 border-yellow-500">Safari tras las Sierras</span> mantiene 
                 intacto su espíritu original: aventura, camaradería y amor por la tierra. Es un orgullo 
-                para todos los miembros de <strong className="text-[#4a8a26]">ADIVA</strong> y una tradición que sigue 
+                para todos los miembros de <span className="bg-yellow-400 text-gray-900 font-bold px-2 py-1 rounded shadow-lg border-2 border-yellow-500">ADIVA</span> y una tradición que sigue 
                 creciendo año a año.
               </p>
             </div>
