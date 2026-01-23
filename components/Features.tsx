@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function Features() {
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -59,66 +61,131 @@ export default function Features() {
           {/* Dos cajas de características */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {/* Caja Paisajes Espectaculares */}
-            <div className={`bg-gray-100 rounded-xl p-8 border border-white/20 shadow-lg hover-lift hover-glow scroll-animate-left ${isVisible ? 'animate' : ''}`}>
+            <div 
+              className={`bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl p-8 border-2 border-transparent shadow-xl transition-all duration-500 cursor-pointer scroll-animate-left ${
+                isVisible ? 'animate' : ''
+              } ${
+                hoveredCard === 0 ? 'scale-105 border-[#65b330] shadow-2xl shadow-[#65b330]/50' : ''
+              }`}
+              onMouseEnter={() => setHoveredCard(0)}
+              onMouseLeave={() => setHoveredCard(null)}
+              onClick={() => setExpandedCard(expandedCard === 0 ? null : 0)}
+            >
               <div className="flex items-start gap-4 mb-4">
-                <div className="flex-shrink-0">
-                  <svg className="w-12 h-12 text-black" fill="currentColor" viewBox="0 0 24 24">
+                <div className={`flex-shrink-0 transition-transform duration-500 ${hoveredCard === 0 ? 'rotate-12 scale-110' : ''}`}>
+                  <svg className="w-12 h-12 text-[#65b330]" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                   </svg>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Paisajes Espectaculares</h3>
-                  <p className="text-gray-700 leading-relaxed">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 transition-colors duration-300">
+                    {hoveredCard === 0 ? <span className="text-[#65b330]">Paisajes Espectaculares</span> : 'Paisajes Espectaculares'}
+                  </h3>
+                  <p className={`text-gray-700 leading-relaxed transition-all duration-500 ${expandedCard === 0 ? 'text-base' : ''}`}>
                     Recorré terrenos desafiantes y paisajes únicos que solo Valle Fértil puede ofrecer.
+                    {expandedCard === 0 && (
+                      <span className="block mt-2 text-sm text-gray-600">
+                        Desde montañas escarpadas hasta valles verdes, cada ruta es una nueva aventura visual.
+                      </span>
+                    )}
                   </p>
                 </div>
               </div>
+              {hoveredCard === 0 && (
+                <div className="mt-4 pt-4 border-t border-gray-300">
+                  <div className="flex items-center gap-2 text-sm text-[#65b330] font-semibold">
+                    <span>✨ Experiencia única</span>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Caja Adrenalina Pura */}
-            <div className={`bg-gray-100 rounded-xl p-8 border border-white/20 shadow-lg hover-lift hover-glow scroll-animate-right ${isVisible ? 'animate' : ''}`}>
+            <div 
+              className={`bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl p-8 border-2 border-transparent shadow-xl transition-all duration-500 cursor-pointer scroll-animate-right ${
+                isVisible ? 'animate' : ''
+              } ${
+                hoveredCard === 1 ? 'scale-105 border-[#65b330] shadow-2xl shadow-[#65b330]/50' : ''
+              }`}
+              onMouseEnter={() => setHoveredCard(1)}
+              onMouseLeave={() => setHoveredCard(null)}
+              onClick={() => setExpandedCard(expandedCard === 1 ? null : 1)}
+            >
               <div className="flex items-start gap-4 mb-4">
-                <div className="flex-shrink-0">
-                  <svg className="w-12 h-12 text-black" fill="currentColor" viewBox="0 0 24 24">
+                <div className={`flex-shrink-0 transition-transform duration-500 ${hoveredCard === 1 ? 'rotate-12 scale-110' : ''}`}>
+                  <svg className="w-12 h-12 text-[#65b330]" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
                   </svg>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Adrenalina Pura</h3>
-                  <p className="text-gray-700 leading-relaxed">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 transition-colors duration-300">
+                    {hoveredCard === 1 ? <span className="text-[#65b330]">Adrenalina Pura</span> : 'Adrenalina Pura'}
+                  </h3>
+                  <p className={`text-gray-700 leading-relaxed transition-all duration-500 ${expandedCard === 1 ? 'text-base' : ''}`}>
                     Experimentá la emoción de competir en una aventura que combina pasión, naturaleza y competencia.
+                    {expandedCard === 1 && (
+                      <span className="block mt-2 text-sm text-gray-600">
+                        Cada curva, cada obstáculo, cada momento es una oportunidad para superar tus límites.
+                      </span>
+                    )}
                   </p>
                 </div>
               </div>
+              {hoveredCard === 1 && (
+                <div className="mt-4 pt-4 border-t border-gray-300">
+                  <div className="flex items-center gap-2 text-sm text-[#65b330] font-semibold">
+                    <span>⚡ Máxima emoción</span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Banner "¿Qué te espera?" */}
-          <div className={`bg-[#65b330] rounded-xl p-6 md:p-8 mb-8 text-center shadow-xl hover-scale scroll-animate-scale ${isVisible ? 'animate' : ''}`}>
-            <h3 className="text-2xl md:text-3xl font-bold text-white">¿Qué te espera?</h3>
+          <div 
+            className={`bg-gradient-to-r from-[#65b330] to-[#4a8a26] rounded-xl p-6 md:p-8 mb-8 text-center shadow-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl scroll-animate-scale ${
+              isVisible ? 'animate' : ''
+            } relative overflow-hidden`}
+          >
+            <div className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+            <h3 className="text-2xl md:text-3xl font-bold text-white relative z-10 transform transition-transform duration-300 hover:scale-110">
+              ¿Qué te espera?
+            </h3>
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/30 transform scale-x-0 hover:scale-x-100 transition-transform duration-500"></div>
           </div>
 
           {/* Lista de expectativas */}
           <div className="space-y-4 mb-12">
             {[
-              'Rutas desafiantes y emocionantes',
-              'Competencia de primer nivel',
-              'Ambiente familiar y deportivo',
-              'Premios y reconocimientos'
+              { text: 'Rutas desafiantes y emocionantes', icon: '🏁' },
+              { text: 'Competencia de primer nivel', icon: '🏆' },
+              { text: 'Ambiente familiar y deportivo', icon: '👨‍👩‍👧‍👦' },
+              { text: 'Premios y reconocimientos', icon: '🎖️' }
             ].map((item, index) => (
               <div 
                 key={index} 
-                className={`flex items-center gap-4 pb-4 border-b border-white/10 last:border-0 hover-lift transition-all duration-300 cursor-pointer ${
+                className={`group flex items-center gap-4 p-4 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-[#65b330] hover:scale-105 transition-all duration-300 cursor-pointer ${
                   isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
                 }`}
                 style={{ transitionDelay: `${500 + index * 100}ms` }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateX(10px) scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateX(0) scale(1)';
+                }}
               >
-                <div className="flex-shrink-0 w-8 h-8 bg-[#65b330] rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#65b330] to-[#4a8a26] rounded-full flex items-center justify-center text-2xl transform transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110 shadow-lg">
+                  {item.icon}
+                </div>
+                <p className="text-lg md:text-xl text-white font-medium flex-1 group-hover:text-[#65b330] transition-colors duration-300">
+                  {item.text}
+                </p>
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg className="w-6 h-6 text-[#65b330]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
-                <p className="text-lg md:text-xl text-white">{item}</p>
               </div>
             ))}
           </div>
@@ -126,7 +193,15 @@ export default function Features() {
           {/* Tarjetas de información */}
           <div className="grid md:grid-cols-3 gap-6">
             {/* Tarjeta Categorías */}
-            <div className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden hover-lift hover-rotate scroll-animate ${isVisible ? 'animate' : ''}`}>
+            <div 
+              className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden transition-all duration-500 cursor-pointer scroll-animate ${
+                isVisible ? 'animate' : ''
+              } ${
+                hoveredCard === 2 ? 'scale-110 rotate-2 shadow-2xl border-[#65b330]' : 'hover:scale-105 hover:rotate-1'
+              }`}
+              onMouseEnter={() => setHoveredCard(2)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
               {/* Patrón de bandera a cuadros */}
               <div className="h-16 bg-[#65b330] relative overflow-hidden">
                 <div className="absolute inset-0" style={{
@@ -158,7 +233,15 @@ export default function Features() {
             </div>
 
             {/* Tarjeta Ubicación */}
-            <div className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden hover-lift hover-rotate scroll-animate ${isVisible ? 'animate' : ''}`}>
+            <div 
+              className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden transition-all duration-500 cursor-pointer scroll-animate ${
+                isVisible ? 'animate' : ''
+              } ${
+                hoveredCard === 3 ? 'scale-110 rotate-2 shadow-2xl border-[#65b330]' : 'hover:scale-105 hover:rotate-1'
+              }`}
+              onMouseEnter={() => setHoveredCard(3)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
               {/* Ícono de pin */}
               <div className="flex justify-center pt-6 pb-2">
                 <svg className="w-12 h-12 text-[#65b330]" fill="currentColor" viewBox="0 0 24 24">
@@ -179,7 +262,15 @@ export default function Features() {
             </div>
 
             {/* Tarjeta Fecha */}
-            <div className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden hover-lift hover-rotate scroll-animate ${isVisible ? 'animate' : ''}`}>
+            <div 
+              className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden transition-all duration-500 cursor-pointer scroll-animate ${
+                isVisible ? 'animate' : ''
+              } ${
+                hoveredCard === 4 ? 'scale-110 rotate-2 shadow-2xl border-[#65b330]' : 'hover:scale-105 hover:rotate-1'
+              }`}
+              onMouseEnter={() => setHoveredCard(4)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
               {/* Ícono de calendario */}
               <div className="flex justify-center pt-6 pb-2">
                 <svg className="w-12 h-12 text-[#65b330]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
