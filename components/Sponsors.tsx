@@ -10,7 +10,7 @@ export default function Sponsors() {
     {
       id: 2,
       name: 'Plot Center',
-      logo: 'http://plotcenter.com.ar/wp-content/uploads/2025/05/logo-plot-blanco_Mesa-de-trabajo-1-1.png',
+      logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/LOGO-PLOT-VERSIONES_Mesa-de-trabajo-1-copia.png',
     },
   ];
 
