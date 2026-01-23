@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const images = [
   'http://plotcenter.com.ar/wp-content/uploads/2026/01/insumos-para-figma-01.jpg-scaled.jpeg',
@@ -33,10 +33,37 @@ export default function About() {
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section 
+      ref={sectionRef}
       id="sobre" 
-      className="relative overflow-visible"
+      className={`relative overflow-visible transition-all duration-1000 ${
+        isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'
+      }`}
       style={{
         backgroundImage: 'url(https://plotcenter.com.ar/wp-content/uploads/2026/01/Recurso-1-3.png)',
         backgroundSize: 'cover',
@@ -51,7 +78,9 @@ export default function About() {
       {/* Contenido principal */}
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* Header verde con título */}
-        <div className="bg-[#65b330] py-6 md:py-8 mb-6 relative">
+        <div className={`bg-[#65b330] py-6 md:py-8 mb-6 relative hover-scale transition-all duration-500 delay-100 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+        }`}>
           <div className="absolute top-0 left-0 right-0 h-4 overflow-hidden">
             <svg className="w-full h-full" viewBox="0 0 1200 40" preserveAspectRatio="none">
               <path d="M0,20 Q200,5 400,15 T800,10 T1200,20 L1200,40 L0,40 Z" fill="#4a8a26" opacity="0.6" />
@@ -65,8 +94,10 @@ export default function About() {
         {/* Grid: Galería izquierda y texto derecho */}
         <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start">
           {/* Carrusel de galería a la izquierda */}
-          <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
+          <div className={`relative transition-all duration-700 delay-200 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+          }`}>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl hover-scale transition-transform duration-300">
               {images.map((img, index) => (
                 <div
                   key={index}
@@ -89,7 +120,7 @@ export default function About() {
             {/* Botones de navegación */}
             <button
               onClick={goToPrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all z-10 hover-scale hover-glow"
               aria-label="Imagen anterior"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,7 +129,7 @@ export default function About() {
             </button>
             <button
               onClick={goToNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all z-10 hover-scale hover-glow"
               aria-label="Siguiente imagen"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +153,9 @@ export default function About() {
           </div>
 
           {/* Texto a la derecha con fondo verde */}
-          <div className="bg-[#65b330] p-6 md:p-8 rounded-lg shadow-xl">
+          <div className={`bg-[#65b330] p-6 md:p-8 rounded-lg shadow-xl hover-lift hover-glow transition-all duration-700 delay-300 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+          }`}>
             <div className="text-white space-y-4 text-justify">
               <p className="text-lg md:text-xl leading-relaxed">
                 El <span className="bg-yellow-400 text-gray-900 font-bold px-2 py-1 rounded shadow-lg border-2 border-yellow-500">Safari tras las Sierras</span> nació en 1990 como un desafío entre amigos, 
