@@ -7,6 +7,7 @@ import Countdown from '@/components/Countdown';
 const Features = dynamic(() => import('@/components/Features'));
 const AssociationHistory = dynamic(() => import('@/components/AssociationHistory'));
 const Sponsors = dynamic(() => import('@/components/Sponsors'));
+const Gallery = dynamic(() => import('@/components/Gallery'));
 const Footer = dynamic(() => import('@/components/Footer'));
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Features />
       <AssociationHistory />
       <Sponsors />
+      <Gallery />
       <Footer />
     </main>
   );
