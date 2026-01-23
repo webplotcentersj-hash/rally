@@ -1,6 +1,16 @@
 export default function About() {
   return (
-    <section id="sobre" className="py-20 md:py-32 bg-transparent relative overflow-hidden">
+    <section 
+      id="sobre" 
+      className="py-20 md:py-32 relative overflow-hidden"
+      style={{
+        backgroundImage: 'url(https://plotcenter.com.ar/wp-content/uploads/2026/01/Recurso-1-3.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       {/* Elementos decorativos de fondo */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#65b330] rounded-full blur-3xl"></div>

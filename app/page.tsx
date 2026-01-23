@@ -18,23 +18,12 @@ export default function Home() {
       <Header />
       <Hero />
       <Countdown />
-      <div 
-        className="relative"
-        style={{
-          backgroundImage: 'url(https://plotcenter.com.ar/wp-content/uploads/2026/01/Recurso-1-3.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed'
-        }}
-      >
-        <About />
-        <Categories />
-        <RegistrationInfo />
-        <Gallery />
-        <Sponsors />
-        <Contact />
-      </div>
+      <About />
+      <Categories />
+      <RegistrationInfo />
+      <Gallery />
+      <Sponsors />
+      <Contact />
       <Footer />
     </main>
   );

@@ -17,7 +17,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="py-32 bg-transparent">
+    <section id="contacto" className="py-32 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-20">
