@@ -44,14 +44,14 @@ export default function About() {
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
         minHeight: '100vh',
-        paddingTop: '80px'
+        paddingTop: '20px'
       }}
     >
 
       {/* Contenido principal */}
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-4 py-8 relative z-10">
         {/* Header verde con título */}
-        <div className="bg-[#65b330] py-8 md:py-12 mb-12 relative">
+        <div className="bg-[#65b330] py-6 md:py-8 mb-6 relative">
           <div className="absolute top-0 left-0 right-0 h-4 overflow-hidden">
             <svg className="w-full h-full" viewBox="0 0 1200 40" preserveAspectRatio="none">
               <path d="M0,20 Q200,5 400,15 T800,10 T1200,20 L1200,40 L0,40 Z" fill="#4a8a26" opacity="0.6" />
@@ -63,7 +63,7 @@ export default function About() {
         </div>
 
         {/* Grid: Galería izquierda y texto derecho */}
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start">
           {/* Carrusel de galería a la izquierda */}
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
@@ -122,8 +122,8 @@ export default function About() {
           </div>
 
           {/* Texto a la derecha con fondo verde */}
-          <div className="bg-[#65b330] p-8 md:p-12 rounded-lg shadow-xl">
-            <div className="text-white space-y-6 text-justify">
+          <div className="bg-[#65b330] p-6 md:p-8 rounded-lg shadow-xl">
+            <div className="text-white space-y-4 text-justify">
               <p className="text-lg md:text-xl leading-relaxed">
                 El <span className="bg-yellow-400 text-gray-900 font-bold px-2 py-1 rounded shadow-lg border-2 border-yellow-500">Safari tras las Sierras</span> nació en 1990 como un desafío entre amigos, 
                 una aventura que con el tiempo se transformó en un clásico del automovilismo sanjuanino.
