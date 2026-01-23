@@ -9,23 +9,20 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-l border-[#65b330]">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24 md:h-28">
           {/* Logo y título */}
           <div className="flex items-center gap-4">
             {/* Logo de la app */}
             <img
               src="/logo.png"
               alt="Safari Tras las Sierras"
-              className="h-12 w-auto object-contain"
+              className="h-16 md:h-20 w-auto object-contain"
             />
             
             {/* Título */}
             <div className="text-white">
-              <div className="text-sm md:text-base font-bold uppercase tracking-wide">
-                SAFARI TRAS LAS
-              </div>
-              <div className="text-sm md:text-base font-bold uppercase tracking-wide">
-                SIERRAS
+              <div className="text-base md:text-lg lg:text-xl font-bold uppercase tracking-wide whitespace-nowrap">
+                SAFARI TRAS LAS SIERRAS
               </div>
             </div>
           </div>
