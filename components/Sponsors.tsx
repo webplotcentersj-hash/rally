@@ -24,18 +24,18 @@ export default function Sponsors() {
           <div className="w-20 h-px bg-[#65b330] mx-auto" />
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 max-w-6xl mx-auto">
+        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16 max-w-7xl mx-auto">
           {sponsors.map((sponsor) => (
             <div
               key={sponsor.id}
-              className="flex items-center justify-center p-6 hover:opacity-80 transition-opacity"
+              className="flex items-center justify-center p-8 hover:opacity-80 transition-opacity"
             >
               <Image
                 src={sponsor.logo}
                 alt={sponsor.name}
-                width={200}
-                height={100}
-                className="max-w-[200px] max-h-[100px] w-auto h-auto object-contain"
+                width={500}
+                height={250}
+                className="max-w-[400px] md:max-w-[500px] max-h-[200px] md:max-h-[250px] w-auto h-auto object-contain"
                 unoptimized
               />
             </div>
