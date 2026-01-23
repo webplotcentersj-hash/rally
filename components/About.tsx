@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function About() {
   return (
     <section 
@@ -71,6 +73,66 @@ export default function About() {
             <line x1="38" y1="0" x2="87" y2="0" stroke="#333" strokeWidth="3" opacity="0.3" />
           </g>
         </svg>
+      </div>
+
+      {/* Contenido principal */}
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        {/* Header verde con título */}
+        <div className="bg-[#65b330] py-8 md:py-12 mb-12 relative">
+          <div className="absolute top-0 left-0 right-0 h-4 overflow-hidden">
+            <svg className="w-full h-full" viewBox="0 0 1200 40" preserveAspectRatio="none">
+              <path d="M0,20 Q200,5 400,15 T800,10 T1200,20 L1200,40 L0,40 Z" fill="#4a8a26" opacity="0.6" />
+            </svg>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white text-center uppercase tracking-wide">
+            UNA ASOCIACIÓN CON HISTORIA
+          </h2>
+        </div>
+
+        {/* Grid: Galería izquierda y texto derecho */}
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+          {/* Galería a la izquierda */}
+          <div className="space-y-6">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
+              <Image 
+                src="/insumos para figma-06.jpeg" 
+                alt="Motos en el Safari"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
+              <Image 
+                src="/insumos para figma-07.jpeg" 
+                alt="Auto en el Safari"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+
+          {/* Texto a la derecha con fondo verde */}
+          <div className="bg-[#65b330] p-8 md:p-12 rounded-lg shadow-xl">
+            <div className="text-white space-y-6 text-justify">
+              <p className="text-lg md:text-xl leading-relaxed">
+                El <strong className="text-[#4a8a26]">Safari tras las Sierras</strong> nació en 1990 como un desafío entre amigos, 
+                una aventura que con el tiempo se transformó en un clásico del automovilismo sanjuanino.
+              </p>
+              <p className="text-lg md:text-xl leading-relaxed">
+                Lo que comenzó como una simple competencia entre conocidos, hoy es un verdadero festival 
+                que cada febrero convierte a Valle Fértil en el epicentro de la pasión por el off-road.
+              </p>
+              <p className="text-lg md:text-xl leading-relaxed">
+                Después de más de treinta años, el <strong className="text-[#4a8a26]">Safari tras las Sierras</strong> mantiene 
+                intacto su espíritu original: aventura, camaradería y amor por la tierra. Es un orgullo 
+                para todos los miembros de <strong className="text-[#4a8a26]">ADIVA</strong> y una tradición que sigue 
+                creciendo año a año.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
