@@ -66,7 +66,7 @@ export default function Features() {
           </div>
 
           {/* Lista de expectativas */}
-          <div className="space-y-4">
+          <div className="space-y-4 mb-12">
             {[
               'Rutas desafiantes y emocionantes',
               'Competencia de primer nivel',
@@ -82,6 +82,90 @@ export default function Features() {
                 <p className="text-lg md:text-xl text-white">{item}</p>
               </div>
             ))}
+          </div>
+
+          {/* Tarjetas de información */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Tarjeta Categorías */}
+            <div className="bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden">
+              {/* Patrón de bandera a cuadros */}
+              <div className="h-16 bg-[#65b330] relative overflow-hidden">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `
+                    linear-gradient(45deg, transparent 25%, rgba(0,0,0,0.1) 25%),
+                    linear-gradient(-45deg, transparent 25%, rgba(0,0,0,0.1) 25%),
+                    linear-gradient(45deg, rgba(0,0,0,0.1) 75%, transparent 75%),
+                    linear-gradient(-45deg, rgba(0,0,0,0.1) 75%, transparent 75%)
+                  `,
+                  backgroundSize: '20px 20px',
+                  backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
+                }} />
+              </div>
+              
+              {/* Botón Categorías */}
+              <div className="bg-[#65b330] mx-4 -mt-8 rounded-lg px-4 py-2 mb-4 text-center">
+                <h3 className="text-xl font-bold text-white">Categorías</h3>
+              </div>
+              
+              {/* Secciones Autos y Motos */}
+              <div className="px-4 pb-4 space-y-3">
+                <div className="bg-gray-200 rounded-lg p-4 text-center">
+                  <p className="text-xl font-bold text-black">Autos</p>
+                </div>
+                <div className="bg-gray-200 rounded-lg p-4 text-center">
+                  <p className="text-xl font-bold text-black">Motos</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Tarjeta Ubicación */}
+            <div className="bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden">
+              {/* Ícono de pin */}
+              <div className="flex justify-center pt-6 pb-2">
+                <svg className="w-12 h-12 text-[#65b330]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+              </div>
+              
+              {/* Botón Ubicación */}
+              <div className="bg-[#65b330] mx-4 rounded-lg px-4 py-2 mb-4 text-center">
+                <h3 className="text-xl font-bold text-white">Ubicación</h3>
+              </div>
+              
+              {/* Texto de ubicación */}
+              <div className="bg-gray-200 rounded-lg mx-4 mb-4 p-4 text-center">
+                <p className="text-2xl font-bold text-black mb-1">Valle Fértil</p>
+                <p className="text-base text-black">San Juan, Arg.</p>
+              </div>
+            </div>
+
+            {/* Tarjeta Fecha */}
+            <div className="bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden">
+              {/* Ícono de calendario */}
+              <div className="flex justify-center pt-6 pb-2">
+                <svg className="w-12 h-12 text-[#65b330]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  <circle cx="18" cy="18" r="2" fill="currentColor" />
+                </svg>
+              </div>
+              
+              {/* Botón Fecha */}
+              <div className="bg-[#65b330] mx-4 rounded-lg px-4 py-2 mb-4 text-center">
+                <h3 className="text-xl font-bold text-white">Fecha</h3>
+              </div>
+              
+              {/* Secciones de fechas */}
+              <div className="px-4 pb-4 space-y-3">
+                <div className="bg-gray-200 rounded-lg p-4">
+                  <p className="text-sm font-semibold text-black mb-2">Motos</p>
+                  <p className="text-xl font-bold text-black">6, 7 y 8 de Febrero</p>
+                </div>
+                <div className="bg-gray-200 rounded-lg p-4">
+                  <p className="text-sm font-semibold text-black mb-2">Autos</p>
+                  <p className="text-xl font-bold text-black">13, 14 y 15 de Febrero</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
