@@ -30,8 +30,8 @@ export default function Features() {
   return (
     <section 
       ref={sectionRef}
-      className={`bg-black py-16 md:py-24 relative overflow-hidden transition-all duration-1000 ${
-        isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'
+      className={`bg-black py-16 md:py-24 relative overflow-hidden section-transition ${
+        isVisible ? 'animate' : ''
       }`}
     >
       {/* Elementos decorativos de huellas en la parte superior */}
@@ -45,10 +45,8 @@ export default function Features() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Título principal */}
-          <div className={`text-center mb-8 transition-all duration-700 delay-100 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white uppercase tracking-tight mb-4">
+          <div className={`text-center mb-8 scroll-animate ${isVisible ? 'animate' : ''}`}>
+            <h2 className="title-section font-bold text-white uppercase tracking-tight mb-4">
               SAFARI TRAS LAS SIERRAS
             </h2>
             <div className="w-32 h-0.5 bg-white mx-auto mb-6" />
@@ -61,9 +59,7 @@ export default function Features() {
           {/* Dos cajas de características */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {/* Caja Paisajes Espectaculares */}
-            <div className={`bg-gray-100 rounded-xl p-8 border border-white/20 shadow-lg hover-lift hover-glow transition-all duration-500 delay-200 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-            }`}>
+            <div className={`bg-gray-100 rounded-xl p-8 border border-white/20 shadow-lg hover-lift hover-glow scroll-animate-left ${isVisible ? 'animate' : ''}`}>
               <div className="flex items-start gap-4 mb-4">
                 <div className="flex-shrink-0">
                   <svg className="w-12 h-12 text-black" fill="currentColor" viewBox="0 0 24 24">
@@ -80,9 +76,7 @@ export default function Features() {
             </div>
 
             {/* Caja Adrenalina Pura */}
-            <div className={`bg-gray-100 rounded-xl p-8 border border-white/20 shadow-lg hover-lift hover-glow transition-all duration-500 delay-300 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}>
+            <div className={`bg-gray-100 rounded-xl p-8 border border-white/20 shadow-lg hover-lift hover-glow scroll-animate-right ${isVisible ? 'animate' : ''}`}>
               <div className="flex items-start gap-4 mb-4">
                 <div className="flex-shrink-0">
                   <svg className="w-12 h-12 text-black" fill="currentColor" viewBox="0 0 24 24">
@@ -100,9 +94,7 @@ export default function Features() {
           </div>
 
           {/* Banner "¿Qué te espera?" */}
-          <div className={`bg-[#65b330] rounded-xl p-6 md:p-8 mb-8 text-center shadow-xl hover-scale transition-all duration-500 delay-400 ${
-            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-          }`}>
+          <div className={`bg-[#65b330] rounded-xl p-6 md:p-8 mb-8 text-center shadow-xl hover-scale scroll-animate-scale ${isVisible ? 'animate' : ''}`}>
             <h3 className="text-2xl md:text-3xl font-bold text-white">¿Qué te espera?</h3>
           </div>
 
@@ -134,9 +126,7 @@ export default function Features() {
           {/* Tarjetas de información */}
           <div className="grid md:grid-cols-3 gap-6">
             {/* Tarjeta Categorías */}
-            <div className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden hover-lift hover-rotate transition-all duration-500 delay-500 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}>
+            <div className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden hover-lift hover-rotate scroll-animate ${isVisible ? 'animate' : ''}`}>
               {/* Patrón de bandera a cuadros */}
               <div className="h-16 bg-[#65b330] relative overflow-hidden">
                 <div className="absolute inset-0" style={{
@@ -168,9 +158,7 @@ export default function Features() {
             </div>
 
             {/* Tarjeta Ubicación */}
-            <div className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden hover-lift hover-rotate transition-all duration-500 delay-600 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}>
+            <div className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden hover-lift hover-rotate scroll-animate ${isVisible ? 'animate' : ''}`}>
               {/* Ícono de pin */}
               <div className="flex justify-center pt-6 pb-2">
                 <svg className="w-12 h-12 text-[#65b330]" fill="currentColor" viewBox="0 0 24 24">
@@ -191,9 +179,7 @@ export default function Features() {
             </div>
 
             {/* Tarjeta Fecha */}
-            <div className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden hover-lift hover-rotate transition-all duration-500 delay-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}>
+            <div className={`bg-white rounded-xl border-4 border-black shadow-xl overflow-hidden hover-lift hover-rotate scroll-animate ${isVisible ? 'animate' : ''}`}>
               {/* Ícono de calendario */}
               <div className="flex justify-center pt-6 pb-2">
                 <svg className="w-12 h-12 text-[#65b330]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

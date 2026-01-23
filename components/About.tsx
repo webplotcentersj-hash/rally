@@ -61,8 +61,8 @@ export default function About() {
     <section 
       ref={sectionRef}
       id="sobre" 
-      className={`relative overflow-visible transition-all duration-1000 ${
-        isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'
+      className={`relative overflow-visible section-transition ${
+        isVisible ? 'animate' : ''
       }`}
       style={{
         backgroundImage: 'url(https://plotcenter.com.ar/wp-content/uploads/2026/01/Recurso-1-3.png)',
@@ -78,15 +78,13 @@ export default function About() {
       {/* Contenido principal */}
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* Header verde con título */}
-        <div className={`bg-[#65b330] py-6 md:py-8 mb-6 relative hover-scale transition-all duration-500 delay-100 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
-        }`}>
+        <div className={`bg-[#65b330] py-6 md:py-8 mb-6 relative hover-scale scroll-animate ${isVisible ? 'animate' : ''}`}>
           <div className="absolute top-0 left-0 right-0 h-4 overflow-hidden">
             <svg className="w-full h-full" viewBox="0 0 1200 40" preserveAspectRatio="none">
               <path d="M0,20 Q200,5 400,15 T800,10 T1200,20 L1200,40 L0,40 Z" fill="#4a8a26" opacity="0.6" />
             </svg>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white text-center uppercase tracking-wide">
+          <h2 className="title-section font-bold text-white text-center uppercase tracking-wide">
             UNA ASOCIACIÓN CON HISTORIA
           </h2>
         </div>
@@ -94,9 +92,7 @@ export default function About() {
         {/* Grid: Galería izquierda y texto derecho */}
         <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start">
           {/* Carrusel de galería a la izquierda */}
-          <div className={`relative transition-all duration-700 delay-200 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-          }`}>
+          <div className={`relative scroll-animate-left ${isVisible ? 'animate' : ''}`}>
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl hover-scale transition-transform duration-300">
               {images.map((img, index) => (
                 <div
@@ -153,9 +149,7 @@ export default function About() {
           </div>
 
           {/* Texto a la derecha con fondo verde */}
-          <div className={`bg-[#65b330] p-6 md:p-8 rounded-lg shadow-xl hover-lift hover-glow transition-all duration-700 delay-300 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-          }`}>
+          <div className={`bg-[#65b330] p-6 md:p-8 rounded-lg shadow-xl hover-lift hover-glow scroll-animate-right ${isVisible ? 'animate' : ''}`}>
             <div className="text-white space-y-4 text-justify">
               <p className="text-lg md:text-xl leading-relaxed">
                 El <span className="bg-yellow-400 text-gray-900 font-bold px-2 py-1 rounded shadow-lg border-2 border-yellow-500">Safari tras las Sierras</span> nació en 1990 como un desafío entre amigos, 

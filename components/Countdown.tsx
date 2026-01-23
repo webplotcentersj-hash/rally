@@ -81,7 +81,7 @@ export default function Countdown() {
         <div className="max-w-5xl mx-auto text-center">
           {/* Título */}
           <div className="mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="title-section font-bold text-white mb-4">
               El Safari Comienza En
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#65b330] to-transparent mx-auto" />

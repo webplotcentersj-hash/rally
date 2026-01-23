@@ -71,7 +71,8 @@ html {
   font-family: 'Fendesert Sans';
   src: url('/fonts/FendesertSans-Regular.woff2') format('woff2'),
        url('/fonts/FendesertSans-Regular.woff') format('woff'),
-       url('/fonts/FendesertSans-Regular.ttf') format('truetype');
+       url('/fonts/FendesertSans-Regular.ttf') format('truetype'),
+       url('/fonts/FendesertSans-Stamp.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -87,11 +88,47 @@ html {
   font-display: swap;
 }
 
-/* Mejoras de tipografía */
+/* Mejoras de tipografía - Tamaños unificados */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Fendesert Sans', 'Oswald', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   letter-spacing: -0.02em;
   font-weight: 600;
+}
+
+/* Tamaños unificados para títulos principales */
+h1, .title-main {
+  font-size: 3.5rem;
+  line-height: 1.1;
+}
+
+h2, .title-section {
+  font-size: 3.5rem;
+  line-height: 1.1;
+}
+
+h3, .title-subsection {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  h1, .title-main, h2, .title-section {
+    font-size: 2.5rem;
+  }
+  
+  h3, .title-subsection {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, .title-main, h2, .title-section {
+    font-size: 2rem;
+  }
+  
+  h3, .title-subsection {
+    font-size: 1.5rem;
+  }
 }
 
 /* Transiciones suaves */
@@ -99,85 +136,129 @@ button, a {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Animaciones de scroll */
+/* Animaciones de scroll mejoradas */
 @keyframes slideInUp {
   from {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(80px) scale(0.95);
+    filter: blur(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-80px) scale(0.95);
+    filter: blur(10px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
+    filter: blur(0);
   }
 }
 
 @keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateX(80px) scale(0.95);
+    filter: blur(10px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
+    filter: blur(0);
   }
 }
 
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.8) rotate(-5deg);
+    filter: blur(10px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeInWithBlur {
+  from {
+    opacity: 0;
+    filter: blur(15px);
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes sectionTransition {
+  from {
+    opacity: 0;
+    transform: translateY(100px) scale(0.98);
+    filter: blur(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
 .scroll-animate {
   opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s ease-out;
 }
 
 .scroll-animate.animate {
-  animation: slideInUp 0.8s ease-out forwards;
+  animation: slideInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .scroll-animate-left {
   opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s ease-out;
 }
 
 .scroll-animate-left.animate {
-  animation: slideInLeft 0.8s ease-out forwards;
+  animation: slideInLeft 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .scroll-animate-right {
   opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s ease-out;
 }
 
 .scroll-animate-right.animate {
-  animation: slideInRight 0.8s ease-out forwards;
+  animation: slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .scroll-animate-scale {
   opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s ease-out;
 }
 
 .scroll-animate-scale.animate {
-  animation: scaleIn 0.8s ease-out forwards;
+  animation: scaleIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Transición de secciones mejorada */
+.section-transition {
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), filter 1.2s ease-out;
+}
+
+.section-transition.animate {
+  animation: sectionTransition 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Efectos hover mejorados */
