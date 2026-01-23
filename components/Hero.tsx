@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import MapModal from './MapModal';
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMapModalOpen, setIsMapModalOpen] = useState(false);
 
   useEffect(() => {
     // Delay la reproducción del video para no bloquear el renderizado inicial
@@ -64,17 +66,18 @@ export default function Hero() {
               </span>
             </Link>
             
-            <a
-              href="#sobre"
+            <button
+              onClick={() => setIsMapModalOpen(true)}
               className="group bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold py-4 px-10 rounded-full text-lg transition-all duration-500 border border-white/30 hover:border-white/50"
             >
               <span className="flex items-center justify-center gap-3">
-                Más Información
+                Cómo llegar
                 <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </span>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -85,6 +88,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Modal del mapa */}
+      <MapModal isOpen={isMapModalOpen} onClose={() => setIsMapModalOpen(false)} />
     </section>
   );
 }
