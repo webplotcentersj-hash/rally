@@ -82,7 +82,7 @@ export default function AssociationHistory() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-lg pointer-events-none"></div>
             
             {/* Carrusel superpuesto en la parte inferior */}
-            <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-full max-w-md md:max-w-lg transition-all duration-1000 z-20 ${
+            <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 translate-y-1/4 w-full max-w-md md:max-w-lg transition-all duration-1000 z-20 ${
               isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`}>
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl border-4 border-white">
