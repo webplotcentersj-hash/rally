@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="sobre" className="py-20 md:py-32 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
+    <section id="sobre" className="py-20 md:py-32 bg-transparent relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#65b330] rounded-full blur-3xl"></div>

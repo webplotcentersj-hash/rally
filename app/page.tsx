@@ -18,21 +18,23 @@ export default function Home() {
       <Header />
       <Hero />
       <Countdown />
-      <section 
-        className="relative min-h-screen bg-cover bg-center bg-fixed bg-no-repeat z-0"
+      <div 
+        className="relative"
         style={{
-          backgroundImage: 'url(https://plotcenter.com.ar/wp-content/uploads/2026/01/Recurso-1-3.png)'
+          backgroundImage: 'url(https://plotcenter.com.ar/wp-content/uploads/2026/01/Recurso-1-3.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
         }}
       >
-        <div className="relative z-10">
-          <About />
-          <Categories />
-          <RegistrationInfo />
-          <Gallery />
-          <Sponsors />
-          <Contact />
-        </div>
-      </section>
+        <About />
+        <Categories />
+        <RegistrationInfo />
+        <Gallery />
+        <Sponsors />
+        <Contact />
+      </div>
       <Footer />
     </main>
   );
