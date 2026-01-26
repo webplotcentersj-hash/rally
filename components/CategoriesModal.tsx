@@ -119,12 +119,12 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
       className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm transition-opacity duration-300 overflow-y-auto"
       onClick={onClose}
     >
-      <div className="min-h-screen flex items-end md:items-center justify-center p-4 pb-8 md:pb-4">
+      <div className="min-h-screen flex items-center justify-center p-4 pt-20 md:pt-16">
         <div
           ref={modalRef}
-          className="relative bg-white rounded-t-2xl md:rounded-xl shadow-2xl max-w-4xl w-full animate-slide-up overflow-hidden"
+          className="relative bg-white rounded-xl shadow-2xl max-w-2xl w-full animate-slide-up overflow-hidden"
           style={{ 
-            maxHeight: '85vh'
+            maxHeight: '75vh'
           }}
           onClick={(e) => e.stopPropagation()}
         >
@@ -143,7 +143,7 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
           </div>
 
           {/* Contenido - Scrolleable */}
-          <div className="overflow-y-auto p-6" style={{ maxHeight: 'calc(85vh - 140px)' }}>
+          <div className="overflow-y-auto p-6" style={{ maxHeight: 'calc(75vh - 140px)' }}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {categories.length > 0 ? (
                 categories.map((categoria, index) => (
