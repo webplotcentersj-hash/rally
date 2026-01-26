@@ -37,12 +37,14 @@ export default function Gallery() {
   }, []);
 
   useEffect(() => {
+    if (!isVisible) return;
+    
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % galleryImages.length);
-    }, 4000);
+    }, 3000); // Cambiar cada 3 segundos
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isVisible]);
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
@@ -83,8 +85,8 @@ export default function Gallery() {
               {galleryImages.map((img, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    index === currentIndex ? 'opacity-100' : 'opacity-0'
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                   }`}
                 >
                   <Image 
@@ -94,6 +96,7 @@ export default function Gallery() {
                     className="object-contain"
                     sizes="(max-width: 768px) 100vw, 60vw"
                     unoptimized
+                    priority={index === 0}
                   />
                 </div>
               ))}
