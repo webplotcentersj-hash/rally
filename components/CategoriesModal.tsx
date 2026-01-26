@@ -121,15 +121,19 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
     >
       <div
         ref={modalRef}
-        className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[85vh] flex flex-col animate-scale-in overflow-hidden"
+        className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full flex flex-col animate-scale-in overflow-hidden"
+        style={{ 
+          maxHeight: '90vh',
+          height: 'auto'
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header - Fijo */}
-        <div className="flex items-center justify-between p-5 md:p-6 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26]">
+        <div className="flex items-center justify-between p-5 md:p-6 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26] flex-shrink-0">
           <h2 className="text-xl md:text-2xl font-bold text-white">{getTitle()}</h2>
           <button
             onClick={onClose}
-            className="text-white hover:text-gray-200 transition-colors p-2 hover:bg-white/20 rounded-full"
+            className="text-white hover:text-gray-200 transition-colors p-2 hover:bg-white/20 rounded-full flex-shrink-0"
             aria-label="Cerrar"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -139,7 +143,13 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
         </div>
 
         {/* Contenido - Scrolleable */}
-        <div className="overflow-y-auto p-6" style={{ maxHeight: 'calc(85vh - 180px)' }}>
+        <div 
+          className="flex-1 overflow-y-auto p-6"
+          style={{ 
+            minHeight: 0,
+            maxHeight: 'calc(90vh - 160px)'
+          }}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {categories.length > 0 ? (
               categories.map((categoria, index) => (
@@ -166,7 +176,7 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
         </div>
 
         {/* Footer - Fijo */}
-        <div className="p-4 md:p-5 bg-gray-50 border-t">
+        <div className="p-4 md:p-5 bg-gray-50 border-t flex-shrink-0">
           <div className="text-center">
             <p className="text-sm text-gray-600">
               Para más información sobre las categorías,{' '}
