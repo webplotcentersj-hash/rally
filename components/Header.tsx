@@ -43,12 +43,12 @@ export default function Header() {
             >
               Sobre
             </a>
-            <a
-              href="#categorias"
+            <Link
+              href="/categorias"
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
             >
               Categorías
-            </a>
+            </Link>
             <a
               href="#contacto"
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
@@ -93,13 +93,13 @@ export default function Header() {
               >
                 Sobre
               </a>
-              <a
-                href="#categorias"
+              <Link
+                href="/categorias"
                 className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Categorías
-              </a>
+              </Link>
               <a
                 href="#contacto"
                 className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
