@@ -49,8 +49,13 @@ export default function MapModal({ isOpen, onClose }: MapModalProps) {
   if (!isOpen) return null;
 
   // URL mejorada de Google Maps para Valle Fértil, San Juan
-  // Coordenadas aproximadas: -30.6333° S, -67.4667° W
-  const googleMapsEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.5!2d-67.4667!3d-30.6333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9682111111111111%3A0x1111111111111111!2sValle%20F%C3%A9rtil%2C%20San%20Juan%20Province%2C%20Argentina!5e0!3m2!1ses!2sar!4v1706200000000!5m2!1ses!2sar";
+  // Coordenadas: -30.6333° S, -67.4667° W
+  // Zoom nivel 10 para mostrar más área y que se distinga mejor Valle Fértil en contexto regional
+  // Usando formato estándar con ll (latitud,longitud) y z (zoom)
+  const lat = -30.6333;
+  const lng = -67.4667;
+  const zoom = 10; // Zoom más bajo para ver más área
+  const googleMapsEmbedUrl = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27177!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f${zoom}!5e0!3m2!1ses!2sar!4v1706200000000!5m2!1ses!2sar`;
   const googleMapsLink = "https://www.google.com/maps/dir/San+Juan+Capital,+San+Juan,+Argentina/Valle+Fértil,+San+Juan+Province,+Argentina/@-31.085,-68.0,9z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x9682111111111111:0x1111111111111111!2m2!1d-68.5364!2d-31.5375!1m5!1m1!1s0x9682111111111111:0x1111111111111111!2m2!1d-67.4667!2d-30.6333!3e0";
 
   return (
