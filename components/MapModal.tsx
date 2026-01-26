@@ -107,7 +107,7 @@ export default function MapModal({ isOpen, onClose }: MapModalProps) {
               </div>
               <div>
                 <p className="text-xs md:text-sm text-gray-600 font-medium">Aproximadamente</p>
-                <p className="text-2xl md:text-3xl font-bold text-[#65b330]">160 km</p>
+                <p className="text-2xl md:text-3xl font-bold text-[#65b330]">255 km</p>
               </div>
             </div>
             <div className="hidden md:block w-px h-12 bg-gray-300"></div>
@@ -119,7 +119,7 @@ export default function MapModal({ isOpen, onClose }: MapModalProps) {
               </div>
               <div>
                 <p className="text-xs md:text-sm text-gray-600 font-medium">Tiempo estimado</p>
-                <p className="text-lg md:text-xl font-bold text-gray-900">2h 30min</p>
+                <p className="text-lg md:text-xl font-bold text-gray-900">3h 25min</p>
               </div>
             </div>
           </div>
@@ -149,6 +149,9 @@ export default function MapModal({ isOpen, onClose }: MapModalProps) {
               </p>
               <p className="text-xs text-gray-600 mt-1">
                 Coordenadas: -30.6° S, -67.5° W
+              </p>
+              <p className="text-xs text-[#65b330] font-medium mt-2">
+                Ruta: por RP510 y RN141
               </p>
             </div>
             <a
