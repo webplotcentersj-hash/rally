@@ -59,12 +59,12 @@ export default function Gallery() {
   return (
     <section 
       ref={sectionRef}
-      className={`relative w-full bg-black py-16 md:py-24 -mt-8 md:-mt-12 overflow-hidden section-transition ${
+      className={`relative w-full bg-black py-16 md:py-24 -mt-12 md:-mt-16 overflow-hidden section-transition ${
         isVisible ? 'animate' : ''
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Título */}
           <div className={`text-center mb-12 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
@@ -91,8 +91,8 @@ export default function Gallery() {
                     src={img}
                     alt={`Imagen ${index + 1} del Safari`}
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 80vw"
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 60vw"
                     unoptimized
                   />
                 </div>
