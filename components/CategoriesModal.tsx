@@ -116,94 +116,66 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
 
   return (
     <div 
-      className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm transition-opacity duration-300 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
       onClick={onClose}
     >
-      <div className="min-h-screen flex items-center justify-center p-4 pt-20 md:pt-16">
-        <div
-          ref={modalRef}
-          className="relative bg-white rounded-xl shadow-2xl max-w-2xl w-full animate-slide-up overflow-hidden"
-          style={{ 
-            maxHeight: '75vh'
-          }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          {/* Header - Fijo */}
-          <div className="flex items-center justify-between p-5 md:p-6 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26]">
-            <h2 className="text-xl md:text-2xl font-bold text-white">{getTitle()}</h2>
-            <button
-              onClick={onClose}
-              className="text-white hover:text-gray-200 transition-colors p-2 hover:bg-white/20 rounded-full"
-              aria-label="Cerrar"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+      <div
+        ref={modalRef}
+        className="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[80vh] flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26]">
+          <h2 className="text-2xl font-bold text-white">{getTitle()}</h2>
+          <button
+            onClick={onClose}
+            className="text-white hover:text-gray-200 transition-colors p-2 hover:bg-white/20 rounded-full"
+            aria-label="Cerrar"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
-          {/* Contenido - Scrolleable */}
-          <div className="overflow-y-auto p-6" style={{ maxHeight: 'calc(75vh - 140px)' }}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {categories.length > 0 ? (
-                categories.map((categoria, index) => (
-                  <div
-                    key={index}
-                    className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4 border-2 border-gray-200 hover:border-[#65b330] transition-all duration-300 hover:shadow-md"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="bg-[#65b330] rounded-full p-2 flex-shrink-0">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <p className="text-lg font-semibold text-gray-900 break-words">{categoria}</p>
-                    </div>
+        {/* Contenido con scroll */}
+        <div className="overflow-y-auto p-6 flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {categories.map((categoria, index) => (
+              <div
+                key={index}
+                className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4 border-2 border-gray-200 hover:border-[#65b330] transition-all duration-300 hover:shadow-md"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="bg-[#65b330] rounded-full p-2 flex-shrink-0">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                   </div>
-                ))
-              ) : (
-                <div className="col-span-2 text-center py-8">
-                  <p className="text-gray-500">No hay categorías disponibles</p>
+                  <p className="text-lg font-semibold text-gray-900">{categoria}</p>
                 </div>
-              )}
-            </div>
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* Footer - Fijo */}
-          <div className="p-4 md:p-5 bg-gray-50 border-t">
-            <div className="text-center">
-              <p className="text-sm text-gray-600">
-                Para más información sobre las categorías,{' '}
-                <a
-                  href="https://safari-ashen.vercel.app/inscripcion"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#65b330] font-semibold hover:underline"
-                >
-                  inscribite aquí
-                </a>
-              </p>
-            </div>
+        {/* Footer */}
+        <div className="p-4 bg-gray-50 border-t">
+          <div className="text-center">
+            <p className="text-sm text-gray-600">
+              Para más información sobre las categorías,{' '}
+              <a
+                href="https://safari-ashen.vercel.app/inscripcion"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#65b330] font-semibold hover:underline"
+              >
+                inscribite aquí
+              </a>
+            </p>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes slide-up {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-slide-up {
-          animation: slide-up 0.3s ease-out;
-        }
-      `}</style>
     </div>
   );
 }
-
