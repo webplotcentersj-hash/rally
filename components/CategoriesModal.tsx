@@ -116,12 +116,12 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-24 md:pt-16 bg-black/75 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
         ref={modalRef}
-        className="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[80vh] flex flex-col"
+        className="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[70vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
