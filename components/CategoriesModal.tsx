@@ -121,12 +121,12 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
     >
       <div
         ref={modalRef}
-        className="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[70vh] flex flex-col"
+        className="bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[60vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26]">
-          <h2 className="text-2xl font-bold text-white">{getTitle()}</h2>
+        <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26]">
+          <h2 className="text-lg font-bold text-white">{getTitle()}</h2>
           <button
             onClick={onClose}
             className="text-white hover:text-gray-200 transition-colors p-2 hover:bg-white/20 rounded-full"
@@ -139,20 +139,20 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
         </div>
 
         {/* Contenido con scroll */}
-        <div className="overflow-y-auto p-6 flex-1">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="overflow-y-auto p-4 flex-1">
+          <div className="grid grid-cols-1 gap-3">
             {categories.map((categoria, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4 border-2 border-gray-200 hover:border-[#65b330] transition-all duration-300 hover:shadow-md"
+                className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-3 border-2 border-gray-200 hover:border-[#65b330] transition-all duration-300 hover:shadow-md"
               >
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#65b330] rounded-full p-2 flex-shrink-0">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-2">
+                  <div className="bg-[#65b330] rounded-full p-1.5 flex-shrink-0">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <p className="text-lg font-semibold text-gray-900">{categoria}</p>
+                  <p className="text-base font-semibold text-gray-900">{categoria}</p>
                 </div>
               </div>
             ))}
@@ -160,9 +160,9 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-gray-50 border-t">
+        <div className="p-3 bg-gray-50 border-t">
           <div className="text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-xs text-gray-600">
               Para más información sobre las categorías,{' '}
               <a
                 href="https://safari-ashen.vercel.app/inscripcion"
