@@ -31,6 +31,7 @@ export default function Features() {
 
   return (
     <section 
+      id="sobre"
       ref={sectionRef}
       className={`bg-black py-16 md:py-24 relative overflow-hidden section-transition ${
         isVisible ? 'animate' : ''
