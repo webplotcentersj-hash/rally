@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Header from '@/components/Header';
 
 export default function CategoriasPage() {
   const categoriasAutos = [
@@ -41,7 +42,9 @@ export default function CategoriasPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-black pt-24 pb-16">
+    <main className="min-h-screen bg-black">
+      <Header />
+      <div className="pt-24 pb-16">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -160,6 +163,7 @@ export default function CategoriasPage() {
             </Link>
           </div>
         </div>
+      </div>
       </div>
     </main>
   );
