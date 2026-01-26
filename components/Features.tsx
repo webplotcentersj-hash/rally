@@ -1,11 +1,14 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import CategoriesModal from './CategoriesModal';
 
 export default function Features() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const [categoriesModalOpen, setCategoriesModalOpen] = useState(false);
+  const [selectedCategoryType, setSelectedCategoryType] = useState<'autos' | 'motos' | 'cuatris' | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -215,13 +218,34 @@ export default function Features() {
                 <h3 className="text-xl font-bold text-white">Categorías</h3>
               </div>
               
-              {/* Secciones Autos y Motos */}
+              {/* Secciones Autos, Motos y Cuatris */}
               <div className="px-4 pb-4 space-y-3">
-                <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg p-4 text-center border-2 border-gray-300 hover:border-[#65b330] transition-colors duration-300">
+                <div 
+                  onClick={() => {
+                    setSelectedCategoryType('autos');
+                    setCategoriesModalOpen(true);
+                  }}
+                  className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg p-4 text-center border-2 border-gray-300 hover:border-[#65b330] transition-colors duration-300 cursor-pointer hover:shadow-md"
+                >
                   <p className="text-xl font-bold text-black">🚗 Autos</p>
                 </div>
-                <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg p-4 text-center border-2 border-gray-300 hover:border-[#65b330] transition-colors duration-300">
+                <div 
+                  onClick={() => {
+                    setSelectedCategoryType('motos');
+                    setCategoriesModalOpen(true);
+                  }}
+                  className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg p-4 text-center border-2 border-gray-300 hover:border-[#65b330] transition-colors duration-300 cursor-pointer hover:shadow-md"
+                >
                   <p className="text-xl font-bold text-black">🏍️ Motos</p>
+                </div>
+                <div 
+                  onClick={() => {
+                    setSelectedCategoryType('cuatris');
+                    setCategoriesModalOpen(true);
+                  }}
+                  className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg p-4 text-center border-2 border-gray-300 hover:border-[#65b330] transition-colors duration-300 cursor-pointer hover:shadow-md"
+                >
+                  <p className="text-xl font-bold text-black">🏎️ Cuatris</p>
                 </div>
               </div>
             </div>
@@ -301,6 +325,16 @@ export default function Features() {
           <path d="M0,45 Q200,25 400,40 T800,35 T1200,40 L1200,80 L0,80 Z" fill="#333" opacity="0.4" />
         </svg>
       </div>
+
+      {/* Modal de categorías */}
+      <CategoriesModal
+        isOpen={categoriesModalOpen}
+        onClose={() => {
+          setCategoriesModalOpen(false);
+          setSelectedCategoryType(null);
+        }}
+        type={selectedCategoryType}
+      />
     </section>
   );
 }
