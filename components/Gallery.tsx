@@ -59,7 +59,7 @@ export default function Gallery() {
   return (
     <section 
       ref={sectionRef}
-      className={`relative w-full bg-black py-16 md:py-24 overflow-hidden section-transition ${
+      className={`relative w-full bg-black py-16 md:py-24 -mt-8 md:-mt-12 overflow-hidden section-transition ${
         isVisible ? 'animate' : ''
       }`}
     >
