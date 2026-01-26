@@ -11,7 +11,7 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-24 md:h-28">
           {/* Logo y título */}
-          <div className="flex items-center gap-4">
+          <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
             {/* Logo de la app */}
             <img
               src="/logo.png"
@@ -25,7 +25,7 @@ export default function Header() {
                 SAFARI TRAS LAS SIERRAS
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Navegación Desktop */}
           <nav className="hidden md:flex items-center gap-8">
