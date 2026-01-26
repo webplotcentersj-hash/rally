@@ -116,96 +116,91 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm transition-opacity duration-300"
+      className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm transition-opacity duration-300 overflow-y-auto"
       onClick={onClose}
     >
-      <div
-        ref={modalRef}
-        className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full flex flex-col animate-scale-in overflow-hidden"
-        style={{ 
-          maxHeight: '90vh',
-          height: 'auto'
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header - Fijo */}
-        <div className="flex items-center justify-between p-5 md:p-6 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26] flex-shrink-0">
-          <h2 className="text-xl md:text-2xl font-bold text-white">{getTitle()}</h2>
-          <button
-            onClick={onClose}
-            className="text-white hover:text-gray-200 transition-colors p-2 hover:bg-white/20 rounded-full flex-shrink-0"
-            aria-label="Cerrar"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Contenido - Scrolleable */}
-        <div 
-          className="flex-1 overflow-y-auto p-6"
+      <div className="min-h-screen flex items-end md:items-center justify-center p-4 pb-8 md:pb-4">
+        <div
+          ref={modalRef}
+          className="relative bg-white rounded-t-2xl md:rounded-xl shadow-2xl max-w-4xl w-full animate-slide-up overflow-hidden"
           style={{ 
-            minHeight: 0,
-            maxHeight: 'calc(90vh - 160px)'
+            maxHeight: '85vh'
           }}
+          onClick={(e) => e.stopPropagation()}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {categories.length > 0 ? (
-              categories.map((categoria, index) => (
-                <div
-                  key={index}
-                  className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4 border-2 border-gray-200 hover:border-[#65b330] transition-all duration-300 hover:shadow-md"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="bg-[#65b330] rounded-full p-2 flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <p className="text-lg font-semibold text-gray-900 break-words">{categoria}</p>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-span-2 text-center py-8">
-                <p className="text-gray-500">No hay categorías disponibles</p>
-              </div>
-            )}
+          {/* Header - Fijo */}
+          <div className="flex items-center justify-between p-5 md:p-6 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26]">
+            <h2 className="text-xl md:text-2xl font-bold text-white">{getTitle()}</h2>
+            <button
+              onClick={onClose}
+              className="text-white hover:text-gray-200 transition-colors p-2 hover:bg-white/20 rounded-full"
+              aria-label="Cerrar"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-        </div>
 
-        {/* Footer - Fijo */}
-        <div className="p-4 md:p-5 bg-gray-50 border-t flex-shrink-0">
-          <div className="text-center">
-            <p className="text-sm text-gray-600">
-              Para más información sobre las categorías,{' '}
-              <a
-                href="https://safari-ashen.vercel.app/inscripcion"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#65b330] font-semibold hover:underline"
-              >
-                inscribite aquí
-              </a>
-            </p>
+          {/* Contenido - Scrolleable */}
+          <div className="overflow-y-auto p-6" style={{ maxHeight: 'calc(85vh - 140px)' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {categories.length > 0 ? (
+                categories.map((categoria, index) => (
+                  <div
+                    key={index}
+                    className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4 border-2 border-gray-200 hover:border-[#65b330] transition-all duration-300 hover:shadow-md"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="bg-[#65b330] rounded-full p-2 flex-shrink-0">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <p className="text-lg font-semibold text-gray-900 break-words">{categoria}</p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="col-span-2 text-center py-8">
+                  <p className="text-gray-500">No hay categorías disponibles</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Footer - Fijo */}
+          <div className="p-4 md:p-5 bg-gray-50 border-t">
+            <div className="text-center">
+              <p className="text-sm text-gray-600">
+                Para más información sobre las categorías,{' '}
+                <a
+                  href="https://safari-ashen.vercel.app/inscripcion"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#65b330] font-semibold hover:underline"
+                >
+                  inscribite aquí
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes scale-in {
+        @keyframes slide-up {
           from {
             opacity: 0;
-            transform: scale(0.95);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
           }
         }
-        .animate-scale-in {
-          animation: scale-in 0.2s ease-out;
+        .animate-slide-up {
+          animation: slide-up 0.3s ease-out;
         }
       `}</style>
     </div>
