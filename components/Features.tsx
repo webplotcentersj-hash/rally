@@ -314,16 +314,6 @@ export default function Features() {
           <path d="M0,45 Q200,25 400,40 T800,35 T1200,40 L1200,80 L0,80 Z" fill="#333" opacity="0.4" />
         </svg>
       </div>
-
-      {/* Modal de categorías */}
-      <CategoriesModal
-        isOpen={categoriesModalOpen}
-        onClose={() => {
-          setCategoriesModalOpen(false);
-          setSelectedCategoryType(null);
-        }}
-        type={selectedCategoryType}
-      />
     </section>
   );
 }
