@@ -116,20 +116,21 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-24 md:pt-16 bg-black/75 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
         ref={modalRef}
-        className="bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[60vh] flex flex-col"
+        className="bg-white rounded-xl shadow-2xl w-full max-w-lg flex flex-col overflow-hidden"
+        style={{ maxHeight: '80vh' }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26]">
+        {/* Header - Fijo */}
+        <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26] flex-shrink-0">
           <h2 className="text-lg font-bold text-white">{getTitle()}</h2>
           <button
             onClick={onClose}
-            className="text-white hover:text-gray-200 transition-colors p-2 hover:bg-white/20 rounded-full"
+            className="text-white hover:text-gray-200 transition-colors p-2 hover:bg-white/20 rounded-full flex-shrink-0"
             aria-label="Cerrar"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,8 +139,14 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
           </button>
         </div>
 
-        {/* Contenido con scroll */}
-        <div className="overflow-y-auto p-4 flex-1">
+        {/* Contenido con scroll - Altura calculada */}
+        <div 
+          className="overflow-y-auto p-4"
+          style={{ 
+            maxHeight: 'calc(80vh - 120px)',
+            minHeight: '200px'
+          }}
+        >
           <div className="grid grid-cols-1 gap-3">
             {categories.map((categoria, index) => (
               <div
@@ -159,8 +166,8 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="p-3 bg-gray-50 border-t">
+        {/* Footer - Fijo */}
+        <div className="p-3 bg-gray-50 border-t flex-shrink-0">
           <div className="text-center">
             <p className="text-xs text-gray-600">
               Para más información sobre las categorías,{' '}
