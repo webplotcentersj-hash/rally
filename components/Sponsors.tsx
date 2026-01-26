@@ -27,14 +27,6 @@ export default function Sponsors() {
     return () => clearInterval(interval);
   }, [sponsors.length]);
 
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + sponsors.length) % sponsors.length);
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % sponsors.length);
-  };
-
   return (
     <section className="py-16 md:py-24 bg-black">
       <div className="container mx-auto px-4">
@@ -66,44 +58,6 @@ export default function Sponsors() {
                 />
               </div>
             ))}
-
-            {/* Botones de navegación */}
-            {sponsors.length > 1 && (
-              <>
-                <button
-                  onClick={goToPrevious}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all z-20 hover:scale-110"
-                  aria-label="Sponsor anterior"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button
-                  onClick={goToNext}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all z-20 hover:scale-110"
-                  aria-label="Siguiente sponsor"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-
-                {/* Indicadores */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                  {sponsors.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentIndex(index)}
-                      className={`h-2 rounded-full transition-all ${
-                        index === currentIndex ? 'w-8 bg-white' : 'w-2 bg-white/50'
-                      }`}
-                      aria-label={`Ir a sponsor ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </>
-            )}
           </div>
         </div>
       </div>
