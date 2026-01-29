@@ -34,3 +34,5 @@ export function useScrollAnimation(options = {}) {
   return [ref, isVisible] as const;
 }
 
+
+
