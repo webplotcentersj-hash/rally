@@ -58,6 +58,12 @@ export default function Header() {
             >
               Categorías
             </Link>
+            <Link
+              href="/tiempos"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Tiempos
+            </Link>
             <a
               href="#contacto"
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
@@ -115,6 +121,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Categorías
+              </Link>
+              <Link
+                href="/tiempos"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Tiempos
               </Link>
               <a
                 href="#contacto"
