@@ -10,12 +10,12 @@ export default function Sponsors() {
     {
       id: 1,
       name: 'Sponsor 1',
-      logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Recurso-166-1.png',
+      logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Logos-marcas-05-2-scaled.png',
     },
     {
       id: 2,
       name: 'Plot Center',
-      logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/LOGO-PLOT-VERSIONES_Mesa-de-trabajo-1-copia.png',
+      logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Logos-marcas-04-scaled.png',
     },
     {
       id: 3,
