@@ -17,6 +17,26 @@ export default function Sponsors() {
       name: 'Plot Center',
       logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/LOGO-PLOT-VERSIONES_Mesa-de-trabajo-1-copia.png',
     },
+    {
+      id: 3,
+      name: 'Logo Blanco Completo',
+      logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Logo-Blanco-COMPLETO.png',
+    },
+    {
+      id: 4,
+      name: 'Logos Marcas 01',
+      logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Logos-marcas-01-scaled.png',
+    },
+    {
+      id: 5,
+      name: 'Logos Marcas 02',
+      logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Logos-marcas-02-scaled.png',
+    },
+    {
+      id: 6,
+      name: 'Logos Marcas 03',
+      logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Logos-marcas-03-scaled.png',
+    },
   ];
 
   useEffect(() => {
