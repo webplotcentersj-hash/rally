@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import MapModal from './MapModal';
+import LiveModal from './LiveModal';
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const [isLiveModalOpen, setIsLiveModalOpen] = useState(false);
 
   useEffect(() => {
     // Delay la reproducción del video para no bloquear el renderizado inicial
@@ -67,6 +69,14 @@ export default function Hero() {
             </Link>
             
             <button
+              onClick={() => setIsLiveModalOpen(true)}
+              className="group bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-10 rounded-full text-lg transition-all duration-500 border border-red-500 hover:scale-105 shadow-xl flex items-center gap-2"
+            >
+              <span className="flex h-2 w-2 rounded-full bg-white animate-pulse" aria-hidden />
+              Ver Safari en vivo
+            </button>
+
+            <button
               onClick={() => setIsMapModalOpen(true)}
               className="group bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold py-4 px-10 rounded-full text-lg transition-all duration-500 border border-white/30 hover:border-white/50"
             >
@@ -89,8 +99,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Modal del mapa */}
+      {/* Modales */}
       <MapModal isOpen={isMapModalOpen} onClose={() => setIsMapModalOpen(false)} />
+      <LiveModal isOpen={isLiveModalOpen} onClose={() => setIsLiveModalOpen(false)} />
     </section>
   );
 }

@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import LiveModal from './LiveModal';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLiveModalOpen, setIsLiveModalOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-l border-[#65b330]">
@@ -29,6 +31,13 @@ export default function Header() {
 
           {/* Navegación Desktop */}
           <nav className="hidden md:flex items-center gap-8">
+            <button
+              onClick={() => setIsLiveModalOpen(true)}
+              className="flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              <span className="flex h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" aria-hidden />
+              Ver Safari en vivo
+            </button>
             <Link
               href="https://safari-ashen.vercel.app/inscripcion"
               target="_blank"
@@ -77,6 +86,13 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden pb-4 border-t border-gray-800">
             <nav className="flex flex-col gap-4 pt-4">
+              <button
+                onClick={() => { setIsLiveModalOpen(true); setIsMenuOpen(false); }}
+                className="flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors text-sm font-medium uppercase tracking-wide text-left"
+              >
+                <span className="flex h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" aria-hidden />
+                Ver Safari en vivo
+              </button>
               <Link
                 href="https://safari-ashen.vercel.app/inscripcion"
                 target="_blank"
@@ -110,6 +126,8 @@ export default function Header() {
             </nav>
           </div>
         )}
+
+        <LiveModal isOpen={isLiveModalOpen} onClose={() => setIsLiveModalOpen(false)} />
       </div>
     </header>
   );
