@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import { fetchCategorias, DEFAULT_CATEGORIAS, type CategoriasData } from '@/lib/categorias-api';
+import { MOTOS_CHINAS } from '@/lib/motos-chinas';
+import { CUATRIS_FRONT } from '@/lib/cuatris-front';
 
 export default function CategoriasPage() {
   const [data, setData] = useState<CategoriasData>(DEFAULT_CATEGORIAS);
@@ -24,7 +26,7 @@ export default function CategoriasPage() {
 
   const categoriasAutos = data.autos;
   const categoriasMotos = data.motos;
-  const categoriasCuatris = data.cuatris;
+  const categoriasCuatris = CUATRIS_FRONT;
 
   return (
     <main className="min-h-screen bg-black">
@@ -103,6 +105,29 @@ export default function CategoriasPage() {
                   </div>
                 </div>
               ))}
+            </div>
+            {/* Subcategoría Motos chinas (solo front) */}
+            <div className="mt-8">
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="text-[#65b330]">Motos chinas</span>
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {MOTOS_CHINAS.map((categoria, index) => (
+                  <div
+                    key={index}
+                    className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4 border-2 border-gray-200 hover:border-[#65b330] transition-all duration-300 hover:shadow-md"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="bg-[#65b330] rounded-full p-2 flex-shrink-0">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <p className="text-lg font-semibold text-gray-900">{categoria}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 

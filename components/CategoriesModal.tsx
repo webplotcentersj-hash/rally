@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { fetchCategorias, DEFAULT_CATEGORIAS, type CategoriasData } from '@/lib/categorias-api';
+import { MOTOS_CHINAS } from '@/lib/motos-chinas';
+import { CUATRIS_FRONT } from '@/lib/cuatris-front';
 
 interface CategoriesModalProps {
   isOpen: boolean;
@@ -53,7 +55,7 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
     }
   };
 
-  const categories = type === 'autos' ? data.autos : type === 'motos' ? data.motos : data.cuatris;
+  const categories = type === 'autos' ? data.autos : type === 'motos' ? data.motos : CUATRIS_FRONT;
 
   return (
     <div
@@ -100,6 +102,28 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
               </div>
             ))}
           </div>
+          {type === 'motos' && (
+            <>
+              <h3 className="text-base font-bold text-[#65b330] mt-6 mb-2">Motos chinas</h3>
+              <div className="grid grid-cols-1 gap-3">
+                {MOTOS_CHINAS.map((categoria, index) => (
+                  <div
+                    key={`china-${index}`}
+                    className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-3 border-2 border-gray-200 hover:border-[#65b330] transition-all duration-300 hover:shadow-md"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="bg-[#65b330] rounded-full p-1.5 flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <p className="text-base font-semibold text-gray-900">{categoria}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         <div className="p-3 bg-gray-50 border-t flex-shrink-0">
