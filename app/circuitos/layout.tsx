@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Circuitos | Safari Tras las Sierras',
+  title: 'Circuitos de motos | Safari Tras las Sierras',
   description: 'Mapa de circuitos de motos del Safari Tras las Sierras.',
 };
 

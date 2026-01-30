@@ -68,7 +68,7 @@ export default function Header() {
               href="/circuitos"
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
             >
-              Circuitos
+              Circuitos (motos)
             </Link>
             <a
               href="#contacto"
@@ -140,7 +140,7 @@ export default function Header() {
                 className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Circuitos
+                Circuitos (motos)
               </Link>
               <a
                 href="#contacto"

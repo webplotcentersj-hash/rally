@@ -137,10 +137,10 @@ export default function CircuitosPage() {
                 </svg>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-3 title-section tracking-tight drop-shadow-lg">
-                Circuitos
+                Circuitos de motos
               </h1>
               <p className="text-gray-400 max-w-xl mx-auto text-base mb-4">
-                Mapa de circuitos de motos. Arrastrá para mover, usá la rueda del mouse o los botones para zoom.
+                Mapa de circuitos de motos del Safari. Arrastrá para mover, usá la rueda del mouse o los botones para zoom.
               </p>
               <div className="flex items-center justify-center gap-2">
                 <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#65b330]" />
@@ -223,7 +223,7 @@ export default function CircuitosPage() {
                 >
                   <img
                     src={MAP_IMAGE_URL}
-                    alt="Mapa de circuitos de motos - Safari Tras las Sierras"
+                    alt="Mapa de circuitos de motos del Safari Tras las Sierras"
                     className="max-w-none select-none pointer-events-none"
                     style={{ maxHeight: 'min(70vw, 560px)', width: 'auto', height: 'auto' }}
                     draggable={false}
@@ -233,7 +233,7 @@ export default function CircuitosPage() {
             </div>
 
             <p className="text-center text-gray-500 text-sm mt-4">
-              Imagen: Plot Center · Safari Tras las Sierras
+              Mapa de circuitos de motos · Plot Center · Safari Tras las Sierras
             </p>
           </div>
         </div>
