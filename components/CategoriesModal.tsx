@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { fetchCategorias, DEFAULT_CATEGORIAS, type CategoriasData } from '@/lib/categorias-api';
 
 interface CategoriesModalProps {
   isOpen: boolean;
@@ -10,14 +11,15 @@ interface CategoriesModalProps {
 
 export default function CategoriesModal({ isOpen, onClose, type }: CategoriesModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [data, setData] = useState<CategoriasData>(DEFAULT_CATEGORIAS);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      fetchCategorias().then(setData).catch(() => setData(DEFAULT_CATEGORIAS));
     } else {
       document.body.style.overflow = 'unset';
     }
-
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -25,22 +27,15 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
+      if (e.key === 'Escape') onClose();
     };
-
     const handleOutsideClick = (e: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        onClose();
-      }
+      if (modalRef.current && !modalRef.current.contains(e.target as Node)) onClose();
     };
-
     if (isOpen) {
       window.addEventListener('keydown', handleEscape);
       window.addEventListener('mousedown', handleOutsideClick);
     }
-
     return () => {
       window.removeEventListener('keydown', handleEscape);
       window.removeEventListener('mousedown', handleOutsideClick);
@@ -49,73 +44,19 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
 
   if (!isOpen || !type) return null;
 
-  const categoriasAutos = [
-    '1 A libres',
-    '2 B 1000',
-    '4 C',
-    '5 C plus',
-    '6 D Plus',
-    '7 D Especial',
-    '8 RC5 8v',
-    '9 RC5 16v',
-    '10 E',
-    '11 G',
-    '12 Jeep Libres',
-    '13 Fuerza Libre',
-    '14 4X4',
-    '15 Integrales',
-    '16 UTV Aspirados',
-    '17 UTV Turbos',
-    'Mejor Vallisto',
-    'GENERAL'
-  ];
-
-  const categoriasMotos = [
-    '1 SENIOR',
-    '2 JUNIOR',
-    '3 MASTER A',
-    '4 MASTER B',
-    '5 MASTER C',
-    '6 PROMOCIONALES',
-    '7 JUNIOR Kids'
-  ];
-
-  const categoriasCuatris = [
-    'Categoría Cuatris 1',
-    'Categoría Cuatris 2',
-    'Categoría Cuatris 3'
-  ];
-
   const getTitle = () => {
     switch (type) {
-      case 'autos':
-        return '🚗 Categorías de Autos';
-      case 'motos':
-        return '🏍️ Categorías de Motos';
-      case 'cuatris':
-        return '🏎️ Categorías de Cuatris';
-      default:
-        return 'Categorías';
+      case 'autos': return '🚗 Categorías de Autos';
+      case 'motos': return '🏍️ Categorías de Motos';
+      case 'cuatris': return '🏎️ Categorías de Cuatris';
+      default: return 'Categorías';
     }
   };
 
-  const getCategories = () => {
-    switch (type) {
-      case 'autos':
-        return categoriasAutos;
-      case 'motos':
-        return categoriasMotos;
-      case 'cuatris':
-        return categoriasCuatris;
-      default:
-        return [];
-    }
-  };
-
-  const categories = getCategories();
+  const categories = type === 'autos' ? data.autos : type === 'motos' ? data.motos : data.cuatris;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
       onClick={onClose}
     >
@@ -125,7 +66,6 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
         style={{ maxHeight: '80vh' }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header - Fijo */}
         <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-[#65b330] to-[#4a8a26] flex-shrink-0">
           <h2 className="text-lg font-bold text-white">{getTitle()}</h2>
           <button
@@ -139,13 +79,9 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
           </button>
         </div>
 
-        {/* Contenido con scroll - Altura calculada */}
-        <div 
+        <div
           className="overflow-y-auto p-4"
-          style={{ 
-            maxHeight: 'calc(80vh - 120px)',
-            minHeight: '200px'
-          }}
+          style={{ maxHeight: 'calc(80vh - 120px)', minHeight: '200px' }}
         >
           <div className="grid grid-cols-1 gap-3">
             {categories.map((categoria, index) => (
@@ -166,7 +102,6 @@ export default function CategoriesModal({ isOpen, onClose, type }: CategoriesMod
           </div>
         </div>
 
-        {/* Footer - Fijo */}
         <div className="p-3 bg-gray-50 border-t flex-shrink-0">
           <div className="text-center">
             <p className="text-xs text-gray-600">

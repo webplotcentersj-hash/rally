@@ -1,45 +1,30 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import { fetchCategorias, DEFAULT_CATEGORIAS, type CategoriasData } from '@/lib/categorias-api';
 
 export default function CategoriasPage() {
-  const categoriasAutos = [
-    '1 A libres',
-    '2 B 1000',
-    '4 C',
-    '5 C plus',
-    '6 D Plus',
-    '7 D Especial',
-    '8 RC5 8v',
-    '9 RC5 16v',
-    '10 E',
-    '11 G',
-    '12 Jeep Libres',
-    '13 Fuerza Libre',
-    '14 4X4',
-    '15 Integrales',
-    '16 UTV Aspirados',
-    '17 UTV Turbos',
-    'Mejor Vallisto',
-    'GENERAL'
-  ];
+  const [data, setData] = useState<CategoriasData>(DEFAULT_CATEGORIAS);
+  const [loading, setLoading] = useState(true);
 
-  const categoriasMotos = [
-    '1 SENIOR',
-    '2 JUNIOR',
-    '3 MASTER A',
-    '4 MASTER B',
-    '5 MASTER C',
-    '6 PROMOCIONALES',
-    '7 JUNIOR Kids'
-  ];
+  useEffect(() => {
+    let cancelled = false;
+    fetchCategorias().then((c) => {
+      if (!cancelled) {
+        setData(c);
+        setLoading(false);
+      }
+    }).catch(() => {
+      if (!cancelled) setLoading(false);
+    });
+    return () => { cancelled = true; };
+  }, []);
 
-  const categoriasCuatris = [
-    'Categoría Cuatris 1',
-    'Categoría Cuatris 2',
-    'Categoría Cuatris 3'
-  ];
+  const categoriasAutos = data.autos;
+  const categoriasMotos = data.motos;
+  const categoriasCuatris = data.cuatris;
 
   return (
     <main className="min-h-screen bg-black">
@@ -61,6 +46,9 @@ export default function CategoriasPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Categorías de Competencia
             </h1>
+            {loading && (
+              <p className="text-gray-500 text-sm mb-2">Actualizando categorías desde la base de datos...</p>
+            )}
             <div className="w-32 h-0.5 bg-[#65b330] mx-auto" />
           </div>
 
@@ -168,4 +156,3 @@ export default function CategoriasPage() {
     </main>
   );
 }
-
