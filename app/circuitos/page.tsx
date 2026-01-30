@@ -137,10 +137,10 @@ export default function CircuitosPage() {
                 </svg>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-3 title-section tracking-tight drop-shadow-lg">
-                Circuitos de motos
+                Circuitos
               </h1>
               <p className="text-gray-400 max-w-xl mx-auto text-base mb-4">
-                Mapa de circuitos de motos del Safari. Arrastrá para mover, usá la rueda del mouse o los botones para zoom.
+                <span className="text-[#65b330] font-medium">Circuito de motos.</span> Arrastrá para mover, usá la rueda del mouse o los botones para zoom. Próximamente circuito de autos.
               </p>
               <div className="flex items-center justify-center gap-2">
                 <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#65b330]" />
@@ -198,6 +198,11 @@ export default function CircuitosPage() {
             </div>
 
             {/* Contenedor del mapa con zoom/pan */}
+            <div className="mb-2">
+              <span className="text-sm font-medium text-[#65b330] uppercase tracking-wide">
+                Circuito de motos
+              </span>
+            </div>
             <div
               ref={containerRef}
               className="relative rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl shadow-[#65b330]/10 backdrop-blur-sm"
@@ -223,7 +228,7 @@ export default function CircuitosPage() {
                 >
                   <img
                     src={MAP_IMAGE_URL}
-                    alt="Mapa de circuitos de motos del Safari Tras las Sierras"
+                    alt="Circuito de motos - Safari Tras las Sierras"
                     className="max-w-none select-none pointer-events-none"
                     style={{ maxHeight: 'min(70vw, 560px)', width: 'auto', height: 'auto' }}
                     draggable={false}
@@ -233,7 +238,7 @@ export default function CircuitosPage() {
             </div>
 
             <p className="text-center text-gray-500 text-sm mt-4">
-              Mapa de circuitos de motos · Plot Center · Safari Tras las Sierras
+              Circuito de motos · Plot Center · Safari Tras las Sierras
             </p>
           </div>
         </div>
