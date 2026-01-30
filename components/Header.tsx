@@ -64,6 +64,12 @@ export default function Header() {
             >
               Tiempos
             </Link>
+            <Link
+              href="/circuitos"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Circuitos
+            </Link>
             <a
               href="#contacto"
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
@@ -128,6 +134,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tiempos
+              </Link>
+              <Link
+                href="/circuitos"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Circuitos
               </Link>
               <a
                 href="#contacto"
