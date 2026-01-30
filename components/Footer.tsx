@@ -26,8 +26,28 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/categorias" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Categorías
+                </Link>
+              </li>
+              <li>
+                <Link href="/tiempos" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Tiempos
+                </Link>
+              </li>
+              <li>
+                <Link href="/circuitos" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Circuitos
+                </Link>
+              </li>
+              <li>
                 <a href="#sobre" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Sobre el Evento
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Preguntas frecuentes
                 </a>
               </li>
               <li>
