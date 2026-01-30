@@ -81,32 +81,30 @@ function normalizeFromApi(data: CategoriasApiResponse): CategoriasData {
  * Obtiene categorías: primero desde Supabase rally2 (MCP), luego API Safari, luego listas por defecto.
  */
 export async function fetchCategorias(): Promise<CategoriasData> {
-  // 1) Supabase rally2 (tabla categorias)
-  const supabase = getSupabaseRally2();
-  if (supabase) {
-    try {
-      const { data: rows, error } = await supabase
-        .from('categorias')
-        .select('tipo, nombre, orden')
-        .order('tipo', { ascending: true })
-        .order('orden', { ascending: true });
+  // 1) Supabase rally2 (tabla categorias) - siempre intentamos la BD primero
+  try {
+    const supabase = getSupabaseRally2();
+    const { data: rows, error } = await supabase
+      .from('categorias')
+      .select('tipo, nombre, orden')
+      .order('tipo', { ascending: true })
+      .order('orden', { ascending: true });
 
-      if (!error && rows && rows.length > 0) {
-        const autos: string[] = [];
-        const motos: string[] = [];
-        const cuatris: string[] = [];
-        for (const r of rows as { tipo: string; nombre: string }[]) {
-          if (r.tipo === 'autos') autos.push(r.nombre);
-          else if (r.tipo === 'motos') motos.push(r.nombre);
-          else if (r.tipo === 'cuatris') cuatris.push(r.nombre);
-        }
-        if (autos.length || motos.length || cuatris.length) {
-          return { autos, motos, cuatris };
-        }
+    if (!error && rows && rows.length > 0) {
+      const autos: string[] = [];
+      const motos: string[] = [];
+      const cuatris: string[] = [];
+      for (const r of rows as { tipo: string; nombre: string }[]) {
+        if (r.tipo === 'autos') autos.push(r.nombre);
+        else if (r.tipo === 'motos') motos.push(r.nombre);
+        else if (r.tipo === 'cuatris') cuatris.push(r.nombre);
       }
-    } catch {
-      // seguir a API o default
+      if (autos.length || motos.length || cuatris.length) {
+        return { autos, motos, cuatris };
+      }
     }
+  } catch {
+    // seguir a API o default
   }
 
   // 2) API Safari
