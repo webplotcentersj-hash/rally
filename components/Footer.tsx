@@ -77,7 +77,16 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
           <p>
-            Desarrollado con ❤️ por <strong className="text-white">Plot Center</strong> 2026
+            Desarrollado con ❤️ por{' '}
+            <a
+              href="https://plotcenter.com.ar/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-white hover:text-[#65b330] transition-colors underline underline-offset-2"
+            >
+              Plot Center
+            </a>{' '}
+            2026
           </p>
         </div>
       </div>
