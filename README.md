@@ -63,13 +63,16 @@ npm start
 - El formulario de contacto necesita configuración del backend
 - Los links apuntan a `https://safari-ashen.vercel.app` - actualizar si es necesario
 
-## 🌐 Deploy
+## 🌐 Deploy (solo Vercel)
 
-La landing está lista para deploy en Vercel:
+La landing se despliega en **Vercel** únicamente:
 
-1. Conectar el repositorio a Vercel
-2. Configurar variables de entorno si es necesario
-3. Deploy automático en cada push
+- **Repositorio:** [github.com/webplotcentersj-hash/rally](https://github.com/webplotcentersj-hash/rally)
+- Conectá este repo en [vercel.com](https://vercel.com) (Add New → Project → Import Git Repository).
+- Dejá que Vercel detecte Next.js; opcionalmente configurá variables de entorno.
+- Cada push a `main` genera un deploy automático.
+
+**Guía paso a paso:** ver [DEPLOY-VERCEL.md](./DEPLOY-VERCEL.md).
 
 ## 📧 Contacto
 
