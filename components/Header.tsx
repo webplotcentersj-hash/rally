@@ -46,6 +46,14 @@ export default function Header() {
             >
               Inscripción
             </Link>
+            <Link
+              href="https://safari-ashen.vercel.app/pilotos"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Pilotos inscriptos
+            </Link>
             <a
               href="#sobre"
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
@@ -113,6 +121,15 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Inscripción
+              </Link>
+              <Link
+                href="https://safari-ashen.vercel.app/pilotos"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Pilotos inscriptos
               </Link>
               <a
                 href="#sobre"
