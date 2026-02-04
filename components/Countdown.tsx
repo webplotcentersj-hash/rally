@@ -15,8 +15,8 @@ export default function Countdown() {
   useEffect(() => {
     setMounted(true);
     
-    // Fecha objetivo: 6 de febrero (inicio de motos)
-    const targetDate = new Date('2026-02-06T00:00:00').getTime();
+    // Fecha objetivo: 6 de febrero a las 10:00 hs (hora Argentina, UTC-3)
+    const targetDate = new Date('2026-02-06T10:00:00-03:00').getTime();
 
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
