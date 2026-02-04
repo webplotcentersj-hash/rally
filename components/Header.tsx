@@ -73,6 +73,12 @@ export default function Header() {
               Tiempos
             </Link>
             <Link
+              href="/cronograma"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Cronograma
+            </Link>
+            <Link
               href="/circuitos"
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
             >
@@ -151,6 +157,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tiempos
+              </Link>
+              <Link
+                href="/cronograma"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Cronograma
               </Link>
               <Link
                 href="/circuitos"
