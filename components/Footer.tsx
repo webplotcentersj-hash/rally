@@ -31,9 +31,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/tiempos" className="text-gray-400 hover:text-white transition-colors text-sm">
+                <a href="https://safari-ashen.vercel.app/tiempos" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Tiempos
-                </Link>
+                </a>
               </li>
               <li>
                 <Link href="/circuitos" className="text-gray-400 hover:text-white transition-colors text-sm">

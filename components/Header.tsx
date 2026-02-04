@@ -18,13 +18,13 @@ export default function Header() {
             <img
               src="/logo.png"
               alt="Safari Tras las Sierras"
-              className="h-16 md:h-20 w-auto object-contain"
+              className="h-12 md:h-16 w-auto object-contain"
             />
             {/* Segundo logo - mismo tamaño */}
             <img
               src="http://plotcenter.com.ar/wp-content/uploads/2026/02/Recurso-15.png"
               alt=""
-              className="h-16 md:h-20 w-auto object-contain"
+              className="h-12 md:h-16 w-auto object-contain"
             />
           </Link>
 
@@ -72,12 +72,14 @@ export default function Header() {
             >
               Pilotos inscriptos
             </Link>
-            <Link
-              href="/tiempos"
+            <a
+              href="https://safari-ashen.vercel.app/tiempos"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
             >
               Tiempos
-            </Link>
+            </a>
           </nav>
 
           {/* Botón menú móvil */}
@@ -114,13 +116,15 @@ export default function Header() {
               >
                 Categorías
               </Link>
-              <Link
-                href="/tiempos"
+              <a
+                href="https://safari-ashen.vercel.app/tiempos"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tiempos
-              </Link>
+              </a>
               <Link
                 href="/circuitos"
                 className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"

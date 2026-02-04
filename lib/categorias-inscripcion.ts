@@ -11,6 +11,7 @@ export const CATEGORIAS_AUTO: string[] = [
   '5 C plus',
   '6 D Plus',
   '7 D Especial',
+  'D',
   '8 RC5 8v',
   '9 RC5 16v',
   '10 E',
@@ -55,5 +56,6 @@ export const CATEGORIAS_MOTO_TRAVESIAS: string[] = [
 export const CATEGORIAS_CUATRI: string[] = [
   '200 cc Chino',
   '250 chino',
-  '450 open kids',
+  '450 cc open',
+  'Kids',
 ];
