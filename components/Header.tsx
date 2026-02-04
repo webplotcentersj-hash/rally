@@ -14,13 +14,18 @@ export default function Header() {
         <div className="flex items-center justify-between h-24 md:h-28">
           {/* Logo y título */}
           <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
-            {/* Logo de la app */}
+            {/* Logo principal */}
             <img
               src="/logo.png"
               alt="Safari Tras las Sierras"
               className="h-16 md:h-20 w-auto object-contain"
             />
-            
+            {/* Segundo logo - mismo tamaño */}
+            <img
+              src="http://plotcenter.com.ar/wp-content/uploads/2026/02/Recurso-15.png"
+              alt=""
+              className="h-16 md:h-20 w-auto object-contain"
+            />
             {/* Título */}
             <div className="text-white">
               <div className="text-base md:text-lg lg:text-xl font-bold uppercase tracking-wide whitespace-nowrap">
