@@ -38,6 +38,25 @@ export default function Header() {
               <span className="flex h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" aria-hidden />
               Ver Safari en vivo
             </button>
+            {/* Enlaces ordenados alfabéticamente (sin Contacto) */}
+            <Link
+              href="/categorias"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Categorías
+            </Link>
+            <Link
+              href="/circuitos"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Circuitos
+            </Link>
+            <Link
+              href="/cronograma"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Cronograma
+            </Link>
             <Link
               href="https://safari-ashen.vercel.app/inscripcion"
               target="_blank"
@@ -61,35 +80,11 @@ export default function Header() {
               Sobre
             </a>
             <Link
-              href="/categorias"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-            >
-              Categorías
-            </Link>
-            <Link
               href="/tiempos"
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
             >
               Tiempos
             </Link>
-            <Link
-              href="/cronograma"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-            >
-              Cronograma
-            </Link>
-            <Link
-              href="/circuitos"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-            >
-              Circuitos
-            </Link>
-            <a
-              href="#contacto"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-            >
-              Contacto
-            </a>
           </nav>
 
           {/* Botón menú móvil */}
@@ -120,6 +115,34 @@ export default function Header() {
                 Ver Safari en vivo
               </button>
               <Link
+                href="/categorias"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Categorías
+              </Link>
+              <Link
+                href="/tiempos"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Tiempos
+              </Link>
+              <Link
+                href="/circuitos"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Circuitos
+              </Link>
+              <Link
+                href="/cronograma"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Cronograma
+              </Link>
+              <Link
                 href="https://safari-ashen.vercel.app/inscripcion"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -143,41 +166,6 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Sobre
-              </a>
-              <Link
-                href="/categorias"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Categorías
-              </Link>
-              <Link
-                href="/tiempos"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Tiempos
-              </Link>
-              <Link
-                href="/cronograma"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Cronograma
-              </Link>
-              <Link
-                href="/circuitos"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Circuitos
-              </Link>
-              <a
-                href="#contacto"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contacto
               </a>
             </nav>
           </div>
