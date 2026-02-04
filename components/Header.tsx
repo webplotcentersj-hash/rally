@@ -12,7 +12,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-l border-[#65b330]">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-24 md:h-28">
-          {/* Logo y título */}
+          {/* Logos */}
           <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
             {/* Logo principal */}
             <img
@@ -26,12 +26,6 @@ export default function Header() {
               alt=""
               className="h-16 md:h-20 w-auto object-contain"
             />
-            {/* Título */}
-            <div className="text-white">
-              <div className="text-base md:text-lg lg:text-xl font-bold uppercase tracking-wide whitespace-nowrap">
-                SAFARI TRAS LAS SIERRAS
-              </div>
-            </div>
           </Link>
 
           {/* Navegación Desktop */}
@@ -78,12 +72,6 @@ export default function Header() {
             >
               Pilotos inscriptos
             </Link>
-            <a
-              href="#sobre"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-            >
-              Sobre
-            </a>
             <Link
               href="/tiempos"
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
@@ -165,13 +153,6 @@ export default function Header() {
               >
                 Pilotos inscriptos
               </Link>
-              <a
-                href="#sobre"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sobre
-              </a>
             </nav>
           </div>
         )}
