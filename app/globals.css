@@ -320,11 +320,21 @@ header {
 }
 
 /* Página Reglamento: impresión / guardar como PDF */
+.reglamento-sponsors {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
 @media print {
   .no-print {
     display: none !important;
   }
   .reglamento-doc {
     box-shadow: none !important;
+  }
+  .reglamento-sponsors {
+    background: #111827 !important; /* gray-900 */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

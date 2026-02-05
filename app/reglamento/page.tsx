@@ -52,22 +52,32 @@ export default function ReglamentoPage() {
             ))}
           </main>
 
-          {/* Logos de sponsors */}
-          <footer className="border-t border-gray-200 bg-gray-50 p-6 md:p-8 print:bg-gray-100">
-            <p className="text-center text-xs uppercase tracking-wider text-gray-500 mb-4">
-              Organización y sponsors
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+          {/* Logos de sponsors - fondo oscuro para logos blancos */}
+          <footer className="reglamento-sponsors border-t-2 border-[#65b330] bg-gray-900 text-white p-8 md:p-10 print:bg-gray-900">
+            <div className="text-center mb-6">
+              <span className="inline-block w-12 h-0.5 bg-[#65b330] mb-3" aria-hidden />
+              <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#65b330] mb-1">
+                Organización y sponsors
+              </h2>
+              <p className="text-gray-400 text-xs uppercase tracking-wider">
+                Gracias por acompañarnos
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 py-4">
               {sponsors.map((s) => (
-                <img
+                <div
                   key={s.id}
-                  src={s.logo}
-                  alt={s.name}
-                  className="h-10 md:h-12 w-auto object-contain"
-                />
+                  className="flex items-center justify-center p-3 rounded-xl bg-white/5 min-w-[120px] md:min-w-[140px] h-16 md:h-20"
+                >
+                  <img
+                    src={s.logo}
+                    alt={s.name}
+                    className="max-h-12 md:max-h-14 w-auto max-w-[120px] object-contain"
+                  />
+                </div>
               ))}
             </div>
-            <p className="text-center text-xs text-gray-500 mt-4">
+            <p className="text-center text-xs text-gray-400 mt-6 tracking-wide">
               Safari Tras las Sierras · Valle Fértil, San Juan · 2026
             </p>
           </footer>
