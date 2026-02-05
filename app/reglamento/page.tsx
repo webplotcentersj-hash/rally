@@ -48,6 +48,11 @@ export default function ReglamentoPage() {
                 <p className="text-sm md:text-base leading-relaxed">
                   {section.content}
                 </p>
+                {section.highlight && (
+                  <p className="mt-4 text-sm md:text-base font-medium underline decoration-2 decoration-[#65b330] underline-offset-2 bg-amber-100 print:bg-amber-100 border-l-4 border-[#65b330] pl-3 py-2">
+                    {section.highlight}
+                  </p>
+                )}
               </section>
             ))}
           </main>

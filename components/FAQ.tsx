@@ -9,7 +9,7 @@ type FaqItem =
   | {
       id: string;
       question: string;
-      answerSections: { title: string; content: string }[];
+      answerSections: { title: string; content: string; highlight?: string }[];
     };
 
 const sections: { title: string; items: FaqItem[] }[] = [
@@ -149,6 +149,11 @@ export default function FAQ() {
                                       {sec.title}
                                     </h4>
                                     <p>{sec.content}</p>
+                                    {sec.highlight && (
+                                      <p className="mt-3 font-medium text-amber-200/95 underline decoration-[#65b330] decoration-2 underline-offset-2 border-l-4 border-[#65b330] pl-3 py-2 bg-white/5">
+                                        {sec.highlight}
+                                      </p>
+                                    )}
                                   </div>
                                 ))}
                               </div>

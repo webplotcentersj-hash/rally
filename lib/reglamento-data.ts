@@ -1,4 +1,10 @@
-export const reglamentoSections: { title: string; content: string }[] = [
+export type ReglamentoSection = {
+  title: string;
+  content: string;
+  highlight?: string;
+};
+
+export const reglamentoSections: ReglamentoSection[] = [
   {
     title: 'Lugar y fechas',
     content:
@@ -52,6 +58,8 @@ export const reglamentoSections: { title: string; content: string }[] = [
   {
     title: 'Aceptación',
     content:
-      'La inscripción y participación implican el conocimiento, aceptación y cumplimiento total del presente Reglamento Particular de la Prueba y de toda normativa aplicable. El RPP puede tener modificaciones si así lo considera necesario el Comisario Deportivo.',
+      'La inscripción y participación implican el conocimiento, aceptación y cumplimiento total del presente Reglamento Particular de la Prueba y de toda normativa aplicable.',
+    highlight:
+      'El RPP puede tener modificaciones si así lo considera necesario el Comisario Deportivo.',
   },
 ];
