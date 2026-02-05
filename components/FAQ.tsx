@@ -1,8 +1,18 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
+import { reglamentoSections } from '@/lib/reglamento-data';
 
-const sections = [
+type FaqItem =
+  | { id: string; question: string; answer: string }
+  | {
+      id: string;
+      question: string;
+      answerSections: { title: string; content: string }[];
+    };
+
+const sections: { title: string; items: FaqItem[] }[] = [
   {
     title: 'Pilotos',
     items: [
@@ -55,6 +65,16 @@ const sections = [
       },
     ],
   },
+  {
+    title: 'Reglamento',
+    items: [
+      {
+        id: 'reglamento',
+        question: 'Reglamento particular de la prueba - Safari Tras las Sierras 2026',
+        answerSections: reglamentoSections,
+      },
+    ],
+  },
 ];
 
 export default function FAQ() {
@@ -77,9 +97,24 @@ export default function FAQ() {
           <div className="space-y-10">
             {sections.map((section) => (
               <div key={section.title}>
-                <h3 className="text-[#65b330] font-semibold uppercase tracking-wide text-sm mb-4">
-                  {section.title}
-                </h3>
+                <div className="flex flex-wrap items-center gap-4 mb-4">
+                  <h3 className="text-[#65b330] font-semibold uppercase tracking-wide text-sm">
+                    {section.title}
+                  </h3>
+                  {section.title === 'Reglamento' && (
+                    <Link
+                      href="/reglamento"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#65b330] text-white text-sm font-medium hover:bg-[#5a9e2a] transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Descargar reglamento
+                    </Link>
+                  )}
+                </div>
                 <ul className="space-y-3">
                   {section.items.map((item) => {
                     const isOpen = openId === item.id;
@@ -105,10 +140,23 @@ export default function FAQ() {
                           </span>
                         </button>
                         {isOpen && (
-                          <div className="px-5 pb-4 pt-0">
-                            <p className="text-gray-400 text-sm md:text-base leading-relaxed border-t border-white/10 pt-4">
-                              {item.answer}
-                            </p>
+                          <div className="px-5 pb-4 pt-0 border-t border-white/10 pt-4">
+                            {'answerSections' in item ? (
+                              <div className="space-y-4 text-gray-400 text-sm md:text-base leading-relaxed">
+                                {item.answerSections.map((sec) => (
+                                  <div key={sec.title}>
+                                    <h4 className="font-semibold text-white/90 text-sm uppercase tracking-wide mb-1">
+                                      {sec.title}
+                                    </h4>
+                                    <p>{sec.content}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                                {item.answer}
+                              </p>
+                            )}
                           </div>
                         )}
                       </li>

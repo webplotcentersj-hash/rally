@@ -72,6 +72,12 @@ export default function Header() {
             >
               Pilotos inscriptos
             </Link>
+            <Link
+              href="/reglamento"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Reglamento
+            </Link>
             <a
               href="https://safari-ashen.vercel.app/tiempos"
               target="_blank"
@@ -115,6 +121,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Categorías
+              </Link>
+              <Link
+                href="/reglamento"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Reglamento
               </Link>
               <a
                 href="https://safari-ashen.vercel.app/tiempos"

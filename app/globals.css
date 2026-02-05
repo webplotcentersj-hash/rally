@@ -318,3 +318,13 @@ header {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+
+/* Página Reglamento: impresión / guardar como PDF */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .reglamento-doc {
+    box-shadow: none !important;
+  }
+}

@@ -41,6 +41,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/reglamento" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Reglamento
+                </Link>
+              </li>
+              <li>
                 <a href="#sobre" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Sobre el Evento
                 </a>
