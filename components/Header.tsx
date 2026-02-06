@@ -12,19 +12,22 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-l border-[#65b330]">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-24 md:h-28">
-          {/* Logos */}
-          <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
-            {/* Logo principal */}
+          {/* Logos - 3 del mismo tamaño, un poco más chicos */}
+          <Link href="/" className="flex items-center gap-2 md:gap-3 hover:opacity-80 transition-opacity">
             <img
               src="/logo.png"
               alt="Safari Tras las Sierras"
-              className="h-12 md:h-16 w-auto object-contain"
+              className="h-9 md:h-11 w-auto object-contain"
             />
-            {/* Segundo logo - mismo tamaño */}
             <img
               src="http://plotcenter.com.ar/wp-content/uploads/2026/02/Recurso-15.png"
               alt=""
-              className="h-12 md:h-16 w-auto object-contain"
+              className="h-9 md:h-11 w-auto object-contain"
+            />
+            <img
+              src="http://plotcenter.com.ar/wp-content/uploads/2026/02/insumos-para-figma-12.png"
+              alt=""
+              className="h-9 md:h-11 w-auto object-contain"
             />
           </Link>
 

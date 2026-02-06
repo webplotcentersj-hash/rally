@@ -7,9 +7,26 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>
             <h3 className="text-lg font-medium mb-4">Safari Tras las Sierras</h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">
               Una competencia única de safari en Valle Fértil, San Juan.
             </p>
+            <div className="flex items-center gap-3 flex-wrap">
+              <img
+                src="/logo.png"
+                alt="Safari Tras las Sierras"
+                className="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+              />
+              <img
+                src="http://plotcenter.com.ar/wp-content/uploads/2026/02/Recurso-15.png"
+                alt=""
+                className="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+              />
+              <img
+                src="http://plotcenter.com.ar/wp-content/uploads/2026/02/insumos-para-figma-12.png"
+                alt=""
+                className="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+              />
+            </div>
           </div>
 
           <div>
