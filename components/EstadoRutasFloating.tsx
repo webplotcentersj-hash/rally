@@ -4,6 +4,12 @@ import { useState, useEffect, useRef } from 'react';
 
 const ROUTES = [
   {
+    id: 'rn141',
+    name: 'RN 141: Bermejo – Marayes',
+    status: 'Corte preventivo todos los días de 19:00 a 7:00. Tránsito habilitado en horario diurno. Socavones, badenes con arrastre y banquinas descalzadas. Vialidad Nacional trabaja en una vía alternativa. La habilitación del tránsito nocturno se comunicará por canales oficiales cuando las condiciones lo permitan.',
+    type: 'maxima',
+  },
+  {
     id: '1',
     name: 'RP 529: Ischigualasto',
     status: 'Transitable con precaución, hasta la tercera Estación (Cancha De Bochas).',
