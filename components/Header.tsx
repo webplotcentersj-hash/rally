@@ -82,6 +82,14 @@ export default function Header() {
               Reglamento
             </Link>
             <a
+              href="https://safari-ashen.vercel.app/tiempos"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Tiempos
+            </a>
+            <a
               href="https://safari-ashen.vercel.app/prensa"
               target="_blank"
               rel="noopener noreferrer"
@@ -91,14 +99,6 @@ export default function Header() {
                 <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
               </svg>
               Prensa
-            </a>
-            <a
-              href="https://safari-ashen.vercel.app/tiempos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-            >
-              Tiempos
             </a>
           </nav>
 
@@ -144,18 +144,6 @@ export default function Header() {
                 Reglamento
               </Link>
               <a
-                href="https://safari-ashen.vercel.app/prensa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 w-fit px-2.5 py-1 rounded-md text-amber-400 bg-amber-500/15 border border-amber-500/40 text-xs font-semibold uppercase tracking-wider"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <svg className="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-                  <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-                </svg>
-                Prensa
-              </a>
-              <a
                 href="https://safari-ashen.vercel.app/tiempos"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -196,6 +184,18 @@ export default function Header() {
               >
                 Pilotos inscriptos
               </Link>
+              <a
+                href="https://safari-ashen.vercel.app/prensa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 w-fit px-2.5 py-1 rounded-md text-amber-400 bg-amber-500/15 border border-amber-500/40 text-xs font-semibold uppercase tracking-wider"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <svg className="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                  <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                </svg>
+                Prensa
+              </a>
             </nav>
           </div>
         )}
