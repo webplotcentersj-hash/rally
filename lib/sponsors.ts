@@ -24,9 +24,4 @@ export const sponsors = [
     name: 'Logos Marcas 02',
     logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Logos-marcas-02-scaled.png',
   },
-  {
-    id: 6,
-    name: 'Logos Marcas 03',
-    logo: 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Logos-marcas-03-scaled.png',
-  },
 ];
