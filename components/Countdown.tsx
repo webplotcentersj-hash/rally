@@ -50,7 +50,7 @@ export default function Countdown() {
       if (nowTime < FIRST_EVENT_DATE) {
         setPhase('before');
         setCurrentActivity(null);
-        setNextActivity(null);
+        setNextActivity(CRONOGRAMA_SLOTS[0]);
         setDaysLeft(Math.floor((FIRST_EVENT_DATE - nowTime) / (1000 * 60 * 60 * 24)));
         return;
       }
@@ -76,10 +76,10 @@ export default function Countdown() {
     return null;
   }
 
-  const isSlotNow = (slot: CronogramaSlot) =>
-    phase === 'during' && currentActivity?.date === slot.date && currentActivity?.start === slot.start;
-  const isSlotNext = (slot: CronogramaSlot) =>
-    phase === 'during_next' && nextActivity?.date === slot.date && nextActivity?.start === slot.start;
+  const isNow = phase === 'during' && currentActivity;
+  const isNext = phase === 'during_next' && nextActivity;
+  const isBefore = phase === 'before';
+  const isAfter = phase === 'after';
 
   return (
     <section className="py-20 md:py-32 relative overflow-hidden bg-gray-900">
@@ -102,85 +102,85 @@ export default function Countdown() {
       </div>
 
       <div className="container mx-auto px-4 relative z-[2]">
-        <div className="max-w-4xl mx-auto">
-          {/* Título y estado actual */}
-          <div className="text-center mb-8 md:mb-10">
-            <h2 className="title-section font-bold text-white mb-2">
-              Cronograma – Motos 6, 7 y 8 de Febrero
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#65b330] to-transparent mx-auto mb-4" />
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="title-section font-bold text-white mb-8">
+            Cronograma
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#65b330] to-transparent mx-auto mb-8" />
 
-            {phase === 'during' && currentActivity && (
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#65b330] text-black text-sm font-bold uppercase tracking-wide mb-4">
-                <span className="flex h-2 w-2 rounded-full bg-black animate-pulse" aria-hidden />
-                En este momento: {currentActivity.title}
-              </div>
-            )}
-            {phase === 'during_next' && nextActivity && (
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm font-bold uppercase tracking-wide border border-white/30 mb-4">
-                Próxima: {nextActivity.title} a las {nextActivity.start} hs
-              </div>
-            )}
-            {phase === 'before' && daysLeft > 0 && (
-              <p className="text-[#65b330] font-semibold text-lg">
-                El Safari comienza en {daysLeft} {daysLeft === 1 ? 'día' : 'días'}
-              </p>
-            )}
-            {phase === 'after' && (
-              <p className="text-[#65b330] font-semibold text-lg">
-                Fin de semana de motos finalizado · Próximo: Autos 13, 14, 15 de Febrero
-              </p>
-            )}
-          </div>
-
-          {/* Lista de actividades del cronograma */}
-          <div className="space-y-4">
-            {CRONOGRAMA_SLOTS.map((slot) => {
-              const now = isSlotNow(slot);
-              const next = isSlotNext(slot);
-              return (
-                <div
-                  key={`${slot.date}-${slot.start}-${slot.title}`}
-                  className={`rounded-xl border px-4 py-3 text-left transition-all ${
-                    now
-                      ? 'border-[#65b330] bg-[#65b330]/20 shadow-lg shadow-[#65b330]/20'
-                      : next
-                        ? 'border-amber-400/50 bg-amber-500/10'
-                        : 'border-white/10 bg-white/5'
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center gap-2 gap-y-1">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#65b330]">
-                      {formatDay(slot.date)}
+          {/* Una sola tarjeta esmerilada */}
+          <div
+            className={`relative rounded-2xl border overflow-hidden
+              backdrop-blur-xl bg-white/10 border-white/20
+              shadow-2xl
+              ${isNow ? 'shadow-[#65b330]/25 ring-1 ring-[#65b330]/40' : ''}
+              ${isNext ? 'shadow-amber-400/20 ring-1 ring-amber-400/30' : ''}
+            `}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+            <div className="relative p-6 md:p-8 text-left">
+              {isNow && currentActivity && (
+                <>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="flex h-2.5 w-2.5 rounded-full bg-[#65b330] animate-pulse" aria-hidden />
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#65b330]">
+                      En este momento
                     </span>
-                    <span className="text-gray-400 text-sm">
-                      {slot.start} – {slot.end} hs
-                    </span>
-                    {now && (
-                      <span className="ml-auto text-xs font-bold uppercase text-[#65b330]">
-                        Ahora
-                      </span>
-                    )}
-                    {next && (
-                      <span className="ml-auto text-xs font-bold uppercase text-amber-400">
-                        Próxima
-                      </span>
-                    )}
                   </div>
-                  <p className="text-white font-semibold mt-1">
-                    {slot.title}
+                  <p className="text-white text-xl md:text-2xl font-bold leading-tight">
+                    {currentActivity.title}
                   </p>
-                  {slot.description && (
-                    <p className="text-gray-400 text-sm mt-0.5">
-                      {slot.description}
+                  {currentActivity.description && (
+                    <p className="text-gray-300 text-sm md:text-base mt-2">
+                      {currentActivity.description}
                     </p>
                   )}
-                </div>
-              );
-            })}
+                  <p className="text-[#65b330] font-semibold text-sm mt-4">
+                    {formatDay(currentActivity.date)} · {currentActivity.start} – {currentActivity.end} hs
+                  </p>
+                </>
+              )}
+
+              {(isNext || isBefore) && (nextActivity || CRONOGRAMA_SLOTS[0]) && (
+                <>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-xs font-bold uppercase tracking-widest text-amber-400/90">
+                      {isBefore ? 'Próxima actividad' : 'Próxima'}
+                    </span>
+                  </div>
+                  <p className="text-white text-xl md:text-2xl font-bold leading-tight">
+                    {(nextActivity ?? CRONOGRAMA_SLOTS[0]).title}
+                  </p>
+                  {(nextActivity ?? CRONOGRAMA_SLOTS[0]).description && (
+                    <p className="text-gray-300 text-sm md:text-base mt-2">
+                      {(nextActivity ?? CRONOGRAMA_SLOTS[0]).description}
+                    </p>
+                  )}
+                  <p className="text-gray-400 font-semibold text-sm mt-4">
+                    {formatDay((nextActivity ?? CRONOGRAMA_SLOTS[0]).date)} · {(nextActivity ?? CRONOGRAMA_SLOTS[0]).start} – {(nextActivity ?? CRONOGRAMA_SLOTS[0]).end} hs
+                  </p>
+                  {isBefore && daysLeft > 0 && (
+                    <p className="text-[#65b330] text-sm font-semibold mt-3">
+                      El Safari comienza en {daysLeft} {daysLeft === 1 ? 'día' : 'días'}
+                    </p>
+                  )}
+                </>
+              )}
+
+              {isAfter && (
+                <>
+                  <p className="text-white text-xl md:text-2xl font-bold leading-tight">
+                    Fin de semana de motos finalizado
+                  </p>
+                  <p className="text-[#65b330] font-semibold text-base mt-4">
+                    Próximo: Autos 13, 14 y 15 de Febrero
+                  </p>
+                </>
+              )}
+            </div>
           </div>
 
-          <div className="text-center mt-8">
+          <div className="mt-8">
             <Link
               href="/cronograma"
               className="inline-flex items-center gap-2 text-[#65b330] hover:text-[#7dd340] font-semibold text-sm uppercase tracking-wide transition-colors"
@@ -191,13 +191,6 @@ export default function Countdown() {
               </svg>
             </Link>
           </div>
-
-          {(phase === 'before' || phase === 'after') && (
-            <div className="mt-8 text-center space-y-1 text-gray-400 text-sm">
-              <p>Motos: 6, 7, 8 de Febrero</p>
-              <p>Autos: 13, 14, 15 de Febrero</p>
-            </div>
-          )}
         </div>
       </div>
     </section>
