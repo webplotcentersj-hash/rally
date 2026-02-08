@@ -64,6 +64,11 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   category: 'sports',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   other: {
     'geo.region': 'AR-J',
   },
