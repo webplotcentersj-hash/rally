@@ -60,6 +60,12 @@ export default function Header() {
               Cronograma
             </Link>
             <Link
+              href="/#clasificacion-motos"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Clasificación Motos
+            </Link>
+            <Link
               href="https://safari-ashen.vercel.app/inscripcion"
               target="_blank"
               rel="noopener noreferrer"
@@ -165,6 +171,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Cronograma
+              </Link>
+              <Link
+                href="/#clasificacion-motos"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Clasificación Motos
               </Link>
               <Link
                 href="https://safari-ashen.vercel.app/inscripcion"
