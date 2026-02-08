@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import {
   CAMPEONATO_TRAVESIA,
   CAMPEONATO_ENDURO,
@@ -93,18 +92,6 @@ export default function ClasificacionMotos() {
           <div className="grid md:grid-cols-2 gap-8">
             <BloqueCampeonato data={CAMPEONATO_TRAVESIA} />
             <BloqueCampeonato data={CAMPEONATO_ENDURO} />
-          </div>
-
-          <div className="mt-8 text-center">
-            <Link
-              href="/cronograma"
-              className="inline-flex items-center gap-2 text-[#65b330] hover:text-[#7dd340] text-sm font-medium uppercase tracking-wide"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              Ver cronograma
-            </Link>
           </div>
         </div>
       </div>
