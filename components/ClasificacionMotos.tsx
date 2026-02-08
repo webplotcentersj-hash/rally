@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
   CAMPEONATO_TRAVESIA,
   CAMPEONATO_ENDURO,
+  CLASIFICACION_DOMINGO,
   type CampeonatoClasificacion,
 } from '@/lib/clasificacion-motos';
 
@@ -85,13 +86,21 @@ export default function ClasificacionMotos() {
             </h2>
             <div className="w-24 h-0.5 bg-[#65b330] mx-auto mb-4" />
             <p className="text-gray-400 text-lg">
-              Campeonato Travesía y Campeonato Enduro – primeros por categoría. Descargá el PDF con la clasificación completa.
+              Clasificación Sábado (Travesía y Enduro) y Domingo – primeros por categoría. Descargá el PDF con la clasificación completa.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* Clasificación Sábado */}
+          <h3 className="text-xl font-bold text-white mb-4 mt-2">Clasificación Sábado</h3>
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
             <BloqueCampeonato data={CAMPEONATO_TRAVESIA} />
             <BloqueCampeonato data={CAMPEONATO_ENDURO} />
+          </div>
+
+          {/* Clasificación Domingo */}
+          <h3 className="text-xl font-bold text-white mb-4">Clasificación Domingo</h3>
+          <div className="max-w-2xl">
+            <BloqueCampeonato data={CLASIFICACION_DOMINGO} />
           </div>
         </div>
       </div>

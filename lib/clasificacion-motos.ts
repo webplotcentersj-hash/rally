@@ -1,5 +1,5 @@
 /**
- * Clasificación Motos – Campeonato Travesía y Enduro.
+ * Clasificación Motos – Sábado (Travesía + Enduro) y Domingo.
  * Datos extraídos de los PDFs oficiales (primeros por categoría).
  */
 
@@ -16,7 +16,7 @@ export type CampeonatoClasificacion = {
   primeros: PrimerPorCategoria[];
 };
 
-/** Campeonato Travesía – según PDF CampeonatoTravesiaSafariTrasLaSierra.pdf */
+/** Clasificación Sábado – Campeonato Travesía (PDF CampeonatoTravesiaSafariTrasLaSierra.pdf) */
 export const CAMPEONATO_TRAVESIA: CampeonatoClasificacion = {
   titulo: 'Campeonato Travesía',
   pdfUrl: '/pdfs/CampeonatoTravesiaSafariTrasLaSierra.pdf',
@@ -35,7 +35,7 @@ export const CAMPEONATO_TRAVESIA: CampeonatoClasificacion = {
   ],
 };
 
-/** Campeonato Enduro ASER – según PDF CampeonatoEnduroASER.SafariTrasLaSierra.pdf */
+/** Clasificación Sábado – Campeonato Enduro ASER (PDF CampeonatoEnduroASER.SafariTrasLaSierra.pdf) */
 export const CAMPEONATO_ENDURO: CampeonatoClasificacion = {
   titulo: 'Campeonato Enduro',
   pdfUrl: '/pdfs/CampeonatoEnduroASER.SafariTrasLaSierra.pdf',
@@ -53,6 +53,26 @@ export const CAMPEONATO_ENDURO: CampeonatoClasificacion = {
     { categoria: 'PRINCIPIANTE', primero: 'SANTOS DAMIAN', numero: '35' },
     { categoria: 'ENDURO', primero: 'AURIEME LUCIANO', numero: '90' },
     { categoria: 'JUNIORS KIDS A', primero: 'JOFRE IARA', numero: '264' },
+    { categoria: 'JUNIORS KIDS B', primero: 'HIERREZUELO VALENTIN', numero: '210' },
+  ],
+};
+
+/** Clasificación Domingo – resultados por categorías (PDF SafariSJASERDomingo.pdf) */
+export const CLASIFICACION_DOMINGO: CampeonatoClasificacion = {
+  titulo: 'Domingo',
+  pdfUrl: '/pdfs/SafariSJASERDomingo.pdf',
+  pdfNombreDescarga: 'SafariSJASERDomingo.pdf',
+  primeros: [
+    { categoria: '110CC LIBRE', primero: 'ELIZONDO FABIAN ANDRES', numero: '125' },
+    { categoria: '110CC SEMI', primero: 'OLIVA ALEXANDER', numero: '48' },
+    { categoria: '150CC CHINA', primero: 'FUNEZ FRANCO', numero: '136' },
+    { categoria: '200CC CHINA', primero: 'FERREIRA VALENTINO', numero: '147' },
+    { categoria: '250CC 4V', primero: 'BECERRA LUCAS', numero: '163' },
+    { categoria: '250CC CHINA', primero: 'SOLIS EMANUEL', numero: '158' },
+    { categoria: 'CUADRI 450CC OPEN', primero: 'DOMINGUEZ ALDO', numero: '49' },
+    { categoria: 'CUADRI 200CC CHINO', primero: 'CHAVEZ FERNANDO', numero: '171' },
+    { categoria: 'CUADRI 250CC CHINO', primero: 'CASIVAR LAUTARO', numero: '77' },
+    { categoria: 'CUADRI KIDS', primero: 'JUAN ESTEBAN', numero: '46' },
     { categoria: 'JUNIORS KIDS B', primero: 'HIERREZUELO VALENTIN', numero: '210' },
   ],
 };
