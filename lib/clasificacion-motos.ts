@@ -57,12 +57,27 @@ export const CAMPEONATO_ENDURO: CampeonatoClasificacion = {
   ],
 };
 
-/** Clasificación Domingo – resultados por categorías (PDF SafariSJASERDomingo.pdf) */
+/** Clasificación Domingo – resultados por categorías (PDF SafariSJASERDomingo (3).pdf) */
 export const CLASIFICACION_DOMINGO: CampeonatoClasificacion = {
   titulo: 'Domingo',
-  pdfUrl: '/pdfs/SafariSJASERDomingo.pdf',
-  pdfNombreDescarga: 'SafariSJASERDomingo.pdf',
+  pdfUrl: '/pdfs/SafariSJASERDomingo-3.pdf',
+  pdfNombreDescarga: 'SafariSJASERDomingo-3.pdf',
   primeros: [
+    // Primero: categorías Enduro que faltaban (orden según PDF)
+    { categoria: 'SENIOR A', primero: '—', numero: '—' },
+    { categoria: 'JUNIOR A', primero: '—', numero: '—' },
+    { categoria: 'JUNIOR B', primero: '—', numero: '—' },
+    { categoria: 'MASTER SENIOR', primero: '—', numero: '—' },
+    { categoria: 'MASTER A', primero: '—', numero: '—' },
+    { categoria: 'MASTER B', primero: '—', numero: '—' },
+    { categoria: 'MASTER C', primero: '—', numero: '—' },
+    { categoria: 'MASTER D', primero: '—', numero: '—' },
+    { categoria: 'PROMOCIONAL', primero: '—', numero: '—' },
+    { categoria: 'PRINCIPIANTE', primero: '—', numero: '—' },
+    { categoria: 'ENDURO', primero: '—', numero: '—' },
+    { categoria: 'JUNIORS KIDS A', primero: '—', numero: '—' },
+    { categoria: 'JUNIORS KIDS B', primero: 'HIERREZUELO VALENTIN', numero: '210' },
+    // Luego: categorías Travesía
     { categoria: '110CC LIBRE', primero: 'ELIZONDO FABIAN ANDRES', numero: '125' },
     { categoria: '110CC SEMI', primero: 'OLIVA ALEXANDER', numero: '48' },
     { categoria: '150CC CHINA', primero: 'FUNEZ FRANCO', numero: '136' },
@@ -73,6 +88,5 @@ export const CLASIFICACION_DOMINGO: CampeonatoClasificacion = {
     { categoria: 'CUADRI 200CC CHINO', primero: 'CHAVEZ FERNANDO', numero: '171' },
     { categoria: 'CUADRI 250CC CHINO', primero: 'CASIVAR LAUTARO', numero: '77' },
     { categoria: 'CUADRI KIDS', primero: 'JUAN ESTEBAN', numero: '46' },
-    { categoria: 'JUNIORS KIDS B', primero: 'HIERREZUELO VALENTIN', numero: '210' },
   ],
 };
