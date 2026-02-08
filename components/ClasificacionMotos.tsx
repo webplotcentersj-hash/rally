@@ -111,12 +111,28 @@ export default function ClasificacionMotos() {
               <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#65b330]" />
             </div>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Clasificación Sábado (Travesía y Enduro) y Domingo – primeros por categoría. Descargá el PDF con la clasificación completa.
+              Clasificación Domingo y Sábado (Travesía y Enduro) – primeros por categoría. Descargá el PDF con la clasificación completa.
             </p>
           </div>
 
-          {/* Clasificación Sábado */}
+          {/* Clasificación Domingo */}
           <div className="mb-10">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500/20 border border-emerald-500/40">
+                <svg className="h-4 w-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold text-white uppercase tracking-wide">Clasificación Domingo</h3>
+              <span className="h-px flex-1 max-w-32 bg-gradient-to-r from-emerald-500/40 to-transparent" />
+            </div>
+            <div className="max-w-2xl">
+              <BloqueCampeonato data={CLASIFICACION_DOMINGO} />
+            </div>
+          </div>
+
+          {/* Clasificación Sábado */}
+          <div>
             <div className="flex items-center gap-3 mb-5">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-500/20 border border-amber-500/40">
                 <svg className="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,22 +145,6 @@ export default function ClasificacionMotos() {
             <div className="grid md:grid-cols-2 gap-8">
               <BloqueCampeonato data={CAMPEONATO_TRAVESIA} />
               <BloqueCampeonato data={CAMPEONATO_ENDURO} />
-            </div>
-          </div>
-
-          {/* Clasificación Domingo */}
-          <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500/20 border border-emerald-500/40">
-                <svg className="h-4 w-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-white uppercase tracking-wide">Clasificación Domingo</h3>
-              <span className="h-px flex-1 max-w-32 bg-gradient-to-r from-emerald-500/40 to-transparent" />
-            </div>
-            <div className="max-w-2xl">
-              <BloqueCampeonato data={CLASIFICACION_DOMINGO} />
             </div>
           </div>
         </div>
