@@ -4,11 +4,16 @@ import { useEffect, useRef, useState } from 'react';
 import {
   CAMPEONATO_TRAVESIA,
   CAMPEONATO_ENDURO,
-  CLASIFICACION_DOMINGO,
+  CLASIFICACION_DOMINGO_ENDURO,
+  CLASIFICACION_DOMINGO_TRAVESIA,
   type CampeonatoClasificacion,
 } from '@/lib/clasificacion-motos';
 
+const COLUMNAS_TIEMPO = { col1: 'Nombre', col2: 'Tiempo' } as const;
+const COLUMNAS_NUMERO = { col1: '1º', col2: 'Nº' } as const;
+
 function BloqueCampeonato({ data }: { data: CampeonatoClasificacion }) {
+  const headers = data.columnasTiempo ? COLUMNAS_TIEMPO : COLUMNAS_NUMERO;
   return (
     <article className="group relative overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-br from-white/[0.07] via-black/50 to-black/80 shadow-xl shadow-black/30 transition-all duration-300 hover:border-[#65b330]/40 hover:shadow-[0_0_30px_rgba(101,179,48,0.12)]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_70%_0%,rgba(101,179,48,0.15),transparent_50%)]" />
@@ -40,8 +45,8 @@ function BloqueCampeonato({ data }: { data: CampeonatoClasificacion }) {
             <thead>
               <tr className="border-b border-white/15 bg-white/5">
                 <th className="py-3 px-4 text-left text-gray-400 font-semibold uppercase tracking-wider text-xs">Categoría</th>
-                <th className="py-3 px-4 text-left text-gray-400 font-semibold uppercase tracking-wider text-xs">1º</th>
-                <th className="py-3 px-4 text-left text-gray-400 font-semibold uppercase tracking-wider text-xs">Nº</th>
+                <th className="py-3 px-4 text-left text-gray-400 font-semibold uppercase tracking-wider text-xs">{headers.col1}</th>
+                <th className="py-3 px-4 text-left text-gray-400 font-semibold uppercase tracking-wider text-xs">{headers.col2}</th>
               </tr>
             </thead>
             <tbody>
@@ -126,8 +131,9 @@ export default function ClasificacionMotos() {
               <h3 className="text-lg font-bold text-white uppercase tracking-wide">Clasificación Domingo</h3>
               <span className="h-px flex-1 max-w-32 bg-gradient-to-r from-emerald-500/40 to-transparent" />
             </div>
-            <div className="max-w-2xl">
-              <BloqueCampeonato data={CLASIFICACION_DOMINGO} />
+            <div className="grid md:grid-cols-2 gap-8">
+              <BloqueCampeonato data={CLASIFICACION_DOMINGO_ENDURO} />
+              <BloqueCampeonato data={CLASIFICACION_DOMINGO_TRAVESIA} />
             </div>
           </div>
 
