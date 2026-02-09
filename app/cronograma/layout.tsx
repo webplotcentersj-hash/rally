@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Cronograma | Safari Tras las Sierras',
   description:
-    'Cronograma completo del Safari Tras las Sierras: administrativas, entrenamientos, clasificaciones y carreras del fin de semana.',
+    'Cronograma Safari Tras las Sierras – Autos: reunión obligatoria 13/02, largada simbólica, primes sábado y domingo, podio 17:00 hs. Valle Fértil.',
 };
 
 export default function CronogramaLayout({

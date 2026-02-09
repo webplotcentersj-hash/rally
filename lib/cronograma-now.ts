@@ -1,5 +1,5 @@
 /**
- * Actividades del cronograma (motos 6-8 feb) para mostrar "ahora" en la home.
+ * Actividades del cronograma (autos 13-15 feb) para mostrar "ahora" en la home.
  * Zona horaria: Argentina (UTC-3).
  */
 export type CronogramaSlot = {
@@ -12,87 +12,63 @@ export type CronogramaSlot = {
 
 export const CRONOGRAMA_SLOTS: CronogramaSlot[] = [
   {
-    date: '2026-02-06',
-    start: '10:00',
-    end: '21:00',
-    title: 'Administrativas – Salón Cultural de Valle Fértil',
-    description: 'Acreditaciones y trámites para pilotos inscriptos.',
+    date: '2026-02-13',
+    start: '18:00',
+    end: '19:30',
+    title: 'Reunión obligatoria – Salón Cultural Municipal',
+    description: 'Charla AAV (José María Andruccetti). Asistencia obligatoria pilotos o copilotos.',
   },
   {
-    date: '2026-02-07',
-    start: '08:00',
-    end: '13:00',
-    title: 'Administrativas – Circuito Coqui Quintana',
-    description: 'Últimas acreditaciones y revisión de documentación.',
+    date: '2026-02-13',
+    start: '21:00',
+    end: '22:00',
+    title: 'Largada simbólica – Circuito Coqui Quintana',
+    description: 'Viernes 13/02.',
   },
   {
-    date: '2026-02-07',
-    start: '10:00',
-    end: '11:00',
-    title: 'Entrenamientos y clasificaciones – Campeonato Travesía',
-    description: 'Apertura parque, cierre y reunión de pilotos.',
+    date: '2026-02-14',
+    start: '09:00',
+    end: '11:30',
+    title: 'Sábado – Primer Prime (36 km)',
+    description: 'Primer Prime 09:00 hs.',
   },
   {
-    date: '2026-02-07',
-    start: '14:00',
-    end: '15:00',
-    title: 'Entrenamientos y clasificaciones – Junior Kids y Cuatris Kids',
-    description: 'Apertura parque, cierre y reunión de pilotos.',
+    date: '2026-02-14',
+    start: '12:00',
+    end: '14:00',
+    title: 'Sábado – Segundo Prime (10 km)',
+    description: 'Segundo Prime 12:00 hs.',
   },
   {
-    date: '2026-02-07',
-    start: '16:00',
-    end: '17:00',
-    title: 'Entrenamientos y clasificaciones – Campeonato Enduro',
-    description: 'Apertura parque, cierre y reunión de pilotos.',
-  },
-  {
-    date: '2026-02-08',
-    start: '08:00',
-    end: '09:00',
-    title: 'Carreras – Campeonato Travesía',
-    description: 'Parque cerrado y reunión para engrillar y largar.',
-  },
-  {
-    date: '2026-02-08',
-    start: '11:00',
+    date: '2026-02-15',
+    start: '09:00',
     end: '12:00',
-    title: 'Carreras – Junior Kids y Cuatris Kids',
-    description: 'Parque cerrado y reunión para engrillar y largar.',
+    title: 'Domingo – Prime único (30 km)',
+    description: 'Prime único 09:00 hs. Resultados en TIEMPOS – RC Cronos.',
   },
   {
-    date: '2026-02-08',
-    start: '13:00',
-    end: '19:00',
-    title: 'Carreras – Campeonato Enduro y entrega de premios',
-    description: 'Carreras y ceremonia de premiación (aprox. 18:30 hs).',
+    date: '2026-02-15',
+    start: '17:00',
+    end: '18:30',
+    title: 'Podio – Ceremonia de premiación',
+    description: '17:00 hs.',
   },
 ];
 
-/** Fecha/hora de inicio del primer evento (para el countdown). Argentina UTC-3 */
-export const FIRST_EVENT_DATE = new Date('2026-02-06T10:00:00-03:00').getTime();
+/** Fecha/hora de inicio del primer evento (reunión obligatoria 13 feb 18:00). Argentina UTC-3 */
+export const FIRST_EVENT_DATE = new Date('2026-02-13T18:00:00-03:00').getTime();
 
-/**
- * Indica si "now" está dentro del rango del Safari motos (6-8 feb 2026).
- */
 function isDuringEvent(now: Date): boolean {
-  const arStart = new Date('2026-02-06T00:00:00-03:00').getTime();
-  const arEnd = new Date('2026-02-08T23:59:59-03:00').getTime();
+  const arStart = new Date('2026-02-13T00:00:00-03:00').getTime();
+  const arEnd = new Date('2026-02-15T23:59:59-03:00').getTime();
   const t = now.getTime();
   return t >= arStart && t <= arEnd;
 }
 
-/**
- * Parsea "YYYY-MM-DD" y "HH:mm" en Argentina (-03:00) y devuelve timestamp.
- */
 function parseSlotTime(dateStr: string, timeStr: string): number {
   return new Date(`${dateStr}T${timeStr}:00-03:00`).getTime();
 }
 
-/**
- * Devuelve la actividad del cronograma que está en curso en este momento (hora Argentina).
- * Si el usuario está en otra zona, usamos su hora local como aproximación.
- */
 export function getCurrentActivity(now: Date = new Date()): CronogramaSlot | null {
   if (!isDuringEvent(now)) return null;
 
@@ -105,20 +81,12 @@ export function getCurrentActivity(now: Date = new Date()): CronogramaSlot | nul
   return null;
 }
 
-/** Fin del último evento (8 feb 2026 19:00 Argentina) */
-const LAST_EVENT_END = new Date('2026-02-08T19:00:00-03:00').getTime();
+const LAST_EVENT_END = new Date('2026-02-15T18:30:00-03:00').getTime();
 
-/**
- * True si "now" ya pasó el fin del Safari motos (8 feb).
- */
 export function isAfterEvent(now: Date): boolean {
   return now.getTime() > LAST_EVENT_END;
 }
 
-/**
- * Devuelve la próxima actividad (la que aún no empezó) en el cronograma.
- * Útil para mostrar "Próxima actividad: X a las HH:mm" cuando estamos en el evento pero entre slots.
- */
 export function getNextActivity(now: Date = new Date()): CronogramaSlot | null {
   if (!isDuringEvent(now) || isAfterEvent(now)) return null;
 

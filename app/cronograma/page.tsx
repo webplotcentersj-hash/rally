@@ -7,216 +7,71 @@ type Slot = {
   time: string;
   title: string;
   description?: string;
-  highlight?: 'travesia' | 'kids' | 'enduro' | 'general';
 };
 
 type DayBlock = {
   label: string;
   subtitle: string;
-  description?: string;
   slots: Slot[];
 };
 
-const adminBlocks: DayBlock[] = [
+const reunionBlock: DayBlock = {
+  label: 'Viernes 13/02',
+  subtitle: 'Reunión obligatoria – Valle Fértil',
+  slots: [
+    {
+      time: '18:00 hs',
+      title: 'Charla obligatoria en Salón Cultural Municipal',
+      description:
+        'A cargo de José María Andruccetti de la AAV (Asociación Argentina de Volantes). ASISTENCIA OBLIGATORIA PARA PILOTOS O COPILOTOS.',
+    },
+  ],
+};
+
+const viernesBlock: DayBlock = {
+  label: 'Viernes 13/02',
+  subtitle: 'Largada simbólica',
+  slots: [
+    {
+      time: '21:00 hs',
+      title: 'Largada simbólica',
+      description: 'Circuito Coqui Quintana.',
+    },
+  ],
+};
+
+const sabadoBlocks: DayBlock[] = [
   {
-    label: 'Viernes 06/02',
-    subtitle: 'Administrativas – 1ª fecha Enduro ASER 2026 y Travesía 2026',
-    slots: [
-      {
-        time: '10:00 – 21:00 hs',
-        title: 'Administrativas Salón Cultural de Valle Fértil',
-        description: 'Acreditaciones y trámites para pilotos inscriptos.',
-        highlight: 'general',
-      },
-    ],
+    label: 'Sábado 14/02',
+    subtitle: 'Primer Prime',
+    slots: [{ time: '09:00 hs', title: 'Primer Prime', description: 'Extensión 36 km.' }],
   },
   {
-    label: 'Sábado 07/02',
-    subtitle: 'Administrativas – Circuito Coqui Quintana',
-    slots: [
-      {
-        time: '08:00 – 13:00 hs',
-        title: 'Administrativas en circuito Coqui Quintana',
-        description: 'Últimas acreditaciones y revisión de documentación.',
-        highlight: 'general',
-      },
-    ],
+    label: 'Sábado 14/02',
+    subtitle: 'Segundo Prime',
+    slots: [{ time: '12:00 hs', title: 'Segundo Prime', description: 'Extensión 10 km.' }],
   },
 ];
 
-const saturdayBlocks: DayBlock[] = [
+const domingoBlocks: DayBlock[] = [
   {
-    label: 'Sábado 07/02',
-    subtitle: 'Entrenamientos y clasificaciones – Campeonato Travesía',
-    slots: [
-      {
-        time: '10:00 hs',
-        title: 'Apertura parque cerrado',
-        description: 'Categorías Campeonato TRAVESÍA.',
-        highlight: 'travesia',
-      },
-      {
-        time: '10:30 hs',
-        title: 'Cierre de parque cerrado',
-        description: 'Categorías Campeonato TRAVESÍA.',
-        highlight: 'travesia',
-      },
-      {
-        time: '10:35 hs',
-        title: 'Reunión de pilotos',
-        description: 'Con equipo listo para ENTRENAR y CLASIFICAR.',
-        highlight: 'travesia',
-      },
-    ],
+    label: 'Domingo 15/02',
+    subtitle: 'Prime único',
+    slots: [{ time: '09:00 hs', title: 'Prime único', description: 'Extensión 30 km.' }],
   },
   {
-    label: 'Sábado 07/02',
-    subtitle: 'Entrenamientos y clasificaciones – Junior Kids y Cuatris Kids',
+    label: 'Domingo 15/02',
+    subtitle: 'Resultados y podio',
     slots: [
-      {
-        time: '14:00 hs',
-        title: 'Apertura parque cerrado',
-        description: 'JUNIOR KIDS y CUATRIS KIDS.',
-        highlight: 'kids',
-      },
-      {
-        time: '14:30 hs',
-        title: 'Cierre de parque cerrado',
-        description: 'JUNIOR KIDS y CUATRIS KIDS.',
-        highlight: 'kids',
-      },
-      {
-        time: '14:35 hs',
-        title: 'Reunión de pilotos',
-        description: 'Con equipo listo para ENTRENAR y CLASIFICAR.',
-        highlight: 'kids',
-      },
-    ],
-  },
-  {
-    label: 'Sábado 07/02',
-    subtitle: 'Entrenamientos y clasificaciones – Campeonato Enduro',
-    slots: [
-      {
-        time: '16:00 hs',
-        title: 'Apertura parque cerrado',
-        description: 'Categorías Campeonato ENDURO.',
-        highlight: 'enduro',
-      },
-      {
-        time: '16:30 hs',
-        title: 'Cierre de parque cerrado',
-        description: 'Categorías Campeonato ENDURO.',
-        highlight: 'enduro',
-      },
-      {
-        time: '16:35 hs',
-        title: 'Reunión de pilotos',
-        description: 'Con equipo listo para ENTRENAR y CLASIFICAR.',
-        highlight: 'enduro',
-      },
+      { time: '—', title: 'Resultados oficiales', description: 'Publicados en TIEMPOS – RC Cronos.' },
+      { time: '17:00 hs', title: 'Podio', description: 'Ceremonia de premiación.' },
     ],
   },
 ];
-
-const sundayBlocks: DayBlock[] = [
-  {
-    label: 'Domingo 08/02',
-    subtitle: 'Carreras – Campeonato Travesía',
-    slots: [
-      {
-        time: '08:00 hs',
-        title: 'Apertura parque cerrado',
-        description: 'Categorías Campeonato TRAVESÍA.',
-        highlight: 'travesia',
-      },
-      {
-        time: '08:30 hs',
-        title: 'Cierre de parque cerrado',
-        description: 'Categorías Campeonato TRAVESÍA.',
-        highlight: 'travesia',
-      },
-      {
-        time: '08:35 hs',
-        title: 'Reunión de pilotos',
-        description: 'Con equipo listo para ENGRILLAR y LARGAR.',
-        highlight: 'travesia',
-      },
-    ],
-  },
-  {
-    label: 'Domingo 08/02',
-    subtitle: 'Carreras – Junior Kids y Cuatris Kids',
-    slots: [
-      {
-        time: '11:00 hs',
-        title: 'Apertura parque cerrado',
-        description: 'JUNIOR KIDS y CUATRIS KIDS.',
-        highlight: 'kids',
-      },
-      {
-        time: '11:30 hs',
-        title: 'Cierre de parque cerrado',
-        description: 'JUNIOR KIDS y CUATRIS KIDS.',
-        highlight: 'kids',
-      },
-      {
-        time: '11:35 hs',
-        title: 'Reunión de pilotos',
-        description: 'Con equipo listo para ENGRILLAR y LARGAR.',
-        highlight: 'kids',
-      },
-    ],
-  },
-  {
-    label: 'Domingo 08/02',
-    subtitle: 'Carreras – Campeonato Enduro',
-    slots: [
-      {
-        time: '13:00 hs',
-        title: 'Apertura parque cerrado',
-        description: 'Categorías Campeonato ENDURO.',
-        highlight: 'enduro',
-      },
-      {
-        time: '13:30 hs',
-        title: 'Cierre de parque cerrado',
-        description: 'Categorías Campeonato ENDURO.',
-        highlight: 'enduro',
-      },
-      {
-        time: '13:35 hs',
-        title: 'Reunión de pilotos',
-        description: 'Con equipo listo para ENGRILLAR y LARGAR.',
-        highlight: 'enduro',
-      },
-      {
-        time: '18:30 hs',
-        title: 'Entrega de premios',
-        description: 'Ceremonia de premiación (horario aproximado).',
-        highlight: 'general',
-      },
-    ],
-  },
-];
-
-function getHighlightClass(highlight?: Slot['highlight']) {
-  if (highlight === 'travesia') {
-    return 'border-amber-400/70 bg-amber-500/5';
-  }
-  if (highlight === 'kids') {
-    return 'border-sky-400/70 bg-sky-500/5';
-  }
-  if (highlight === 'enduro') {
-    return 'border-emerald-400/70 bg-emerald-500/5';
-  }
-  return 'border-white/10 bg-white/5';
-}
 
 export default function CronogramaPage() {
   return (
     <main className="min-h-screen bg-black overflow-hidden">
-      {/* Fondo con gradientes y rejilla, similar a Tiempos/Circuitos */}
       <div className="fixed inset-0 bg-gradient-to-b from-black via-[#050805] to-black pointer-events-none" />
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(101,179,48,0.14),transparent)] pointer-events-none" />
       <div className="fixed inset-0 bg-[linear-gradient(to_right,rgba(101,179,48,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(101,179,48,0.04)_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] pointer-events-none" />
@@ -253,8 +108,7 @@ export default function CronogramaPage() {
                 Cronograma
               </h1>
               <p className="text-gray-400 max-w-2xl mx-auto text-lg mb-6">
-                Horarios oficiales del fin de semana del Safari Tras las Sierras. Administrativas, entrenamientos,
-                clasificaciones y carreras, organizados por día y tipo de campeonato.
+                Safari Tras las Sierras – Autos. Reunión obligatoria, largada simbólica, primes y podio. Valle Fértil.
               </p>
 
               <div className="flex items-center justify-center gap-2">
@@ -266,46 +120,128 @@ export default function CronogramaPage() {
               </div>
             </div>
 
-            {/* Administrativas */}
+            {/* Reunión obligatoria */}
             <section className="mb-16">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">
-                Administrativas
+                Reunión obligatoria
+              </h2>
+              <article className="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-black/40 to-[#101910]/90 shadow-xl shadow-black/40">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(245,158,11,0.15),transparent_45%)]" />
+                <div className="relative p-6 md:p-7 space-y-3">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-black/40 border border-amber-500/30 text-amber-200">
+                    {reunionBlock.label}
+                  </span>
+                  <h3 className="text-lg md:text-xl font-semibold text-white">{reunionBlock.subtitle}</h3>
+                  <p className="text-amber-200/90 text-sm">
+                    Atención: el día Viernes 13/02, 18:00 hs en el Salón Cultural Municipal habrá una charla obligatoria
+                    de José María Andruccetti de la AAV (Asociación Argentina de Volantes) para Pilotos o Copilotos.
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-200">
+                    {reunionBlock.slots.map((slot) => (
+                      <li key={slot.time} className="flex items-start gap-3">
+                        <span className="font-mono text-xs md:text-sm text-[#a3ff6f] bg-black/50 border border-[#65b330]/40 rounded-md px-2 py-1">
+                          {slot.time}
+                        </span>
+                        <div>
+                          <p className="font-semibold text-white">{slot.title}</p>
+                          {slot.description && (
+                            <p className="text-gray-300 mt-0.5">{slot.description}</p>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-amber-300 font-semibold uppercase tracking-wide text-sm mt-2">
+                    Asistencia obligatoria para pilotos o copilotos.
+                  </p>
+                </div>
+              </article>
+            </section>
+
+            {/* Posición de largada */}
+            <section className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+                Posición de largada
+              </h2>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-7 text-gray-200 text-sm md:text-base leading-relaxed space-y-2">
+                <p>
+                  En cada categoría: 1° larga el ganador 2025, 2° larga el ganador 2024. De no participar se van
+                  tomando las posiciones siguientes. Se completan los dos primeros lugares y del tercero para atrás por
+                  orden de inscripción.
+                </p>
+                <p>
+                  El <strong className="text-white">Comisario Deportivo</strong> puede cambiar posiciones si así lo
+                  cree necesario.
+                </p>
+              </div>
+            </section>
+
+            {/* Largada */}
+            <section className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+                Largada
+              </h2>
+              <div className="rounded-2xl border border-[#65b330]/40 bg-[#65b330]/10 p-6 md:p-7">
+                <p className="text-white font-semibold">
+                  Auto 0: Juan Pablo Batista + Auto Policía (Jefe Operativo).
+                </p>
+              </div>
+            </section>
+
+            {/* Viernes 13/02 – Largada simbólica */}
+            <section className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">
+                Viernes 13/02
+              </h2>
+              <article className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/60 shadow-xl shadow-black/40">
+                <div className="relative p-6 md:p-7 space-y-3">
+                  <span className="inline-block text-[11px] font-semibold uppercase tracking-wide text-[#a3ff6f] bg-black/60 border border-[#65b330]/50 rounded-full px-3 py-1">
+                    {viernesBlock.label}
+                  </span>
+                  <h3 className="text-lg font-semibold text-white">{viernesBlock.subtitle}</h3>
+                  <ul className="space-y-2">
+                    {viernesBlock.slots.map((slot) => (
+                      <li key={slot.time} className="flex items-start gap-3">
+                        <span className="font-mono text-sm text-[#a3ff6f] bg-black/50 border border-[#65b330]/40 rounded-md px-2 py-1">
+                          {slot.time}
+                        </span>
+                        <div>
+                          <p className="font-semibold text-white">{slot.title}</p>
+                          {slot.description && (
+                            <p className="text-gray-300 text-sm mt-0.5">{slot.description}</p>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </section>
+
+            {/* Sábado */}
+            <section className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">
+                Sábado 14/02
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {adminBlocks.map((block) => (
+                {sabadoBlocks.map((block) => (
                   <article
-                    key={block.label}
-                    className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 via-black/40 to-[#101910]/90 shadow-xl shadow-black/40"
+                    key={block.subtitle}
+                    className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/60 shadow-xl shadow-black/40"
                   >
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(101,179,48,0.18),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(101,179,48,0.12),transparent_40%)]" />
-                    <div className="relative p-6 md:p-7 space-y-3">
-                      <div className="flex items-center justify-between gap-3">
-                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-black/40 border border-white/15 text-gray-200">
-                          {block.label}
-                        </span>
-                        <span className="text-xs font-medium text-[#a3ff6f] uppercase tracking-wide">
-                          Administrativas
-                        </span>
-                      </div>
-                      <h3 className="text-lg md:text-xl font-semibold text-white">
-                        {block.subtitle}
-                      </h3>
-                      <ul className="space-y-2 text-sm text-gray-200">
+                    <div className="relative p-6 space-y-3">
+                      <span className="inline-block text-[11px] font-semibold uppercase tracking-wide text-[#a3ff6f] bg-black/60 border border-[#65b330]/50 rounded-full px-3 py-1">
+                        {block.label}
+                      </span>
+                      <h3 className="text-base md:text-lg font-semibold text-white">{block.subtitle}</h3>
+                      <ul className="space-y-2 text-sm text-gray-100">
                         {block.slots.map((slot) => (
-                          <li key={slot.time} className="flex items-start gap-3">
-                            <span className="font-mono text-xs md:text-sm text-[#a3ff6f] bg-black/50 border border-[#65b330]/40 rounded-md px-2 py-1">
-                              {slot.time}
-                            </span>
-                            <div>
-                              <p className="font-semibold text-white text-sm md:text-base">
-                                {slot.title}
-                              </p>
-                              {slot.description && (
-                                <p className="text-xs md:text-sm text-gray-300 mt-0.5">
-                                  {slot.description}
-                                </p>
-                              )}
-                            </div>
+                          <li key={slot.time} className="rounded-xl border border-white/10 bg-black/40 px-3 py-2">
+                            <p className="font-mono text-xs text-[#a3ff6f] mb-0.5">{slot.time}</p>
+                            <p className="font-semibold text-white">{slot.title}</p>
+                            {slot.description && (
+                              <p className="text-xs text-gray-300 mt-0.5">{slot.description}</p>
+                            )}
                           </li>
                         ))}
                       </ul>
@@ -315,45 +251,29 @@ export default function CronogramaPage() {
               </div>
             </section>
 
-            {/* Sábado – Entrenamientos y clasificaciones */}
+            {/* Domingo */}
             <section className="mb-16">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">
-                Sábado 07/02 – Entrenamientos y clasificaciones
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">
+                Domingo 15/02
               </h2>
-              <p className="text-gray-400 text-sm md:text-base mb-6">
-                Solo podrán entrenar y clasificar los pilotos inscriptos. Habrá horario extendido únicamente para
-                quienes no puedan llegar antes y deban inscribirse para correr el domingo.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {saturdayBlocks.map((block) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {domingoBlocks.map((block) => (
                   <article
                     key={block.subtitle}
                     className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/60 shadow-xl shadow-black/40"
                   >
-                    <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,rgba(101,179,48,0.3),transparent_55%)]" />
                     <div className="relative p-6 space-y-3">
                       <span className="inline-block text-[11px] font-semibold uppercase tracking-wide text-[#a3ff6f] bg-black/60 border border-[#65b330]/50 rounded-full px-3 py-1">
                         {block.label}
                       </span>
-                      <h3 className="text-base md:text-lg font-semibold text-white">
-                        {block.subtitle}
-                      </h3>
-                      <ul className="space-y-3 text-sm text-gray-100">
+                      <h3 className="text-base md:text-lg font-semibold text-white">{block.subtitle}</h3>
+                      <ul className="space-y-2 text-sm text-gray-100">
                         {block.slots.map((slot) => (
-                          <li
-                            key={slot.time + slot.title}
-                            className={`rounded-xl border px-3 py-2 bg-black/40 ${getHighlightClass(slot.highlight)}`}
-                          >
-                            <p className="font-mono text-xs text-[#a3ff6f] mb-0.5">
-                              {slot.time}
-                            </p>
-                            <p className="font-semibold text-white text-sm">
-                              {slot.title}
-                            </p>
+                          <li key={slot.time + (slot.title || '')} className="rounded-xl border border-white/10 bg-black/40 px-3 py-2">
+                            <p className="font-mono text-xs text-[#a3ff6f] mb-0.5">{slot.time}</p>
+                            <p className="font-semibold text-white">{slot.title}</p>
                             {slot.description && (
-                              <p className="text-xs text-gray-300 mt-0.5">
-                                {slot.description}
-                              </p>
+                              <p className="text-xs text-gray-300 mt-0.5">{slot.description}</p>
                             )}
                           </li>
                         ))}
@@ -364,64 +284,24 @@ export default function CronogramaPage() {
               </div>
             </section>
 
-            {/* Domingo – Carreras */}
-            <section className="mb-10 md:mb-16">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">
-                Domingo 08/02 – Carreras
+            {/* Aceptación del Reglamento */}
+            <section className="mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+                Aceptación del Reglamento
               </h2>
-              <p className="text-gray-400 text-sm md:text-base mb-6">
-                El domingo se larga según la clasificación del día sábado. Se respetan los horarios y regulaciones
-                vigentes de ASER.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {sundayBlocks.map((block) => (
-                  <article
-                    key={block.subtitle}
-                    className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/60 shadow-xl shadow-black/40"
-                  >
-                    <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_bottom,rgba(101,179,48,0.3),transparent_55%)]" />
-                    <div className="relative p-6 space-y-3">
-                      <span className="inline-block text-[11px] font-semibold uppercase tracking-wide text-[#a3ff6f] bg-black/60 border border-[#65b330]/50 rounded-full px-3 py-1">
-                        {block.label}
-                      </span>
-                      <h3 className="text-base md:text-lg font-semibold text-white">
-                        {block.subtitle}
-                      </h3>
-                      <ul className="space-y-3 text-sm text-gray-100">
-                        {block.slots.map((slot) => (
-                          <li
-                            key={slot.time + slot.title}
-                            className={`rounded-xl border px-3 py-2 bg-black/40 ${getHighlightClass(slot.highlight)}`}
-                          >
-                            <p className="font-mono text-xs text-[#a3ff6f] mb-0.5">
-                              {slot.time}
-                            </p>
-                            <p className="font-semibold text-white text-sm">
-                              {slot.title}
-                            </p>
-                            {slot.description && (
-                              <p className="text-xs text-gray-300 mt-0.5">
-                                {slot.description}
-                              </p>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </article>
-                ))}
+              <div className="rounded-2xl border border-white/10 bg-black/70 px-5 py-5 md:px-6 md:py-6 text-sm md:text-base text-gray-300 leading-relaxed space-y-3">
+                <p>
+                  La inscripción y participación en la competencia implica el conocimiento, aceptación y cumplimiento
+                  total del presente Reglamento Particular de la Prueba y de toda normativa aplicable.
+                </p>
+                <p>
+                  El RPP puede tener modificaciones si así lo cree necesario el Comisario Deportivo.
+                </p>
               </div>
             </section>
-
-            {/* Nota final */}
-            <div className="rounded-2xl border border-white/10 bg-black/70 px-5 py-4 text-xs md:text-sm text-gray-300">
-              Se respetarán los horarios de este cronograma y las reglamentaciones vigentes de ASER. Los horarios y
-              tandas están sujetos a cambios según la cantidad de pilotos, necesidades de organización y seguridad.
-            </div>
           </div>
         </div>
       </div>
     </main>
   );
 }
-
