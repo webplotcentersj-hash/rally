@@ -11,6 +11,7 @@ let dbCache: { text: string; at: number } | null = null;
 function getSupabase(): SupabaseClient | null {
   const url =
     process.env.NEXT_PUBLIC_SUPABASE_RALLY2_URL ||
+    process.env.EXT_PUBLIC_SUPABASE_RALLY2_URL ||
     process.env.NEXT_PUBLIC_SUPABASE_URL ||
     process.env.SUPABASE_URL;
   const key =
