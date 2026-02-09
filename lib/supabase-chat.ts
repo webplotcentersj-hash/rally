@@ -63,9 +63,22 @@ export async function getDbContext(): Promise<string> {
   const supabase = getSupabase();
   if (!supabase) return '';
 
-  const tables = getTableNames();
   const parts: string[] = [];
 
+  // Resumen con conteos para que el asistente siempre sepa "cuántos pilotos hay"
+  try {
+    const [pilotsRes, categoriasRes] = await Promise.all([
+      supabase.from('pilots').select('*', { count: 'exact', head: true }),
+      supabase.from('categorias').select('*', { count: 'exact', head: true }),
+    ]);
+    const nPilots = pilotsRes.count ?? 0;
+    const nCategorias = categoriasRes.count ?? 0;
+    parts.push(`--- Resumen base de datos ---\nTotal pilotos inscriptos: ${nPilots}. Total categorías: ${nCategorias}. Usá estos números al responder.`);
+  } catch (e) {
+    console.warn('[chat] Supabase resumen:', e);
+  }
+
+  const tables = getTableNames();
   for (const table of tables) {
     try {
       const limit = getLimit(table);

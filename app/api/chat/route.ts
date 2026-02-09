@@ -25,14 +25,14 @@ const CACHE_TTL_MS = 5 * 60 * 1000;
 const pageCache: Map<string, { text: string; at: number }> = new Map();
 
 const RELEVANCE_KEYWORDS: Record<string, string[]> = {
-  pilotos: ['piloto', 'pilotos', 'inscripto', 'inscriptos', 'lista', 'listado', 'categoría', 'categorias', 'competidor', 'número', 'num ', 'nombre', 'apellido', 'quién está', 'quien esta', 'inscrito'],
+  pilotos: ['piloto', 'pilotos', 'inscripto', 'inscriptos', 'lista', 'listado', 'categoría', 'categorias', 'competidor', 'número', 'num ', 'nombre', 'apellido', 'quién está', 'quien esta', 'inscrito', 'cuántos', 'cuantos', 'cantidad', 'cuántos hay', 'cuantos hay', 'hay inscriptos'],
   prensa: ['prensa', 'medios', 'periodista', 'contacto', 'nota', 'comunicado', 'acreditación', 'acreditacion', 'material', 'foto', 'cobertura'],
   inscripcion: ['inscripción', 'inscribir', 'inscribirme', 'cómo participo', 'como participo', 'inscribirse', 'formulario', 'pago', 'inscribirte'],
   inicio_ashen: ['qué es', 'que es', 'safari', 'valle fértil'],
   inicio: ['inicio', 'home', 'principal', 'esta web', 'esta pagina'],
   cronograma: ['cronograma', 'fechas', 'horario', 'cuándo', 'cuando', 'viernes', 'sábado', 'sabado', 'domingo', 'reunión', 'largada', 'prime', 'podio', '18:00', '21:00', '09:00', '17:00'],
   circuitos: ['circuito', 'circuitos', 'mapa', 'largada', 'coqui quintana', 'balde', 'chilcas', 'san agustín', 'ruta', 'km'],
-  categorias: ['categoría', 'categorias', 'categorías'],
+  categorias: ['categoría', 'categorias', 'categorías', 'cuántas categorías', 'cuantas categorias', 'listado de categorías'],
   reglamento: ['reglamento', 'reglas', 'normas', 'posición de largada', 'comisario'],
 };
 
@@ -126,7 +126,9 @@ Datos fijos del evento:
 - Largada simbólica: viernes 13/02 a las 21:00, Circuito Coqui Quintana.
 - Sábado: Primer Prime 09:00 (36 km), Segundo Prime 12:00 (10 km).
 - Domingo: Prime único 09:00 (30 km), podio 17:00. Resultados en TIEMPOS – RC Cronos.
-Tenés información de tres fuentes: (1) La app del Safari (pilotos inscriptos, prensa, inscripción, inicio). (2) Esta web oficial (inicio, cronograma, circuitos, categorías, reglamento). (3) La base de datos: pilotos inscriptos (pilots), categorías (categorias), tiempos de carrera (race_times) y estado de la carrera / semáforo (race_status). Usá todo eso para responder con precisión.`;
+Tenés información de tres fuentes: (1) La app del Safari (pilotos inscriptos, prensa, inscripción, inicio). (2) Esta web oficial (inicio, cronograma, circuitos, categorías, reglamento). (3) La base de datos: pilotos inscriptos (pilots), categorías (categorias), tiempos de carrera (race_times) y estado de la carrera / semáforo (race_status). Usá todo eso para responder con precisión.
+
+Enlaces públicos (podés sugerirlos cuando pregunten por listados o prensa): Pilotos inscriptos: https://safari-ashen.vercel.app/pilotos — Prensa: https://safari-ashen.vercel.app/prensa`;
 
 type Message = { role: 'user' | 'assistant' | 'system'; content: string };
 
@@ -173,7 +175,17 @@ export async function POST(req: NextRequest) {
 
   const dbContext = await getDbContext();
   if (dbContext) {
-    systemInstruction += `\n\n--- Datos desde la base de datos (pilotos, categorías, tiempos de carrera, estado/semáforo) ---\n${dbContext}`;
+    systemInstruction += `\n\n--- Datos desde la base de datos (resumen con totales y listados). Si aparece "Total pilotos inscriptos: N", usá ese número al responder cuántos hay. ---\n${dbContext}`;
+  } else {
+    // Fallback: si no hay Supabase, usar el contenido ya fetcheado de pilotos y categorías para que el chat pueda responder
+    const pilotosPage = pageContents.find((p) => p.id === 'pilotos');
+    const categoriasPage = pageContents.find((p) => p.id === 'categorias');
+    const fallbackParts: string[] = [];
+    if (pilotosPage?.text) fallbackParts.push(`Pilotos inscriptos (desde la web):\n${pilotosPage.text.slice(0, 6000)}`);
+    if (categoriasPage?.text) fallbackParts.push(`Categorías (desde la web):\n${categoriasPage.text.slice(0, 3000)}`);
+    if (fallbackParts.length > 0) {
+      systemInstruction += `\n\n--- Pilotos inscriptos y categorías (desde la web; usá esto para responder cuántos hay, listados, etc.) ---\n${fallbackParts.join('\n\n')}`;
+    }
   }
 
   const ai = new GoogleGenAI({ apiKey });
