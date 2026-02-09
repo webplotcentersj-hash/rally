@@ -65,15 +65,23 @@ export async function getDbContext(): Promise<string> {
 
   const parts: string[] = [];
 
-  // Resumen con conteos para que el asistente siempre sepa "cuántos pilotos hay"
+  // Resumen con conteos: total pilotos y sobre todo inscriptos en AUTOS
   try {
-    const [pilotsRes, categoriasRes] = await Promise.all([
+    const [pilotsRes, categoriasRes, autosRes] = await Promise.all([
       supabase.from('pilots').select('*', { count: 'exact', head: true }),
       supabase.from('categorias').select('*', { count: 'exact', head: true }),
+      supabase
+        .from('pilots')
+        .select('*', { count: 'exact', head: true })
+        .not('categoria_auto', 'is', null)
+        .neq('categoria_auto', ''),
     ]);
     const nPilots = pilotsRes.count ?? 0;
     const nCategorias = categoriasRes.count ?? 0;
-    parts.push(`--- Resumen base de datos ---\nTotal pilotos inscriptos: ${nPilots}. Total categorías: ${nCategorias}. Usá estos números al responder.`);
+    const nAutos = autosRes.count ?? 0;
+    parts.push(
+      `--- Resumen base de datos ---\nTotal pilotos inscriptos: ${nPilots}. Inscriptos en AUTOS: ${nAutos}. Total categorías: ${nCategorias}. Usá estos números al responder; cuando pregunten por inscriptos o autos, priorizá el número de autos (${nAutos}).`
+    );
   } catch (e) {
     console.warn('[chat] Supabase resumen:', e);
   }
@@ -82,17 +90,27 @@ export async function getDbContext(): Promise<string> {
   for (const table of tables) {
     try {
       const limit = getLimit(table);
-      const { data, error } = await supabase
-        .from(table)
-        .select('*')
-        .limit(limit);
+      // Para pilots: traer principalmente inscriptos en AUTOS (categoria_auto no nulo)
+      const query =
+        table === 'pilots'
+          ? supabase
+              .from('pilots')
+              .select('*')
+              .not('categoria_auto', 'is', null)
+              .neq('categoria_auto', '')
+              .order('numero', { ascending: true, nullsFirst: false })
+              .limit(limit)
+          : supabase.from(table).select('*').limit(limit);
+
+      const { data, error } = await query;
 
       if (error) {
         console.warn(`[chat] Supabase ${table}:`, error.message);
         continue;
       }
       if (data && data.length > 0) {
-        parts.push(`--- Base de datos: ${table} ---\n${formatRows(table, data)}`);
+        const label = table === 'pilots' ? 'pilots (inscriptos en autos)' : table;
+        parts.push(`--- Base de datos: ${label} ---\n${formatRows(table, data)}`);
       }
     } catch (e) {
       console.warn(`[chat] Supabase ${table}:`, e);

@@ -175,7 +175,7 @@ export async function POST(req: NextRequest) {
 
   const dbContext = await getDbContext();
   if (dbContext) {
-    systemInstruction += `\n\n--- Datos desde la base de datos (resumen con totales y listados). Si aparece "Total pilotos inscriptos: N", usá ese número al responder cuántos hay. ---\n${dbContext}`;
+    systemInstruction += `\n\n--- Datos desde la base de datos (resumen y listado de inscriptos en AUTOS). Cuando pregunten por inscriptos o pilotos, usá el número "Inscriptos en AUTOS" y el listado que sigue. ---\n${dbContext}`;
   } else {
     // Fallback: si no hay Supabase, usar el contenido ya fetcheado de pilotos y categorías para que el chat pueda responder
     const pilotosPage = pageContents.find((p) => p.id === 'pilotos');
