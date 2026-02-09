@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenAI } from '@google/genai';
+import { getDbContext } from '@/lib/supabase-chat';
 
 const SAFARI_ASHEN_BASE = 'https://safari-ashen.vercel.app';
 
@@ -117,6 +118,7 @@ Reglas:
 3. Cuando uses datos de una sección (pilotos, prensa, inicio), podés mencionarlo en una palabra: "Según la lista de pilotos...", "En la sección de prensa..." — solo cuando suma.
 4. Para preguntas ambiguas (ej. "¿cuándo es?"), dale la respuesta más útil (fechas del evento) y, si aplica, aclaración corta (cronograma, inscripción, etc.).
 5. No inventes datos. Si no sabés algo, indicá que no está en la información disponible y sugerí el enlace o sección correspondiente.
+6. Respondé siempre en texto plano: no uses markdown ni asteriscos (*). No uses ** para negrita ni listas con guiones. Escribí oraciones claras y directas, bien limpias.
 
 Datos fijos del evento:
 - Fechas: 13, 14 y 15 de febrero.
@@ -165,9 +167,14 @@ export async function POST(req: NextRequest) {
     }))
   );
   const safariContext = buildContextByRelevance(lastUser, pageContents);
-  const systemInstruction = safariContext
+  let systemInstruction = safariContext
     ? `${SYSTEM_BASE}\n\n--- Información actual de la web del Safari (usá esto para responder) ---\n${safariContext}`
     : SYSTEM_BASE;
+
+  const dbContext = await getDbContext();
+  if (dbContext) {
+    systemInstruction += `\n\n--- Datos desde la base de datos (usá esto para listados, inscriptos, etc.) ---\n${dbContext}`;
+  }
 
   const ai = new GoogleGenAI({ apiKey });
   const contents = messages.slice(-24).map((m) => ({
