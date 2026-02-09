@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from 'react';
 
-const VALLE_FERTIL_LAT = -30.64;
-const VALLE_FERTIL_LON = -67.41;
+// San Agustín del Valle Fértil, cabecera del departamento Valle Fértil, San Juan
+const VALLE_FERTIL_LAT = -30.6667;
+const VALLE_FERTIL_LON = -67.4333;
 const API_URL = 'https://api.open-meteo.com/v1/forecast';
 
 type WeatherData = {
   current: {
     temperature_2m: number;
+    apparent_temperature?: number;
     weather_code: number;
     relative_humidity_2m?: number;
     wind_speed_10m?: number;
@@ -36,41 +38,71 @@ function weatherLabel(code: number): string {
 }
 
 function WeatherIcon({ code, className = 'w-8 h-8' }: { code: number; className?: string }) {
+  const c = className;
+  // Sol despejado
   const sun = (
-    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
     </svg>
   );
+  // Sol y nube (parcialmente nublado)
+  const partlyCloudy = (
+    <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="8" cy="9" r="2.5" />
+      <path d="M8 3v1.5M8 14.5v1M4.5 9H3M13 9h-1.5M5.8 5.8L4.7 7M11.3 11l-1.1 1.2M5.8 12.2L4.7 11M11.3 7l-1.1-1.2" />
+      <path d="M18 12a4 4 0 0 0-7.2-2.4 3.5 3.5 0 0 0 1.2 6.9H18a3 3 0 0 0 0-4.5z" />
+    </svg>
+  );
+  // Nube
   const cloud = (
-    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+    <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
     </svg>
   );
-  const cloudSun = (
-    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2v-2a2 2 0 00-2-2H5a2 2 0 00-2 2v2a2 2 0 002 2z" />
-    </svg>
-  );
+  // Nube con lluvia
   const rain = (
-    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.5a2 2 0 01-2 2h-2a2 2 0 01-2-2V5L8 4z" />
+    <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+      <path d="M8 14v4M12 14v4M16 14v4M10 18v2M14 18v2" />
     </svg>
   );
+  // Tormenta
   const storm = (
-    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M13 10V3L4 14h7v7l9-11h-7z" />
+    <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+      <path d="M13 12l-3 5h4l-3 5" strokeWidth={2} />
     </svg>
   );
+  // Niebla
   const fog = (
-    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+    <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 14h16M4 18h12M6 10h12M4 6h10" />
     </svg>
   );
+  // Nieve
+  const snow = (
+    <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+      <path d="M12 13v3M12 17v1M10 15h4M12 14l-1.5 2.6M12 14l1.5 2.6" />
+    </svg>
+  );
+  // Llovizna
+  const drizzle = (
+    <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+      <path d="M8 15h.01M12 15h.01M16 15h.01" />
+    </svg>
+  );
+
   if (code === 0) return sun;
-  if (code >= 1 && code <= 3) return cloudSun;
-  if (code >= 45 && code <= 48) return fog;
-  if (code >= 51 && code <= 67) return rain;
+  if (code >= 1 && code <= 3) return partlyCloudy;
+  if (code === 45 || code === 48) return fog;
+  if (code >= 51 && code <= 55) return drizzle;
+  if (code >= 61 && code <= 67) return rain;
+  if (code >= 71 && code <= 77) return snow;
   if (code >= 80 && code <= 82) return rain;
+  if (code >= 85 && code <= 86) return snow;
   if (code >= 95 && code <= 99) return storm;
   return cloud;
 }
@@ -94,7 +126,7 @@ export default function WeatherValleFertil() {
     const params = new URLSearchParams({
       latitude: String(VALLE_FERTIL_LAT),
       longitude: String(VALLE_FERTIL_LON),
-      current: 'temperature_2m,weather_code,relative_humidity_2m,wind_speed_10m',
+      current: 'temperature_2m,apparent_temperature,weather_code,relative_humidity_2m,wind_speed_10m',
       daily: 'temperature_2m_max,temperature_2m_min,weather_code',
       timezone: 'America/Argentina/Buenos_Aires',
       forecast_days: '7',
@@ -155,7 +187,7 @@ export default function WeatherValleFertil() {
               <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                 Clima en Valle Fértil
               </h2>
-              <p className="text-gray-400 text-sm">Pronóstico actual y extendido · San Juan</p>
+              <p className="text-gray-400 text-sm">San Agustín del Valle Fértil · Pronóstico actual y 7 días</p>
             </div>
           </div>
 
@@ -171,7 +203,12 @@ export default function WeatherValleFertil() {
                   <p className="text-5xl md:text-6xl font-black text-white tabular-nums">
                     {Math.round(current.temperature_2m)}°
                   </p>
-                  <p className="text-gray-300 font-medium">
+                  {current.apparent_temperature != null && Math.round(current.apparent_temperature) !== Math.round(current.temperature_2m) && (
+                    <p className="text-gray-400 text-sm mt-0.5">
+                      Sensación {Math.round(current.apparent_temperature)}°
+                    </p>
+                  )}
+                  <p className="text-gray-300 font-medium mt-1">
                     {weatherLabel(current.weather_code)}
                   </p>
                 </div>
