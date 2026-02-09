@@ -190,9 +190,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: text });
   } catch (e) {
     console.error('Chat API error:', e);
-    return NextResponse.json(
-      { error: 'Error de conexión con el asistente. Intentá más tarde.' },
-      { status: 503 }
-    );
+    const err = e as { status?: number; message?: string };
+    const status = err?.status;
+    let userMessage = 'Error de conexión con el asistente. Intentá más tarde.';
+    if (status === 401 || status === 403) {
+      userMessage = 'API key inválida o sin permiso. Revisá GEMINI_API_KEY en la configuración (Vercel o .env.local).';
+    } else if (status === 429) {
+      userMessage = 'Límite de uso de la API alcanzado. Probá en unos minutos.';
+    } else if (err?.message?.includes('fetch') || err?.message?.includes('network')) {
+      userMessage = 'Error de red. Revisá tu conexión o el estado de la API de Google.';
+    }
+    return NextResponse.json({ error: userMessage }, { status: 503 });
   }
 }
