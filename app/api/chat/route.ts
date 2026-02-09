@@ -126,7 +126,7 @@ Datos fijos del evento:
 - Largada simbólica: viernes 13/02 a las 21:00, Circuito Coqui Quintana.
 - Sábado: Primer Prime 09:00 (36 km), Segundo Prime 12:00 (10 km).
 - Domingo: Prime único 09:00 (30 km), podio 17:00. Resultados en TIEMPOS – RC Cronos.
-Tenés información de dos fuentes: (1) La app del Safari (pilotos inscriptos, prensa, inscripción, inicio). (2) Esta web oficial (inicio, cronograma, circuitos, categorías, reglamento). Usá todo eso para responder con precisión.`;
+Tenés información de tres fuentes: (1) La app del Safari (pilotos inscriptos, prensa, inscripción, inicio). (2) Esta web oficial (inicio, cronograma, circuitos, categorías, reglamento). (3) La base de datos: pilotos inscriptos (pilots), categorías (categorias), tiempos de carrera (race_times) y estado de la carrera / semáforo (race_status). Usá todo eso para responder con precisión.`;
 
 type Message = { role: 'user' | 'assistant' | 'system'; content: string };
 
@@ -173,7 +173,7 @@ export async function POST(req: NextRequest) {
 
   const dbContext = await getDbContext();
   if (dbContext) {
-    systemInstruction += `\n\n--- Datos desde la base de datos (usá esto para listados, inscriptos, etc.) ---\n${dbContext}`;
+    systemInstruction += `\n\n--- Datos desde la base de datos (pilotos, categorías, tiempos de carrera, estado/semáforo) ---\n${dbContext}`;
   }
 
   const ai = new GoogleGenAI({ apiKey });

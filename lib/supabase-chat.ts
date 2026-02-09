@@ -1,7 +1,11 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
+/**
+ * Integración con Supabase (proyecto rally2) para el chat.
+ * Usa NEXT_PUBLIC_SUPABASE_RALLY2_URL + NEXT_PUBLIC_SUPABASE_RALLY2_ANON_KEY (o SUPABASE_SERVICE_ROLE_KEY).
+ */
 const DB_CACHE_TTL_MS = 2 * 60 * 1000; // 2 minutos
-const MAX_DB_CONTEXT_CHARS = 12000;
+const MAX_DB_CONTEXT_CHARS = 18000;
 let dbCache: { text: string; at: number } | null = null;
 
 function getSupabase(): SupabaseClient | null {
@@ -17,11 +21,22 @@ function getSupabase(): SupabaseClient | null {
   return createClient(url, key);
 }
 
-/** Solo estas tablas se usan para el chat: pilotos inscriptos y categorías. */
-const CHAT_TABLES = ['pilots', 'categorias'] as const;
+/** Tablas que el chat usa para responder: pilotos, categorías, tiempos de carrera y estado (semáforo). */
+const CHAT_TABLES = ['pilots', 'categorias', 'race_times', 'race_status'] as const;
+
+const TABLE_LIMITS: Record<string, number> = {
+  pilots: 250,
+  categorias: 50,
+  race_times: 150,
+  race_status: 5,
+};
 
 function getTableNames(): string[] {
   return [...CHAT_TABLES];
+}
+
+function getLimit(table: string): number {
+  return TABLE_LIMITS[table] ?? 200;
 }
 
 function formatRows(tableName: string, rows: unknown[]): string {
@@ -53,10 +68,11 @@ export async function getDbContext(): Promise<string> {
 
   for (const table of tables) {
     try {
+      const limit = getLimit(table);
       const { data, error } = await supabase
         .from(table)
         .select('*')
-        .limit(200);
+        .limit(limit);
 
       if (error) {
         console.warn(`[chat] Supabase ${table}:`, error.message);
