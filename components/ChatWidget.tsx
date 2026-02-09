@@ -6,6 +6,13 @@ type Message = { role: 'user' | 'assistant'; content: string };
 
 const PLACEHOLDER = 'Preguntá sobre el Safari, fechas, inscripción, cronograma...';
 
+const SUGERENCIAS = [
+  '¿Cuándo es el Safari?',
+  '¿Cómo me inscribo?',
+  '¿Dónde son los circuitos?',
+  '¿Cuántos pilotos hay?',
+];
+
 /** Limpia el texto de la respuesta: quita asteriscos y convierte saltos de línea en <br /> para mostrar bien. */
 function cleanResponseText(text: string): string {
   const escaped = text
@@ -76,6 +83,11 @@ export default function ChatWidget() {
     }
   };
 
+  const sendSuggestion = (text: string) => {
+    setInput(text);
+    inputRef.current?.focus();
+  };
+
   return (
     <>
       <button
@@ -96,38 +108,71 @@ export default function ChatWidget() {
       </button>
 
       {open && (
-        <div className="fixed bottom-36 right-6 z-50 w-[calc(100vw-3rem)] max-w-md rounded-2xl border border-[#65b330]/30 bg-gray-900/95 backdrop-blur-md shadow-2xl shadow-black/40 flex flex-col overflow-hidden">
+        <div
+          className="fixed bottom-36 right-6 z-50 w-[calc(100vw-3rem)] max-w-md rounded-2xl flex flex-col overflow-hidden border border-[#65b330]/40 bg-gradient-to-b from-gray-900 to-gray-950 shadow-2xl shadow-black/50 ring-1 ring-white/5"
+          style={{
+            animation: 'chatPanelIn 0.25s ease-out',
+          }}
+        >
+          <style>{`
+            @keyframes chatPanelIn {
+              from { opacity: 0; transform: scale(0.96) translateY(8px); }
+              to { opacity: 1; transform: scale(1) translateY(0); }
+            }
+            @keyframes messageIn {
+              from { opacity: 0; transform: translateY(6px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
           {/* Header */}
-          <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/10 bg-gradient-to-r from-[#65b330]/20 to-transparent">
-            <div className="w-10 h-10 rounded-xl bg-[#65b330]/25 flex items-center justify-center ring-1 ring-[#65b330]/40">
-              <svg className="w-5 h-5 text-[#65b330]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/10 bg-gradient-to-r from-[#65b330]/25 via-[#65b330]/10 to-transparent">
+            <div className="w-10 h-10 rounded-xl bg-[#65b330]/30 flex items-center justify-center ring-1 ring-[#65b330]/50 shadow-inner">
+              <svg className="w-5 h-5 text-[#7dd63d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
             </div>
             <div>
-              <span className="font-semibold text-white block">Asistente Safari</span>
-              <span className="text-xs text-gray-500">Preguntá lo que necesites</span>
+              <span className="font-semibold text-white block tracking-tight">Asistente Safari</span>
+              <span className="text-xs text-gray-400">Preguntá lo que necesites</span>
             </div>
           </div>
 
           {/* Mensajes */}
           <div
             ref={listRef}
-            className="flex-1 min-h-[240px] max-h-[50vh] overflow-y-auto p-4 space-y-4 scroll-smooth"
+            className="flex-1 min-h-[260px] max-h-[55vh] overflow-y-auto p-4 space-y-4 scroll-smooth bg-gray-900/50"
           >
             {messages.length === 0 && (
-              <div className="text-center py-8">
-                <p className="text-gray-400 text-sm mb-1">Escribí tu pregunta sobre el Safari.</p>
-                <p className="text-gray-500 text-xs">Fechas, inscripción, cronograma, circuitos, pilotos.</p>
+              <div className="text-center py-6">
+                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#65b330]/20 flex items-center justify-center ring-1 ring-[#65b330]/30">
+                  <svg className="w-7 h-7 text-[#65b330]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
+                <p className="text-gray-300 text-sm font-medium mb-1">Hola, soy el asistente del Safari</p>
+                <p className="text-gray-500 text-xs mb-4">Escribí tu pregunta o elegí una de estas:</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {SUGERENCIAS.map((s, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => sendSuggestion(s)}
+                      className="px-3 py-2 rounded-xl text-xs font-medium text-gray-300 bg-white/10 hover:bg-[#65b330]/30 hover:text-white border border-white/10 hover:border-[#65b330]/40 transition-all duration-200"
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
             {messages.map((m, i) => (
               <div
                 key={i}
                 className={`flex gap-2 ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                style={{ animation: 'messageIn 0.2s ease-out' }}
               >
                 {m.role === 'assistant' && (
-                  <div className="shrink-0 w-8 h-8 rounded-lg bg-[#65b330]/20 flex items-center justify-center mt-1" aria-hidden>
+                  <div className="shrink-0 w-8 h-8 rounded-xl bg-[#65b330]/25 flex items-center justify-center mt-1 ring-1 ring-[#65b330]/30" aria-hidden>
                     <svg className="w-4 h-4 text-[#65b330]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
@@ -136,8 +181,8 @@ export default function ChatWidget() {
                 <div
                   className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                     m.role === 'user'
-                      ? 'bg-[#65b330] text-white shadow-lg shadow-[#65b330]/25 rounded-br-md'
-                      : 'bg-white/10 text-gray-200 border border-white/10 rounded-bl-md'
+                      ? 'bg-[#65b330] text-white shadow-lg shadow-[#65b330]/30 rounded-br-md'
+                      : 'bg-white/[0.08] text-gray-100 border border-white/10 rounded-bl-md'
                   }`}
                 >
                   {m.role === 'user' ? (
@@ -147,7 +192,7 @@ export default function ChatWidget() {
                   )}
                 </div>
                 {m.role === 'user' && (
-                  <div className="shrink-0 w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mt-1" aria-hidden>
+                  <div className="shrink-0 w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center mt-1" aria-hidden>
                     <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
@@ -156,16 +201,16 @@ export default function ChatWidget() {
               </div>
             ))}
             {loading && (
-              <div className="flex gap-2 justify-start">
-                <div className="shrink-0 w-8 h-8 rounded-lg bg-[#65b330]/20 flex items-center justify-center mt-1" aria-hidden>
-                  <svg className="w-4 h-4 text-[#65b330]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex gap-2 justify-start" style={{ animation: 'messageIn 0.2s ease-out' }}>
+                <div className="shrink-0 w-8 h-8 rounded-xl bg-[#65b330]/25 flex items-center justify-center mt-1 ring-1 ring-[#65b330]/30" aria-hidden>
+                  <svg className="w-4 h-4 text-[#65b330] animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
                 </div>
-                <div className="rounded-2xl rounded-bl-md px-4 py-3 bg-white/10 border border-white/10 flex gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#65b330]/80 animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <span className="w-2 h-2 rounded-full bg-[#65b330]/80 animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <span className="w-2 h-2 rounded-full bg-[#65b330]/80 animate-bounce" style={{ animationDelay: '300ms' }} />
+                <div className="rounded-2xl rounded-bl-md px-4 py-3 bg-white/[0.08] border border-white/10 flex gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#65b330] animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <span className="w-2 h-2 rounded-full bg-[#65b330] animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <span className="w-2 h-2 rounded-full bg-[#65b330] animate-bounce" style={{ animationDelay: '300ms' }} />
                 </div>
               </div>
             )}
@@ -175,7 +220,7 @@ export default function ChatWidget() {
           </div>
 
           {/* Input + crédito */}
-          <div className="p-3 border-t border-white/10 bg-black/20">
+          <div className="p-3 border-t border-white/10 bg-gray-950/80">
             <div className="flex gap-2 mb-2">
               <textarea
                 ref={inputRef}
@@ -184,14 +229,14 @@ export default function ChatWidget() {
                 onKeyDown={handleKeyDown}
                 placeholder={PLACEHOLDER}
                 rows={1}
-                className="flex-1 resize-none rounded-xl bg-black/50 border border-white/20 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#65b330]/50 focus:border-[#65b330] focus:shadow-[0_0_0_3px_rgba(101,179,48,0.15)] transition-all"
+                className="flex-1 resize-none rounded-xl bg-white/5 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#65b330]/50 focus:border-[#65b330] focus:bg-white/[0.08] transition-all"
                 disabled={loading}
               />
               <button
                 type="button"
                 onClick={send}
                 disabled={loading || !input.trim()}
-                className="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-[#65b330] text-white hover:bg-[#5a9e2a] disabled:opacity-50 disabled:pointer-events-none transition-all hover:shadow-lg hover:shadow-[#65b330]/30"
+                className="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-[#65b330] text-white hover:bg-[#5a9e2a] disabled:opacity-50 disabled:pointer-events-none transition-all hover:shadow-lg hover:shadow-[#65b330]/35 hover:scale-105 active:scale-95"
                 aria-label="Enviar"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
