@@ -73,6 +73,7 @@ function BloqueCampeonato({ data }: { data: CampeonatoClasificacion }) {
 
 export default function ClasificacionMotos() {
   const [isVisible, setIsVisible] = useState(false);
+  const [verMas, setVerMas] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -116,12 +117,12 @@ export default function ClasificacionMotos() {
               <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#65b330]" />
             </div>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Clasificación Domingo y Sábado (Travesía y Enduro) – primeros por categoría. Descargá el PDF con la clasificación completa.
+              Primeros por categoría. Clasificación Domingo (Travesía y Enduro). Descargá el PDF con la clasificación completa.
             </p>
           </div>
 
-          {/* Clasificación Domingo */}
-          <div className="mb-10">
+          {/* Clasificación Domingo (siempre visible) */}
+          <div className={verMas ? 'mb-10' : ''}>
             <div className="flex items-center gap-3 mb-5">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500/20 border border-emerald-500/40">
                 <svg className="h-4 w-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,22 +138,49 @@ export default function ClasificacionMotos() {
             </div>
           </div>
 
-          {/* Clasificación Sábado */}
-          <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-500/20 border border-amber-500/40">
-                <svg className="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-white uppercase tracking-wide">Clasificación Sábado</h3>
-              <span className="h-px flex-1 max-w-32 bg-gradient-to-r from-amber-500/40 to-transparent" />
-            </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              <BloqueCampeonato data={CAMPEONATO_TRAVESIA} />
-              <BloqueCampeonato data={CAMPEONATO_ENDURO} />
-            </div>
+          {/* Ver más → muestra Clasificación Sábado */}
+          <div className="flex justify-center mt-8">
+            <button
+              type="button"
+              onClick={() => setVerMas((v) => !v)}
+              className="inline-flex items-center gap-2 rounded-xl bg-[#65b330] px-6 py-3 text-white font-semibold text-sm shadow-lg shadow-[#65b330]/25 hover:bg-[#5aa02a] hover:scale-[1.02] transition-all duration-200"
+            >
+              {verMas ? (
+                <>
+                  Ver menos
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                  </svg>
+                </>
+              ) : (
+                <>
+                  Ver más
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </>
+              )}
+            </button>
           </div>
+
+          {/* Clasificación Sábado (solo al hacer Ver más) */}
+          {verMas && (
+            <div className="mt-10 animate-fade-in-up">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-500/20 border border-amber-500/40">
+                  <svg className="h-4 w-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-white uppercase tracking-wide">Clasificación Sábado</h3>
+                <span className="h-px flex-1 max-w-32 bg-gradient-to-r from-amber-500/40 to-transparent" />
+              </div>
+              <div className="grid md:grid-cols-2 gap-8">
+                <BloqueCampeonato data={CAMPEONATO_TRAVESIA} />
+                <BloqueCampeonato data={CAMPEONATO_ENDURO} />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
