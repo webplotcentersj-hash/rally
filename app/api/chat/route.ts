@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenAI } from '@google/genai';
 import { getDbContext } from '@/lib/supabase-chat';
+import {
+  getChatSystemBase,
+  CONOCIMIENTO_VALLE_FERTIL_SAFARI,
+} from '@/lib/chat-personality-and-knowledge';
 
 const SAFARI_ASHEN_BASE = 'https://safari-ashen.vercel.app';
 
@@ -110,26 +114,6 @@ function buildContextByRelevance(
   return out.join('\n\n');
 }
 
-const SYSTEM_BASE = `Sos el asistente oficial del Safari Tras las Sierras (competencia de autos, Valle Fértil, San Juan, Argentina). Tu rol es dar información precisa y útil.
-
-Reglas:
-1. Respondé siempre en español, de forma clara y amable. Sé breve salvo que la pregunta pida detalle.
-2. Basate en la información que te pasamos (evento + texto de la web). Si la respuesta está en esa información, usala tal cual; si no está, decilo y sugerí dónde ver más (ej. "En la sección Pilotos de la web podés ver la lista completa").
-3. Cuando uses datos de una sección (pilotos, prensa, inicio), podés mencionarlo en una palabra: "Según la lista de pilotos...", "En la sección de prensa..." — solo cuando suma.
-4. Para preguntas ambiguas (ej. "¿cuándo es?"), dale la respuesta más útil (fechas del evento) y, si aplica, aclaración corta (cronograma, inscripción, etc.).
-5. No inventes datos. Si no sabés algo, indicá que no está en la información disponible y sugerí el enlace o sección correspondiente.
-6. Respondé siempre en texto plano: no uses markdown ni asteriscos (*). No uses ** para negrita ni listas con guiones. Escribí oraciones claras y directas, bien limpias.
-
-Datos fijos del evento:
-- Fechas: 13, 14 y 15 de febrero.
-- Reunión obligatoria: viernes 13/02 a las 18:00, Salón Cultural Municipal (charla AAV, José María Andruccetti). Asistencia obligatoria pilotos o copilotos.
-- Largada simbólica: viernes 13/02 a las 21:00, Circuito Coqui Quintana.
-- Sábado: Primer Prime 09:00 (36 km), Segundo Prime 12:00 (10 km).
-- Domingo: Prime único 09:00 (30 km), podio 17:00. Resultados en TIEMPOS – RC Cronos.
-Tenés información de tres fuentes: (1) La app del Safari (pilotos inscriptos, prensa, inscripción, inicio). (2) Esta web oficial (inicio, cronograma, circuitos, categorías, reglamento). (3) La base de datos: pilotos inscriptos (pilots), categorías (categorias), tiempos de carrera (race_times) y estado de la carrera / semáforo (race_status). Usá todo eso para responder con precisión.
-
-Enlaces públicos (podés sugerirlos cuando pregunten por listados o prensa): Pilotos inscriptos: https://safari-ashen.vercel.app/pilotos — Prensa: https://safari-ashen.vercel.app/prensa`;
-
 type Message = { role: 'user' | 'assistant' | 'system'; content: string };
 
 export async function POST(req: NextRequest) {
@@ -169,9 +153,12 @@ export async function POST(req: NextRequest) {
     }))
   );
   const safariContext = buildContextByRelevance(lastUser, pageContents);
+  const systemBase = getChatSystemBase();
   let systemInstruction = safariContext
-    ? `${SYSTEM_BASE}\n\n--- Información actual de la web del Safari (usá esto para responder) ---\n${safariContext}`
-    : SYSTEM_BASE;
+    ? `${systemBase}\n\n--- Información actual de la web del Safari (usá esto para responder) ---\n${safariContext}`
+    : systemBase;
+
+  systemInstruction += `\n\n--- Base de conocimiento: Departamento Valle Fértil y Safari Tras las Sierras (geografía, historia, economía, turismo, crónica del Safari, 33ª edición, resultados motos/quads) ---\n${CONOCIMIENTO_VALLE_FERTIL_SAFARI}`;
 
   const dbContext = await getDbContext();
   if (dbContext) {

@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import EstadoRutasFloating from '@/components/EstadoRutasFloating';
 import ChatWidget from '@/components/ChatWidget';
+import ElevenLabsWidget from '@/components/ElevenLabsWidget';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -90,6 +91,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <EstadoRutasFloating />
+        <ElevenLabsWidget />
         <ChatWidget />
       </body>
     </html>
