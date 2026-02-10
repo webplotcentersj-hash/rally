@@ -373,9 +373,9 @@ header {
 .elevenlabs-widget-wrapper {
   position: fixed;
   left: 12px;
-  bottom: 20px;
+  bottom: 48px;
   z-index: 9998;
-  transform: scale(0.72);
+  transform: scale(0.88);
   transform-origin: bottom left;
 }
 .elevenlabs-widget-wrapper elevenlabs-convai {
@@ -384,7 +384,7 @@ header {
 @media (max-width: 640px) {
   .elevenlabs-widget-wrapper {
     left: 8px;
-    bottom: 16px;
-    transform: scale(0.62);
+    bottom: 40px;
+    transform: scale(0.78);
   }
 }
