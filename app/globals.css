@@ -369,19 +369,3 @@ header {
   }
 }
 
-/* Widget ElevenLabs: izquierda, bien chico */
-.elevenlabs-widget-wrapper {
-  position: fixed;
-  left: 12px;
-  bottom: 48px;
-  z-index: 9998;
-}
-.elevenlabs-widget-wrapper elevenlabs-convai {
-  display: block;
-}
-@media (max-width: 640px) {
-  .elevenlabs-widget-wrapper {
-    left: 8px;
-    bottom: 40px;
-  }
-}

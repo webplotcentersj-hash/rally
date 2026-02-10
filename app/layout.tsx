@@ -1,12 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Script from 'next/script';
 import './globals.css';
 import EstadoRutasFloating from '@/components/EstadoRutasFloating';
 import ChatWidget from '@/components/ChatWidget';
-import ElevenLabsWidget from '@/components/ElevenLabsWidget';
-
-const ELEVENLABS_WIDGET_SCRIPT = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -94,9 +90,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <EstadoRutasFloating />
-        <ElevenLabsWidget />
         <ChatWidget />
-        <Script src={ELEVENLABS_WIDGET_SCRIPT} strategy="afterInteractive" />
       </body>
     </html>
   );
