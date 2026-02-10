@@ -1,36 +1,14 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-
-const AGENT_ID = 'agent_5201kh3nd49bfkqarvfcsh526pag';
-const SCRIPT_URL = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
-
+/**
+ * Snippet oficial ElevenLabs. El script se carga en app/layout.tsx.
+ * <elevenlabs-convai agent-id="..."></elevenlabs-convai>
+ * <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+ */
 export default function ElevenLabsWidget() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof document === 'undefined' || !containerRef.current) return;
-
-    const loadScript = () => {
-      if (document.querySelector(`script[src="${SCRIPT_URL}"]`)) return;
-      const script = document.createElement('script');
-      script.src = SCRIPT_URL;
-      script.async = true;
-      script.type = 'text/javascript';
-      document.body.appendChild(script);
-    };
-
-    const widget = document.createElement('elevenlabs-convai');
-    widget.setAttribute('agent-id', AGENT_ID);
-    containerRef.current.appendChild(widget);
-    loadScript();
-  }, []);
-
   return (
-    <div
-      ref={containerRef}
-      className="elevenlabs-widget-wrapper"
-      aria-label="Asistente de voz ElevenLabs"
-    />
+    <div className="elevenlabs-widget-wrapper" aria-label="Asistente de voz ElevenLabs">
+      <elevenlabs-convai agent-id="agent_5201kh3nd49bfkqarvfcsh526pag" />
+    </div>
   );
 }
