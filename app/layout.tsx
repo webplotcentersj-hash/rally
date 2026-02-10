@@ -4,6 +4,7 @@ import './globals.css';
 import EstadoRutasFloating from '@/components/EstadoRutasFloating';
 import ChatWidget from '@/components/ChatWidget';
 import ElevenLabsWidget from '@/components/ElevenLabsWidget';
+import SorteoFloating from '@/components/SorteoFloating';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -91,6 +92,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <EstadoRutasFloating />
+        <SorteoFloating />
         <ElevenLabsWidget />
         <ChatWidget />
       </body>
