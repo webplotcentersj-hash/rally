@@ -8,6 +8,7 @@ const WeatherValleFertil = dynamic(() => import('@/components/WeatherValleFertil
 const ClasificacionMotos = dynamic(() => import('@/components/ClasificacionMotos'));
 const Features = dynamic(() => import('@/components/Features'));
 const AssociationHistory = dynamic(() => import('@/components/AssociationHistory'));
+const News = dynamic(() => import('@/components/News'));
 const Sponsors = dynamic(() => import('@/components/Sponsors'));
 const FAQ = dynamic(() => import('@/components/FAQ'));
 // const Gallery = dynamic(() => import('@/components/Gallery'));
@@ -19,6 +20,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Countdown />
+      <News />
       <WeatherValleFertil />
       <ClasificacionMotos />
       <Features />

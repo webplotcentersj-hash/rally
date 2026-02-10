@@ -77,6 +77,12 @@ export default function Header() {
             >
               Reglamento
             </Link>
+            <Link
+              href="/#noticias"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Noticias
+            </Link>
             <a
               href="https://safari-ashen.vercel.app/tiempos"
               target="_blank"
@@ -131,6 +137,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Reglamento
+              </Link>
+              <Link
+                href="/#noticias"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Noticias
               </Link>
               <a
                 href="https://safari-ashen.vercel.app/tiempos"
