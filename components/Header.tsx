@@ -3,8 +3,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
+const CIRCUITOS_SUB = [
+  { label: 'Categorías', href: '/categorias' },
+  { label: 'Cronograma', href: '/cronograma' },
+  { label: 'Clasificación de motos', href: '/#clasificacion-motos' },
+  { label: 'Reglamentos', href: '/reglamento' },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [circuitosOpen, setCircuitosOpen] = useState(false);
+  const [circuitosMobileOpen, setCircuitosMobileOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-l border-[#65b330]">
@@ -31,30 +40,34 @@ export default function Header() {
 
           {/* Navegación Desktop */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link
-              href="/categorias"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            <div
+              className="relative"
+              onMouseEnter={() => setCircuitosOpen(true)}
+              onMouseLeave={() => setCircuitosOpen(false)}
             >
-              Categorías
-            </Link>
-            <Link
-              href="/circuitos"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-            >
-              Circuitos
-            </Link>
-            <Link
-              href="/cronograma"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-            >
-              Cronograma
-            </Link>
-            <Link
-              href="/#clasificacion-motos"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-            >
-              Clasificación Motos
-            </Link>
+              <Link
+                href="/circuitos"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide inline-flex items-center gap-1"
+              >
+                Circuitos
+                <svg className={`w-4 h-4 transition-transform ${circuitosOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </Link>
+              {circuitosOpen && (
+                <div className="absolute top-full left-0 mt-1 py-2 min-w-[220px] bg-black border border-[#65b330] rounded-md shadow-xl">
+                  {CIRCUITOS_SUB.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block px-4 py-2 text-sm font-medium uppercase tracking-wide text-white hover:bg-[#65b330]/20 hover:text-[#65b330] transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
             <Link
               href="https://safari-ashen.vercel.app/inscripcion"
               target="_blank"
@@ -70,12 +83,6 @@ export default function Header() {
               className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
             >
               Pilotos inscriptos
-            </Link>
-            <Link
-              href="/reglamento"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-            >
-              Reglamento
             </Link>
             <a
               href="https://safari-ashen.vercel.app/tiempos"
@@ -118,20 +125,32 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden pb-4 border-t border-gray-800">
             <nav className="flex flex-col gap-4 pt-4">
-              <Link
-                href="/categorias"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Categorías
-              </Link>
-              <Link
-                href="/reglamento"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Reglamento
-              </Link>
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setCircuitosMobileOpen(!circuitosMobileOpen)}
+                  className="flex items-center justify-between w-full text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                >
+                  Circuitos
+                  <svg className={`w-4 h-4 transition-transform ${circuitosMobileOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {circuitosMobileOpen && (
+                  <div className="flex flex-col gap-2 pl-3 mt-2 border-l border-gray-700">
+                    {CIRCUITOS_SUB.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="text-gray-300 hover:text-[#65b330] text-sm uppercase tracking-wide"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
               <a
                 href="https://safari-ashen.vercel.app/tiempos"
                 target="_blank"
@@ -141,27 +160,6 @@ export default function Header() {
               >
                 Tiempos
               </a>
-              <Link
-                href="/circuitos"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Circuitos
-              </Link>
-              <Link
-                href="/cronograma"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Cronograma
-              </Link>
-              <Link
-                href="/#clasificacion-motos"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Clasificación Motos
-              </Link>
               <Link
                 href="https://safari-ashen.vercel.app/inscripcion"
                 target="_blank"
