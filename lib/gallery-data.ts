@@ -1,0 +1,21 @@
+/** Rutas de fotos en public/galeria (servidas como /galeria/...) */
+export const galleryImages = [
+  '/galeria/IMG_2506.JPG.jpeg',
+  '/galeria/IMG_2509.JPG.jpeg',
+  '/galeria/IMG_2511.JPG.jpeg',
+  '/galeria/IMG_2512.JPG.jpeg',
+  '/galeria/IMG_2513.JPG.jpeg',
+  '/galeria/IMG_2514.JPG.jpeg',
+  '/galeria/IMG_2515.JPG.jpeg',
+  '/galeria/IMG_2547.JPG.jpeg',
+  '/galeria/IMG_2550.JPG.jpeg',
+  '/galeria/IMG_2625.JPG.jpeg',
+  '/galeria/IMG_2628.JPG.jpeg',
+  '/galeria/IMG_2629.JPG.jpeg',
+  '/galeria/IMG_2631.JPG.jpeg',
+  '/galeria/IMG_2632.JPG.jpeg',
+  '/galeria/IMG_2633.JPG.jpeg',
+  '/galeria/IMG_2635.JPG.jpeg',
+  '/galeria/IMG_2637.JPG.jpeg',
+  '/galeria/IMG_2638.JPG.jpeg',
+];
