@@ -11,6 +11,7 @@ const News = dynamic(() => import('@/components/News'));
 const Sponsors = dynamic(() => import('@/components/Sponsors'));
 const FAQ = dynamic(() => import('@/components/FAQ'));
 const Gallery = dynamic(() => import('@/components/Gallery'));
+const ModoVisita = dynamic(() => import('@/components/ModoVisita'));
 const Footer = dynamic(() => import('@/components/Footer'));
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Countdown />
+      <ModoVisita />
       <News />
       <WeatherValleFertil />
       <ClasificacionMotos />
