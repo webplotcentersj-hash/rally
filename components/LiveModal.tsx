@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { sponsors } from '@/lib/sponsors';
 
 const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@2m.362';
 
@@ -57,11 +59,29 @@ export default function LiveModal({ isOpen, onClose }: LiveModalProps) {
         className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-5 md:p-6 border-b bg-gradient-to-r from-red-600 to-red-700">
-          <div className="flex items-center gap-3">
-            <span className="flex h-3 w-3 rounded-full bg-white animate-pulse" aria-hidden />
-            <h2 className="text-xl md:text-2xl font-bold text-white">Safari en vivo</h2>
+        {/* Header: título + sponsors pequeños + cerrar */}
+        <div className="flex items-center justify-between gap-4 p-3 md:p-4 border-b bg-gradient-to-r from-red-600 to-red-700">
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="flex h-2.5 w-2.5 rounded-full bg-white animate-pulse shrink-0" aria-hidden />
+            <h2 className="text-lg md:text-xl font-bold text-white shrink-0">Safari en vivo</h2>
+          </div>
+          <div className="flex items-center gap-2 md:gap-3 overflow-x-auto max-w-[50%] md:max-w-[60%] scrollbar-hide">
+            {sponsors.map((s) => (
+              <span
+                key={s.id}
+                className="relative block h-6 w-12 md:h-7 md:w-14 shrink-0 opacity-90"
+                title={s.name}
+              >
+                <Image
+                  src={s.logo}
+                  alt={s.name}
+                  fill
+                  className="object-contain object-center"
+                  sizes="56px"
+                  unoptimized
+                />
+              </span>
+            ))}
           </div>
           <button
             onClick={onClose}
@@ -100,7 +120,7 @@ export default function LiveModal({ isOpen, onClose }: LiveModalProps) {
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
-            Abrir canal en YouTube
+            Suscribite al canal
           </a>
         </div>
       </div>
