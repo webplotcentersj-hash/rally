@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import EstadoRutasFloating from '@/components/EstadoRutasFloating';
-import ChatWidget from '@/components/ChatWidget';
-import ElevenLabsWidget from '@/components/ElevenLabsWidget';
-import SorteoFloating from '@/components/SorteoFloating';
 
 const inter = Inter({ subsets: ['latin'] });
+
+// Widgets en carga diferida para no bloquear la primera pintada
+const EstadoRutasFloating = dynamic(() => import('@/components/EstadoRutasFloating'), { ssr: false });
+const SorteoFloating = dynamic(() => import('@/components/SorteoFloating'), { ssr: false });
+const ElevenLabsWidget = dynamic(() => import('@/components/ElevenLabsWidget'), { ssr: false });
+const ChatWidget = dynamic(() => import('@/components/ChatWidget'), { ssr: false });
 
 const SITE_URL = 'https://safaritraslassierras.com.ar';
 

@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Countdown from '@/components/Countdown';
 
-// Lazy load componentes no críticos
+// Lazy load: reducen el JS inicial y cargan al hacer scroll o después
+const Countdown = dynamic(() => import('@/components/Countdown'));
 const WeatherValleFertil = dynamic(() => import('@/components/WeatherValleFertil'));
 const ClasificacionMotos = dynamic(() => import('@/components/ClasificacionMotos'));
 const AssociationHistory = dynamic(() => import('@/components/AssociationHistory'));
