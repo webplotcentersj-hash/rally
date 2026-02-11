@@ -88,8 +88,12 @@ export default function Header() {
               href="https://safari-ashen.vercel.app/tiempos"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+              className="relative inline-flex items-center gap-1.5 text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
             >
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+              </span>
               Tiempos
             </a>
             <a
@@ -155,9 +159,13 @@ export default function Header() {
                 href="https://safari-ashen.vercel.app/tiempos"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                className="relative inline-flex items-center gap-1.5 text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <span className="relative flex h-2 w-2 shrink-0">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+                </span>
                 Tiempos
               </a>
               <Link
