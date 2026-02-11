@@ -139,7 +139,7 @@ export default function Gallery() {
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              setLightboxIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+              setLightboxIndex((i) => ((i ?? 0) - 1 + galleryImages.length) % galleryImages.length);
             }}
             className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 text-white hover:bg-[#65b330] transition-colors"
             aria-label="Foto anterior"
@@ -152,7 +152,7 @@ export default function Gallery() {
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              setLightboxIndex((i) => (i + 1) % galleryImages.length);
+              setLightboxIndex((i) => ((i ?? 0) + 1) % galleryImages.length);
             }}
             className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 text-white hover:bg-[#65b330] transition-colors"
             aria-label="Siguiente foto"
