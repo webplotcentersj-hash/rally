@@ -69,7 +69,7 @@ export default function LiveModal({ isOpen, onClose }: LiveModalProps) {
             {sponsors.map((s) => (
               <span
                 key={s.id}
-                className="relative block h-6 w-12 md:h-7 md:w-14 shrink-0 opacity-90"
+                className="relative block h-8 w-14 md:h-10 md:w-20 shrink-0 opacity-90"
                 title={s.name}
               >
                 <Image
@@ -77,7 +77,7 @@ export default function LiveModal({ isOpen, onClose }: LiveModalProps) {
                   alt={s.name}
                   fill
                   className="object-contain object-center"
-                  sizes="56px"
+                  sizes="80px"
                   unoptimized
                 />
               </span>
