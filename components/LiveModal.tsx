@@ -1,8 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Image from 'next/image';
-import { sponsors } from '@/lib/sponsors';
 
 const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@2m.362';
 
@@ -59,29 +57,11 @@ export default function LiveModal({ isOpen, onClose }: LiveModalProps) {
         className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header: título + sponsors pequeños + cerrar */}
-        <div className="flex items-center justify-between gap-4 p-3 md:p-4 border-b bg-gradient-to-r from-red-600 to-red-700">
-          <div className="flex items-center gap-3 min-w-0">
-            <span className="flex h-2.5 w-2.5 rounded-full bg-white animate-pulse shrink-0" aria-hidden />
-            <h2 className="text-lg md:text-xl font-bold text-white shrink-0">Safari en vivo</h2>
-          </div>
-          <div className="flex items-center gap-2 md:gap-3 overflow-x-auto max-w-[50%] md:max-w-[60%] scrollbar-hide">
-            {sponsors.map((s) => (
-              <span
-                key={s.id}
-                className="relative block h-8 w-14 md:h-10 md:w-20 shrink-0 opacity-90"
-                title={s.name}
-              >
-                <Image
-                  src={s.logo}
-                  alt={s.name}
-                  fill
-                  className="object-contain object-center"
-                  sizes="80px"
-                  unoptimized
-                />
-              </span>
-            ))}
+        {/* Header */}
+        <div className="flex items-center justify-between p-5 md:p-6 border-b bg-gradient-to-r from-red-600 to-red-700">
+          <div className="flex items-center gap-3">
+            <span className="flex h-3 w-3 rounded-full bg-white animate-pulse" aria-hidden />
+            <h2 className="text-xl md:text-2xl font-bold text-white">Safari en vivo</h2>
           </div>
           <button
             onClick={onClose}
