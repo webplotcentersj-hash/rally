@@ -1,8 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { reglamentoSections } from '@/lib/reglamento-data';
+
+/** Mapa en sección Pilotos: guardar imagen en public como mapa-web.jpg */
+const MAPA_PILOTOS_SRC = '/mapa-web.jpg';
 
 type FaqItem =
   | { id: string; question: string; answer: string }
@@ -115,6 +119,18 @@ export default function FAQ() {
                     </Link>
                   )}
                 </div>
+                {section.title === 'Pilotos' && (
+                  <div className="mb-6 rounded-xl overflow-hidden border border-white/10 bg-white/5">
+                    <Image
+                      src={MAPA_PILOTOS_SRC}
+                      alt="Mapa Safari Tras las Sierras - Pilotos"
+                      width={1200}
+                      height={800}
+                      className="w-full h-auto object-contain"
+                      unoptimized
+                    />
+                  </div>
+                )}
                 <ul className="space-y-3">
                   {section.items.map((item) => {
                     const isOpen = openId === item.id;
