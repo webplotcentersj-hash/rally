@@ -6,7 +6,7 @@ import { reglamentoSections } from '@/lib/reglamento-data';
 import { sponsors } from '@/lib/sponsors';
 
 const LOGO_SAFARI = '/logo.png';
-const LOGO_PLOT = 'http://plotcenter.com.ar/wp-content/uploads/2026/02/Recurso-15.png';
+const LOGO_PLOT = 'http://plotcenter.com.ar/wp-content/uploads/2026/01/Logos-marcas-04-scaled.png';
 
 export default function ReglamentoPage() {
   const handlePrint = () => window.print();

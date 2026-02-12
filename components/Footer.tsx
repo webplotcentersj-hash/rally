@@ -17,7 +17,7 @@ export default function Footer() {
                 className="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
               />
               <img
-                src="http://plotcenter.com.ar/wp-content/uploads/2026/02/Recurso-15.png"
+                src="http://plotcenter.com.ar/wp-content/uploads/2026/01/Logos-marcas-04-scaled.png"
                 alt=""
                 className="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
               />

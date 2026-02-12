@@ -27,7 +27,7 @@ export default function Header() {
               className="h-9 md:h-11 w-auto object-contain"
             />
             <img
-              src="http://plotcenter.com.ar/wp-content/uploads/2026/02/Recurso-15.png"
+              src="http://plotcenter.com.ar/wp-content/uploads/2026/01/Logos-marcas-04-scaled.png"
               alt=""
               className="h-9 md:h-11 w-auto object-contain"
             />
