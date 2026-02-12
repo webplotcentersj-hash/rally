@@ -42,9 +42,21 @@ export default function News() {
             </h2>
             <div className="w-32 h-0.5 bg-[#65b330] mx-auto mb-6" />
             <p className="text-lg md:text-xl text-gray-300">
-              Últimas novedades del Safari Tras las Sierras
+              Actualizadas en tiempo real en nuestro blog
             </p>
           </div>
+
+          <a
+            href="https://blog.safaritraslassierras.com.ar/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`mb-10 flex flex-col sm:flex-row items-center justify-center gap-4 rounded-xl border-2 border-[#65b330] bg-[#65b330]/10 px-6 py-5 text-white transition-all hover:bg-[#65b330]/20 hover:border-[#65b330] ${isVisible ? 'animate-fade-in-up' : ''}`}
+          >
+            <span className="text-lg font-semibold">Ver todas las novedades en el blog</span>
+            <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
 
           <div className="space-y-8">
             {newsItems.map((item, index) => {

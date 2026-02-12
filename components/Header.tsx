@@ -85,6 +85,14 @@ export default function Header() {
               Pilotos inscriptos
             </Link>
             <a
+              href="https://blog.safaritraslassierras.com.ar/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+            >
+              Novedades
+            </a>
+            <a
               href="https://safari-ashen.vercel.app/tiempos"
               target="_blank"
               rel="noopener noreferrer"
@@ -155,6 +163,15 @@ export default function Header() {
                   </div>
                 )}
               </div>
+              <a
+                href="https://blog.safaritraslassierras.com.ar/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-[#65b330] transition-colors text-sm font-medium uppercase tracking-wide"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Novedades
+              </a>
               <a
                 href="https://safari-ashen.vercel.app/tiempos"
                 target="_blank"
