@@ -4,7 +4,7 @@ import './globals.css';
 import EstadoRutasFloating from '@/components/EstadoRutasFloating';
 import SorteoFloating from '@/components/SorteoFloating';
 import MobileFloatingBar from '@/components/MobileFloatingBar';
-import ElevenLabsWidget from '@/components/ElevenLabsWidget';
+import ElevenLabsWidgetDesktop from '@/components/ElevenLabsWidgetDesktop';
 import ChatWidget from '@/components/ChatWidget';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -94,7 +94,7 @@ export default function RootLayout({
         <EstadoRutasFloating />
         <SorteoFloating />
         <MobileFloatingBar />
-        <ElevenLabsWidget />
+        <ElevenLabsWidgetDesktop />
         <ChatWidget />
       </body>
     </html>

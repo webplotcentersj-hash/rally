@@ -107,16 +107,6 @@ function WeatherIcon({ code, className = 'w-8 h-8' }: { code: number; className?
   return cloud;
 }
 
-function formatDayName(dateStr: string): string {
-  const d = new Date(dateStr + 'T12:00:00');
-  const today = new Date();
-  const tomorrow = new Date(today);
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  if (dateStr === today.toISOString().slice(0, 10)) return 'Hoy';
-  if (dateStr === tomorrow.toISOString().slice(0, 10)) return 'Mañana';
-  return d.toLocaleDateString('es-AR', { weekday: 'short' });
-}
-
 export default function WeatherValleFertil() {
   const [data, setData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -129,7 +119,7 @@ export default function WeatherValleFertil() {
       current: 'temperature_2m,apparent_temperature,weather_code,relative_humidity_2m,wind_speed_10m',
       daily: 'temperature_2m_max,temperature_2m_min,weather_code',
       timezone: 'America/Argentina/Buenos_Aires',
-      forecast_days: '7',
+      forecast_days: '1',
     });
     fetch(`${API_URL}?${params}`)
       .then((res) => res.json())
@@ -187,7 +177,7 @@ export default function WeatherValleFertil() {
               <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                 Clima en Valle Fértil
               </h2>
-              <p className="text-gray-400 text-sm">San Agustín del Valle Fértil · Pronóstico actual y 7 días</p>
+              <p className="text-gray-400 text-sm">San Agustín del Valle Fértil · Hoy</p>
             </div>
           </div>
 
@@ -230,33 +220,26 @@ export default function WeatherValleFertil() {
             </div>
           </div>
 
-          {/* Extendido */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden">
-            <p className="text-[#65b330]/90 text-xs font-bold uppercase tracking-widest px-6 pt-5 pb-2">
-              Próximos 7 días
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-px bg-white/10">
-              {daily.time.slice(0, 7).map((dateStr, i) => (
-                <div
-                  key={dateStr}
-                  className="bg-black/60 p-4 flex flex-col items-center text-center min-h-[120px]"
-                >
-                  <p className="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-2">
-                    {formatDayName(dateStr)}
-                  </p>
-                  <div className="text-[#65b330] mb-2">
-                    <WeatherIcon code={daily.weather_code[i]} className="w-8 h-8 mx-auto" />
+          {daily.time.length > 0 && (
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden mb-6">
+              <p className="text-[#65b330]/90 text-xs font-bold uppercase tracking-widest px-6 pt-5 pb-2">
+                Hoy
+              </p>
+              <div className="bg-black/60 p-4 flex flex-wrap items-center justify-center gap-6">
+                <div className="flex items-center gap-3">
+                  <WeatherIcon code={daily.weather_code[0]} className="w-10 h-10 text-[#65b330]" />
+                  <div className="text-left">
+                    <p className="text-gray-400 text-xs font-semibold uppercase">Máx</p>
+                    <p className="text-[#a3ff6f] font-bold text-xl tabular-nums">{Math.round(daily.temperature_2m_max[0])}°</p>
                   </div>
-                  <p className="text-[#a3ff6f] font-bold text-lg tabular-nums">
-                    {Math.round(daily.temperature_2m_max[i])}°
-                  </p>
-                  <p className="text-gray-500 text-sm tabular-nums">
-                    {Math.round(daily.temperature_2m_min[i])}°
-                  </p>
                 </div>
-              ))}
+                <div className="text-left">
+                  <p className="text-gray-400 text-xs font-semibold uppercase">Mín</p>
+                  <p className="text-white font-bold text-xl tabular-nums">{Math.round(daily.temperature_2m_min[0])}°</p>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
 
           <p className="text-gray-500 text-xs text-center mt-4">
             Datos por{' '}

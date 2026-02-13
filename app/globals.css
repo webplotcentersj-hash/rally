@@ -385,13 +385,8 @@ header {
 .elevenlabs-widget-wrapper elevenlabs-convai {
   display: block;
 }
-@media (max-width: 767px) {
-  .elevenlabs-widget-wrapper:not(.elevenlabs-in-bar) {
-    display: none;
-  }
-}
 @media (max-width: 640px) {
-  .elevenlabs-widget-wrapper {
+  .elevenlabs-widget-wrapper:not(.elevenlabs-in-bar) {
     left: 8px;
     bottom: 40px;
   }
