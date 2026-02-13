@@ -7,6 +7,10 @@ const SORTEO_URL = 'https://safaritraslassierras.com.ar/subitufoto/foto.php';
 export default function MobileFloatingBar() {
   const openRutas = () => document.getElementById('open-rutas')?.click();
   const openChat = () => document.getElementById('open-chat')?.click();
+  const openVoz = () => {
+    const widget = document.querySelector('.elevenlabs-in-bar elevenlabs-convai') ?? document.querySelector('elevenlabs-convai');
+    if (widget instanceof HTMLElement) widget.click();
+  };
 
   return (
     <div
@@ -48,16 +52,20 @@ export default function MobileFloatingBar() {
         <span className="text-xs font-medium">Chat</span>
       </button>
 
-      <div className="flex flex-1 flex-col items-center justify-center min-w-0 elevenlabs-bar-slot min-h-[52px]">
+      <button
+        type="button"
+        onClick={openVoz}
+        className="flex flex-1 flex-col items-center justify-center gap-1 rounded-xl py-3 px-2 text-white/90 hover:bg-[#65b330]/20 hover:text-white transition-colors min-w-0 min-h-[52px] elevenlabs-bar-slot"
+        aria-label="Asistente de voz"
+      >
         <div className="relative flex items-center justify-center w-10 h-10">
           <ElevenLabsWidget embedInBar />
-          {/* Fallback icon visible hasta que cargue el widget */}
-          <span className="elevenlabs-fallback-icon pointer-events-none absolute inset-0 flex items-center justify-center text-xl" aria-hidden>
+          <span className="elevenlabs-fallback-icon absolute inset-0 flex items-center justify-center text-xl pointer-events-none" aria-hidden>
             🎤
           </span>
         </div>
-        <span className="text-xs font-medium text-white/90 mt-1">Voz</span>
-      </div>
+        <span className="text-xs font-medium">Voz</span>
+      </button>
     </div>
   );
 }
