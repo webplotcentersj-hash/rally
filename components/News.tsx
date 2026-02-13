@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { newsItems } from '@/lib/news-data';
+import { newsItems, type NewsItem } from '@/lib/news-data';
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -10,7 +10,10 @@ function formatDate(iso: string): string {
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
-export default function News() {
+type NewsProps = { items?: NewsItem[] | null };
+
+export default function News({ items: blogItems }: NewsProps) {
+  const items = blogItems && blogItems.length > 0 ? blogItems : newsItems;
   const [isVisible, setIsVisible] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -59,9 +62,10 @@ export default function News() {
           </a>
 
           <div className="space-y-8">
-            {newsItems.map((item, index) => {
+            {items.map((item, index) => {
               const isExpanded = expandedId === item.id;
-              const firstImage = item.images?.[0];
+              const firstImage = item.images?.[0] ?? item.image;
+              const isExternal = Boolean(item.href);
 
               return (
                 <article
@@ -80,7 +84,7 @@ export default function News() {
                         fill
                         className="object-cover"
                         sizes="(max-width: 1024px) 100vw, 896px"
-                        unoptimized
+                        unoptimized={firstImage.startsWith('http')}
                       />
                     </div>
                   )}
@@ -96,16 +100,30 @@ export default function News() {
                     {!isExpanded ? (
                       <>
                         <p className="text-gray-400 leading-relaxed line-clamp-3">{item.excerpt}</p>
-                        <button
-                          type="button"
-                          onClick={() => setExpandedId(item.id)}
-                          className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-[#65b330] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#4a8a26]"
-                        >
-                          Leer más
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </button>
+                        {isExternal ? (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-[#65b330] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#4a8a26]"
+                          >
+                            Leer más
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => setExpandedId(item.id)}
+                            className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-[#65b330] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#4a8a26]"
+                          >
+                            Leer más
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </button>
+                        )}
                       </>
                     ) : (
                       <>

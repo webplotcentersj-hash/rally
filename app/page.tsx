@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import { fetchBlogPosts } from '@/lib/fetch-blog-posts';
 
 // Lazy load: reducen el JS inicial y cargan al hacer scroll o después
 const Countdown = dynamic(() => import('@/components/Countdown'));
@@ -14,14 +15,16 @@ const Gallery = dynamic(() => import('@/components/Gallery'));
 const ModoVisita = dynamic(() => import('@/components/ModoVisita'));
 const Footer = dynamic(() => import('@/components/Footer'));
 
-export default function Home() {
+export default async function Home() {
+  const blogPosts = await fetchBlogPosts();
+
   return (
     <main className="min-h-screen">
       <Header />
       <Hero />
       <Countdown />
       <ModoVisita />
-      <News />
+      <News items={blogPosts} />
       <WeatherValleFertil />
       <ClasificacionMotos />
       <Gallery />

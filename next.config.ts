@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'plotcenter.com.ar', pathname: '/**' },
       { protocol: 'http', hostname: 'plotcenter.com.ar', pathname: '/**' },
+      { protocol: 'https', hostname: 'blog.safaritraslassierras.com.ar', pathname: '/**' },
+      { protocol: 'http', hostname: 'blog.safaritraslassierras.com.ar', pathname: '/**' },
     ],
   },
   compress: true,
