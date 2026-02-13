@@ -1,6 +1,10 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+
 const SORTEO_URL = 'https://safaritraslassierras.com.ar/subitufoto/foto.php';
+
+const ElevenLabsWidget = dynamic(() => import('@/components/ElevenLabsWidget'), { ssr: false });
 
 export default function MobileFloatingBar() {
   const openRutas = () => document.getElementById('open-rutas')?.click();
@@ -8,7 +12,7 @@ export default function MobileFloatingBar() {
 
   return (
     <div
-      className="md:hidden fixed bottom-0 left-0 right-0 z-[9998] flex items-center justify-center gap-0 safe-area-pb bg-black/90 border-t border-[#65b330]/40 px-4 py-3"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-[9998] flex items-center justify-center gap-0 safe-area-pb bg-black/90 border-t border-[#65b330]/40 px-2 py-3"
       aria-label="Acciones rápidas"
     >
       <button
@@ -45,6 +49,11 @@ export default function MobileFloatingBar() {
         </svg>
         <span className="text-xs font-medium">Chat</span>
       </button>
+
+      <div className="flex flex-1 flex-col items-center justify-center min-w-0 elevenlabs-bar-slot">
+        <ElevenLabsWidget embedInBar />
+        <span className="text-xs font-medium text-white/90 mt-1">Voz</span>
+      </div>
     </div>
   );
 }

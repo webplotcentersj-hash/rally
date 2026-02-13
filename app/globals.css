@@ -369,15 +369,26 @@ header {
   }
 }
 
-/* Widget ElevenLabs: izquierda */
+/* Widget ElevenLabs: izquierda en desktop; en barra en móvil */
 .elevenlabs-widget-wrapper {
   position: fixed;
   left: 12px;
   bottom: 48px;
   z-index: 9998;
 }
+.elevenlabs-widget-wrapper.elevenlabs-in-bar {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  z-index: auto;
+}
 .elevenlabs-widget-wrapper elevenlabs-convai {
   display: block;
+}
+@media (max-width: 767px) {
+  .elevenlabs-widget-wrapper:not(.elevenlabs-in-bar) {
+    display: none;
+  }
 }
 @media (max-width: 640px) {
   .elevenlabs-widget-wrapper {
