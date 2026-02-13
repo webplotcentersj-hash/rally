@@ -23,7 +23,7 @@ type WpPost = {
 export async function fetchBlogPosts(): Promise<NewsItem[]> {
   try {
     const res = await fetch(BLOG_API, {
-      next: { revalidate: 120 },
+      cache: 'no-store',
       headers: { 'User-Agent': 'SafariTrasLasSierras/1.0' },
     });
     if (!res.ok) return [];
