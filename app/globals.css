@@ -398,8 +398,7 @@ header {
   bottom: 48px;
   z-index: 9998;
 }
-.elevenlabs-widget-wrapper.elevenlabs-in-bar,
-.elevenlabs-widget-wrapper.elevenlabs-in-modal {
+.elevenlabs-widget-wrapper.elevenlabs-in-bar {
   position: relative !important;
   left: auto !important;
   bottom: auto !important;
@@ -407,8 +406,11 @@ header {
   min-width: 48px;
   min-height: 48px;
 }
-.elevenlabs-modal-slot .elevenlabs-widget-wrapper {
-  min-height: 240px;
+.elevenlabs-widget-wrapper.elevenlabs-in-modal {
+  position: relative !important;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: auto;
 }
 .elevenlabs-widget-wrapper.elevenlabs-in-bar elevenlabs-convai,
 .elevenlabs-in-bar elevenlabs-convai,

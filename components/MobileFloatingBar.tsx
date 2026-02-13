@@ -99,7 +99,7 @@ export default function MobileFloatingBar() {
                 </svg>
               </button>
             </div>
-            <div className="min-h-[280px] flex flex-col items-center justify-center p-6 elevenlabs-modal-slot">
+            <div className="flex flex-col items-center justify-center p-6 elevenlabs-modal-slot">
               <ElevenLabsWidget embedInModal />
             </div>
           </div>
