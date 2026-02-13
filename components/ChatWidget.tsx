@@ -91,9 +91,10 @@ export default function ChatWidget() {
   return (
     <>
       <button
+        id="open-chat"
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-20 right-6 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-[#65b330] text-white shadow-lg shadow-[#65b330]/40 hover:bg-[#5a9e2a] hover:scale-105 hover:shadow-xl hover:shadow-[#65b330]/50 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#65b330] focus:ring-offset-2 focus:ring-offset-gray-900"
+        className="fixed bottom-20 right-6 z-40 hidden w-14 h-14 items-center justify-center rounded-full bg-[#65b330] text-white shadow-lg shadow-[#65b330]/40 hover:bg-[#5a9e2a] hover:scale-105 hover:shadow-xl hover:shadow-[#65b330]/50 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#65b330] focus:ring-offset-2 focus:ring-offset-gray-900 md:flex"
         aria-label={open ? 'Cerrar chat' : 'Abrir chat'}
       >
         {open ? (

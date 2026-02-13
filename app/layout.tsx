@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import EstadoRutasFloating from '@/components/EstadoRutasFloating';
 import SorteoFloating from '@/components/SorteoFloating';
+import MobileFloatingBar from '@/components/MobileFloatingBar';
 import ElevenLabsWidget from '@/components/ElevenLabsWidget';
 import ChatWidget from '@/components/ChatWidget';
 
@@ -92,6 +93,7 @@ export default function RootLayout({
         {children}
         <EstadoRutasFloating />
         <SorteoFloating />
+        <MobileFloatingBar />
         <ElevenLabsWidget />
         <ChatWidget />
       </body>

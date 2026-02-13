@@ -142,9 +142,10 @@ export default function EstadoRutasFloating() {
     <>
       {/* Botón flotante */}
       <button
+        id="open-rutas"
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-12 h-12 rounded-full bg-[#65b330] text-white shadow-lg hover:bg-[#5a9e2a] hover:scale-105 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-[#65b330] focus:ring-offset-2 focus:ring-offset-black"
+        className="fixed bottom-6 right-6 z-40 hidden w-12 h-12 items-center justify-center rounded-full bg-[#65b330] text-white shadow-lg hover:bg-[#5a9e2a] hover:scale-105 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-[#65b330] focus:ring-offset-2 focus:ring-offset-black md:flex"
         aria-label="Ver estado de las rutas"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
