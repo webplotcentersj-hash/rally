@@ -369,7 +369,28 @@ header {
   }
 }
 
-/* Widget ElevenLabs: izquierda en desktop; en barra en móvil */
+/* Widget ElevenLabs: solo desktop fuera de la barra; en móvil solo dentro de la barra */
+.elevenlabs-desktop-only {
+  display: none;
+}
+@media (min-width: 768px) {
+  .elevenlabs-desktop-only {
+    display: block;
+  }
+}
+@media (max-width: 767px) {
+  /* En móvil: ocultar widget flotante; solo mostrar el que está dentro de la barra */
+  elevenlabs-convai {
+    display: none !important;
+  }
+  .elevenlabs-in-bar elevenlabs-convai {
+    display: block !important;
+  }
+  .elevenlabs-widget-wrapper:not(.elevenlabs-in-bar) {
+    display: none !important;
+  }
+}
+
 .elevenlabs-widget-wrapper {
   position: fixed;
   left: 12px;
@@ -377,15 +398,30 @@ header {
   z-index: 9998;
 }
 .elevenlabs-widget-wrapper.elevenlabs-in-bar {
-  position: relative;
-  left: auto;
-  bottom: auto;
+  position: relative !important;
+  left: auto !important;
+  bottom: auto !important;
   z-index: auto;
+  min-width: 48px;
+  min-height: 48px;
+}
+.elevenlabs-widget-wrapper.elevenlabs-in-bar elevenlabs-convai,
+.elevenlabs-in-bar elevenlabs-convai {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  top: auto !important;
+  display: block !important;
+}
+/* Ocultar icono fallback cuando el widget ya está en la barra */
+.elevenlabs-bar-slot:has(elevenlabs-convai) .elevenlabs-fallback-icon {
+  display: none !important;
 }
 .elevenlabs-widget-wrapper elevenlabs-convai {
   display: block;
 }
-@media (max-width: 640px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .elevenlabs-widget-wrapper:not(.elevenlabs-in-bar) {
     left: 8px;
     bottom: 40px;

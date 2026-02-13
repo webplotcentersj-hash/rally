@@ -94,7 +94,9 @@ export default function RootLayout({
         <EstadoRutasFloating />
         <SorteoFloating />
         <MobileFloatingBar />
-        <ElevenLabsWidgetDesktop />
+        <div className="elevenlabs-desktop-only">
+          <ElevenLabsWidgetDesktop />
+        </div>
         <ChatWidget />
       </body>
     </html>
