@@ -379,14 +379,15 @@ header {
   }
 }
 @media (max-width: 767px) {
-  /* En móvil: ocultar widget flotante; solo mostrar el que está dentro de la barra */
+  /* En móvil: ocultar widget flotante; mostrar solo el de la barra o el del modal */
   elevenlabs-convai {
     display: none !important;
   }
-  .elevenlabs-in-bar elevenlabs-convai {
+  .elevenlabs-in-bar elevenlabs-convai,
+  .elevenlabs-modal-slot elevenlabs-convai {
     display: block !important;
   }
-  .elevenlabs-widget-wrapper:not(.elevenlabs-in-bar) {
+  .elevenlabs-widget-wrapper:not(.elevenlabs-in-bar):not(.elevenlabs-in-modal) {
     display: none !important;
   }
 }
@@ -397,7 +398,8 @@ header {
   bottom: 48px;
   z-index: 9998;
 }
-.elevenlabs-widget-wrapper.elevenlabs-in-bar {
+.elevenlabs-widget-wrapper.elevenlabs-in-bar,
+.elevenlabs-widget-wrapper.elevenlabs-in-modal {
   position: relative !important;
   left: auto !important;
   bottom: auto !important;
@@ -405,8 +407,12 @@ header {
   min-width: 48px;
   min-height: 48px;
 }
+.elevenlabs-modal-slot .elevenlabs-widget-wrapper {
+  min-height: 240px;
+}
 .elevenlabs-widget-wrapper.elevenlabs-in-bar elevenlabs-convai,
-.elevenlabs-in-bar elevenlabs-convai {
+.elevenlabs-in-bar elevenlabs-convai,
+.elevenlabs-modal-slot elevenlabs-convai {
   position: relative !important;
   left: auto !important;
   right: auto !important;

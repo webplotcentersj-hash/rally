@@ -5,9 +5,9 @@ import { useEffect, useRef } from 'react';
 const AGENT_ID = 'agent_5201kh3nd49bfkqarvfcsh526pag';
 const SCRIPT_URL = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
 
-type Props = { embedInBar?: boolean };
+type Props = { embedInBar?: boolean; embedInModal?: boolean };
 
-export default function ElevenLabsWidget({ embedInBar }: Props) {
+export default function ElevenLabsWidget({ embedInBar, embedInModal }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,10 +26,13 @@ export default function ElevenLabsWidget({ embedInBar }: Props) {
     containerRef.current.appendChild(widget);
   }, []);
 
+  const embedClass = embedInModal ? 'elevenlabs-in-modal' : embedInBar ? 'elevenlabs-in-bar' : '';
+  const className = ['elevenlabs-widget-wrapper', embedClass].filter(Boolean).join(' ');
+
   return (
     <div
       ref={containerRef}
-      className={embedInBar ? 'elevenlabs-widget-wrapper elevenlabs-in-bar' : 'elevenlabs-widget-wrapper'}
+      className={className}
       aria-label="Asistente de voz ElevenLabs"
     />
   );

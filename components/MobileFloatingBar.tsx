@@ -1,16 +1,32 @@
 'use client';
 
+import { useState, useRef, useEffect } from 'react';
 import ElevenLabsWidget from '@/components/ElevenLabsWidget';
 
 const SORTEO_URL = 'https://safaritraslassierras.com.ar/subitufoto/foto.php';
 
 export default function MobileFloatingBar() {
+  const [vozModalOpen, setVozModalOpen] = useState(false);
+  const vozModalRef = useRef<HTMLDivElement>(null);
+
   const openRutas = () => document.getElementById('open-rutas')?.click();
   const openChat = () => document.getElementById('open-chat')?.click();
-  const openVoz = () => {
-    const widget = document.querySelector('.elevenlabs-in-bar elevenlabs-convai') ?? document.querySelector('elevenlabs-convai');
-    if (widget instanceof HTMLElement) widget.click();
-  };
+
+  useEffect(() => {
+    if (!vozModalOpen) return;
+    const handleEscape = (e: KeyboardEvent) => { if (e.key === 'Escape') setVozModalOpen(false); };
+    const handleOutside = (e: MouseEvent) => {
+      if (vozModalRef.current && !vozModalRef.current.contains(e.target as Node)) setVozModalOpen(false);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleEscape);
+    window.addEventListener('mousedown', handleOutside);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleEscape);
+      window.removeEventListener('mousedown', handleOutside);
+    };
+  }, [vozModalOpen]);
 
   return (
     <div
@@ -54,18 +70,41 @@ export default function MobileFloatingBar() {
 
       <button
         type="button"
-        onClick={openVoz}
-        className="flex flex-1 flex-col items-center justify-center gap-1 rounded-xl py-3 px-2 text-white/90 hover:bg-[#65b330]/20 hover:text-white transition-colors min-w-0 min-h-[52px] elevenlabs-bar-slot"
+        onClick={() => setVozModalOpen(true)}
+        className="flex flex-1 flex-col items-center justify-center gap-1 rounded-xl py-3 px-2 text-white/90 hover:bg-[#65b330]/20 hover:text-white transition-colors min-w-0"
         aria-label="Asistente de voz"
       >
-        <div className="relative flex items-center justify-center w-10 h-10">
-          <ElevenLabsWidget embedInBar />
-          <span className="elevenlabs-fallback-icon absolute inset-0 flex items-center justify-center text-xl pointer-events-none" aria-hidden>
-            🎤
-          </span>
-        </div>
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center text-xl">🎤</span>
         <span className="text-xs font-medium">Voz</span>
       </button>
+
+      {/* Modal ElevenLabs */}
+      {vozModalOpen && (
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div
+            ref={vozModalRef}
+            className="relative flex flex-col w-full max-w-lg rounded-2xl border border-[#65b330]/50 bg-gray-900 shadow-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+              <h2 className="text-lg font-bold text-white uppercase tracking-wide">Asistente de voz</h2>
+              <button
+                type="button"
+                onClick={() => setVozModalOpen(false)}
+                className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+                aria-label="Cerrar"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="min-h-[280px] flex flex-col items-center justify-center p-6 elevenlabs-modal-slot">
+              <ElevenLabsWidget embedInModal />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
