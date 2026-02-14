@@ -2,8 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 
-const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@2m.362';
-
 interface LiveModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -74,34 +72,18 @@ export default function LiveModal({ isOpen, onClose }: LiveModalProps) {
           </button>
         </div>
 
-        {/* Contenido: iframe + mensaje */}
-        <div className="flex flex-col flex-1 min-h-0 p-4 md:p-5">
-          <p className="text-sm text-gray-600 mb-4">
-            La transmisión en vivo se realiza a través del canal de YouTube <strong>2m.362</strong>.
-          </p>
-          <div className="relative w-full flex-1 bg-gray-900 rounded-lg overflow-hidden min-h-[300px] md:min-h-[400px]">
+        {/* Contenido: video Etapa 1 */}
+        <div className="p-4 md:p-5">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black" style={{ aspectRatio: '855/481' }}>
             <iframe
-              src={YOUTUBE_CHANNEL_URL}
-              width="100%"
-              height="100%"
-              style={{ border: 0, minHeight: '350px' }}
+              src="https://www.youtube.com/embed/-FXwBt-uJwA"
+              title="SAFARI TRAS LAS SIERRA 2026 | ETAPA 1"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
-              title="Canal Safari en vivo - 2m.362"
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 h-full w-full border-0"
             />
           </div>
-          <a
-            href={YOUTUBE_CHANNEL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 mt-4 px-5 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-            </svg>
-            Suscribite al canal
-          </a>
         </div>
       </div>
 
