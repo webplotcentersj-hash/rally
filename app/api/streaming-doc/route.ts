@@ -37,7 +37,12 @@ export async function GET() {
       buffer = await res.arrayBuffer();
     }
 
-    const pdfParse = (await import('pdf-parse')).default;
+    const pdfParseModule = await import('pdf-parse') as unknown as
+      | { default: (b: Buffer) => Promise<{ text: string }> }
+      | ((b: Buffer) => Promise<{ text: string }>);
+    const pdfParse = typeof pdfParseModule === 'function'
+      ? pdfParseModule
+      : pdfParseModule.default;
     const data = await pdfParse(Buffer.from(buffer));
     let text = (data?.text || '').trim() || 'No se pudo extraer texto del documento.';
     // Normalizar: múltiples saltos a doble, quitar espacios de más
