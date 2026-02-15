@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
-import Header from '@/components/Header';
 
 const AUTO_REFRESH_SECONDS = 60;
 
@@ -124,16 +123,14 @@ export default function StreamingPage() {
   const blocks = useMemo(() => textToBlocks(text), [text]);
 
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col">
-      <div className="fixed inset-0 bg-gradient-to-b from-black via-[#030803] to-black pointer-events-none" />
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(101,179,48,0.15),transparent_50%)] pointer-events-none" />
+    <main className="fixed inset-0 h-screen w-screen bg-black text-white flex flex-col overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#030803] to-black pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(101,179,48,0.15),transparent_50%)] pointer-events-none" />
 
-      <Header />
-
-      <div className="relative flex-1 flex flex-col pt-20 pb-10 px-4 md:px-8">
-        <div className="container mx-auto w-full max-w-6xl flex-1 flex flex-col">
+      <div className="relative flex-1 flex flex-col min-h-0 p-4 md:p-6">
+        <div className="w-full flex-1 flex flex-col min-h-0">
           {/* Cabecera: logo Plot Center + EN VIVO */}
-          <div className="flex flex-col items-center justify-center mb-6 md:mb-8">
+          <div className="flex flex-col items-center justify-center mb-4 md:mb-6 flex-shrink-0">
             <Link href="https://www.plotcenter.com.ar" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 focus:outline-none focus:ring-2 focus:ring-[#65b330] rounded-lg">
               <img
                 src="http://plotcenter.com.ar/wp-content/uploads/2026/01/Logo-Blanco-COMPLETO.png"
@@ -153,7 +150,7 @@ export default function StreamingPage() {
           </div>
 
           {/* Acciones */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-4 flex-shrink-0">
             <button
               type="button"
               onClick={refreshNow}
@@ -190,10 +187,10 @@ export default function StreamingPage() {
             </a>
           </div>
 
-          {/* Contenido para TV: tipografía grande y tablas claras */}
-          <div className="flex-1 min-h-[50vh] rounded-2xl border-2 border-[#65b330]/50 bg-black/80 overflow-hidden shadow-[0_0_80px_rgba(101,179,48,0.15)] relative">
+          {/* Contenido para TV: pantalla completa */}
+          <div className="flex-1 min-h-0 rounded-2xl border-2 border-[#65b330]/50 bg-black/80 overflow-hidden shadow-[0_0_80px_rgba(101,179,48,0.15)] relative flex flex-col">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-500/80 to-transparent" aria-hidden />
-            <div className="p-6 md:p-10 lg:p-12 h-full overflow-y-auto max-h-[70vh]">
+            <div className="flex-1 min-h-0 p-4 md:p-6 lg:p-8 overflow-y-auto overflow-x-auto">
               {error && (
                 <div className="rounded-xl bg-red-500/10 border border-red-500/40 text-red-300 px-5 py-4 mb-6 text-lg">
                   {error}
@@ -240,10 +237,12 @@ export default function StreamingPage() {
                                 </tr>
                               </thead>
                               <tbody>
-                                {block.rows.map((row, ri) => (
+                                {block.rows.map((row, ri) => {
+                                  const isLastRow = ri === block.rows.length - 1;
+                                  return (
                                   <tr
                                     key={ri}
-                                    className={`border-b border-white/10 ${ri % 2 === 0 ? 'bg-white/[0.03]' : ''}`}
+                                    className={`border-b border-white/10 ${ri % 2 === 0 ? 'bg-white/[0.03]' : ''} ${isLastRow ? 'bg-[#65b330]/20 border-l-4 border-[#65b330] font-semibold' : ''}`}
                                   >
                                     {block.headers.map((_, j) => (
                                       <td
@@ -254,7 +253,8 @@ export default function StreamingPage() {
                                       </td>
                                     ))}
                                   </tr>
-                                ))}
+                                  );
+                                })}
                               </tbody>
                             </table>
                           </div>
@@ -277,8 +277,8 @@ export default function StreamingPage() {
             </div>
           </div>
 
-          <p className="text-center text-gray-500 text-sm mt-6">
-            El texto se obtiene del PDF en Google Drive y se actualiza automáticamente cada {AUTO_REFRESH_SECONDS} s.
+          <p className="text-center text-gray-500 text-xs mt-3 flex-shrink-0">
+            PDF en Drive · actualización cada {AUTO_REFRESH_SECONDS} s
           </p>
         </div>
       </div>
