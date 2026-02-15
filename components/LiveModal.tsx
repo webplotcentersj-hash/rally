@@ -76,8 +76,8 @@ export default function LiveModal({ isOpen, onClose }: LiveModalProps) {
         <div className="p-4 md:p-5">
           <div className="relative w-full overflow-hidden rounded-lg bg-black" style={{ aspectRatio: '855/481' }}>
             <iframe
-              src="https://www.youtube.com/embed/-FXwBt-uJwA"
-              title="SAFARI TRAS LAS SIERRA 2026 | ETAPA 1"
+              src="https://www.youtube.com/embed/d0CVP3iCwyQ"
+              title="SAFARI TRAS LAS SIERRA 2026 | ETAPA 3"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
