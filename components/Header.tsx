@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const CIRCUITOS_SUB = [
   { label: 'Categorías', href: '/categorias' },
-  { label: 'Cronograma', href: '/cronograma' },
+  { label: 'Clasificaciones', href: '/#clasificacion-general' },
   { label: 'Clasificación de motos', href: '/#clasificacion-motos' },
   { label: 'Reglamentos', href: '/reglamento' },
 ];

@@ -15,7 +15,7 @@ const LINKS_PILOTO = [
 ];
 
 const LINKS_ESPECTADOR = [
-  { href: '/cronograma', label: 'Cronograma', external: false, icon: '📅' },
+  { href: '/#clasificacion-general', label: 'Clasificaciones', external: false, icon: '🏆' },
   { href: '/#faq', label: 'Mapa y preguntas frecuentes', external: false, icon: '📍' },
   { href: '/#galeria', label: 'Galería', external: false, icon: '📷' },
   { href: '/#noticias', label: 'Noticias', external: false, icon: '📰' },
@@ -83,7 +83,7 @@ export default function ModoVisita() {
                   <span className="text-4xl mb-4 block">👀</span>
                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Soy espectador</h3>
                   <p className="text-gray-400 text-sm">
-                    Cronograma, cómo llegar y qué ver.
+                    Clasificaciones, cómo llegar y qué ver.
                   </p>
                   <span className="absolute bottom-4 right-4 text-[#65b330] opacity-0 group-hover:opacity-100 transition-opacity">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

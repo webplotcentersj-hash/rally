@@ -245,10 +245,10 @@ export default function Countdown() {
 
           <div className="mt-10">
             <Link
-              href="/cronograma"
+              href="/#clasificacion-general"
               className="inline-flex items-center gap-2 rounded-xl border-2 border-[#65b330]/60 bg-[#65b330]/20 px-6 py-3 text-[#a3ff6f] font-bold text-sm uppercase tracking-wider hover:bg-[#65b330]/30 hover:border-[#65b330] hover:shadow-[0_0_25px_rgba(101,179,48,0.3)] transition-all duration-300"
             >
-              Ver cronograma completo
+              Ver clasificaciones
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

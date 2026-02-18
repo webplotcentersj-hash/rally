@@ -48,6 +48,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <a href="/#clasificacion-general" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Clasificaciones
+                </a>
+              </li>
+              <li>
                 <a href="https://safari-ashen.vercel.app/tiempos" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Tiempos
                 </a>
