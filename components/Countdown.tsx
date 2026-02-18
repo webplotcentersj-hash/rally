@@ -150,10 +150,10 @@ export default function Countdown() {
       <div className="container mx-auto px-4 relative z-[2]">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="title-section font-bold text-white mb-1 text-3xl sm:text-4xl md:text-5xl">
-            Cronograma
+            Clasificación
           </h2>
           <p className="text-gray-300 text-sm md:text-base mb-6">
-            Safari Tras las Sierras – Autos 13, 14 y 15 de febrero
+            Resultados oficiales del Safari Tras las Sierras
           </p>
           <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-[#65b330] to-transparent mx-auto mb-12" />
 

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s | Safari Tras las Sierras',
   },
   description:
-    'Safari Tras las Sierras: competencia de enduro, travesía y cuatris en Valle Fértil, San Juan. Inscribite al Safari 2026. Cronograma, circuitos, reglamento e información oficial.',
+    'Safari Tras las Sierras: competencia de enduro, travesía y cuatris en Valle Fértil, San Juan. Inscribite al Safari 2026. Clasificación, circuitos, reglamento e información oficial.',
   keywords: [
     'Safari Tras las Sierras',
     'safari Valle Fértil',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: 'Safari Tras las Sierras',
     title: 'Safari Tras las Sierras | Enduro y Travesía en Valle Fértil, San Juan',
     description:
-      'Competencia de enduro, travesía y cuatris en Valle Fértil. Inscribite al Safari 2026. Cronograma, circuitos y reglamento oficial.',
+      'Competencia de enduro, travesía y cuatris en Valle Fértil. Inscribite al Safari 2026. Clasificación, circuitos y reglamento oficial.',
     images: [
       {
         url: '/og-image.png',

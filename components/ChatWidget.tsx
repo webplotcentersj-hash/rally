@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 
 type Message = { role: 'user' | 'assistant'; content: string };
 
-const PLACEHOLDER = 'Preguntá sobre el Safari, fechas, inscripción, cronograma...';
+const PLACEHOLDER = 'Preguntá sobre el Safari, fechas, inscripción, clasificación...';
 
 const SUGERENCIAS = [
   '¿Cuándo es el Safari?',

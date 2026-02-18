@@ -6,7 +6,6 @@ import { fetchBlogPosts } from '@/lib/fetch-blog-posts';
 
 // Lazy load: reducen el JS inicial y cargan al hacer scroll o después
 const Countdown = dynamic(() => import('@/components/Countdown'));
-const ModoVisita = dynamic(() => import('@/components/ModoVisita'));
 const ClasificacionGeneral = dynamic(() => import('@/components/ClasificacionGeneral'));
 const WeatherValleFertil = dynamic(() => import('@/components/WeatherValleFertil'));
 const ClasificacionMotos = dynamic(() => import('@/components/ClasificacionMotos'));
@@ -25,7 +24,6 @@ export default async function Home() {
       <Header />
       <Hero />
       <Countdown />
-      <ModoVisita />
       <News items={blogPosts} />
       <ClasificacionGeneral />
       <WeatherValleFertil />
